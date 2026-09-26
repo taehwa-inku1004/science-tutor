@@ -94,7 +94,7 @@ export function ApiKeyModal({
               type="text"
               value={keyInput}
               onChange={(e) => setKeyInput(e.target.value)}
-              placeholder="AIzaSy..."
+              placeholder="AIzaSy... 또는 AQ..."
               className={`w-full text-sm font-mono rounded-xl border p-3 focus:outline-hidden focus:ring-2 bg-slate-50 ${
                 isGitHubToken
                   ? "border-rose-300 focus:ring-rose-500 text-rose-800 bg-rose-50/50"
