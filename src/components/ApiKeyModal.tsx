@@ -23,7 +23,8 @@ export function ApiKeyModal({
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
-    onSaveApiKey(keyInput.trim());
+    const cleaned = keyInput.trim().replace(/^Bearer\s+/i, "").replace(/^["']|["']$/g, "");
+    onSaveApiKey(cleaned);
     setSavedSuccess(true);
     setTimeout(() => {
       setSavedSuccess(false);
@@ -35,6 +36,8 @@ export function ApiKeyModal({
     setKeyInput("");
     onSaveApiKey("");
   };
+
+  const isGitHubToken = keyInput.startsWith("ghp_") || keyInput.startsWith("github_pat_");
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
@@ -77,7 +80,7 @@ export function ApiKeyModal({
             </a>
           </div>
           <p className="text-xs text-indigo-700 leading-relaxed font-sans">
-            구글 계정만 있으면 Google AI Studio에서 <strong>무료(Free of charge)</strong>로 API 키를 즉시 생성할 수 있습니다.
+            구글 계정만 있으면 Google AI Studio에서 <strong>무료(Free of charge)</strong>로 &apos;AIzaSy...&apos; 형태의 키를 즉시 생성할 수 있습니다.
           </p>
         </div>
 
@@ -88,12 +91,21 @@ export function ApiKeyModal({
               Google Gemini API Key
             </label>
             <input
-              type="password"
+              type="text"
               value={keyInput}
               onChange={(e) => setKeyInput(e.target.value)}
               placeholder="AIzaSy..."
-              className="w-full text-sm font-mono rounded-xl border border-slate-300 p-3 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-slate-50"
+              className={`w-full text-sm font-mono rounded-xl border p-3 focus:outline-hidden focus:ring-2 bg-slate-50 ${
+                isGitHubToken
+                  ? "border-rose-300 focus:ring-rose-500 text-rose-800 bg-rose-50/50"
+                  : "border-slate-300 focus:ring-indigo-500"
+              }`}
             />
+            {isGitHubToken && (
+              <p className="mt-1.5 text-xs text-rose-600 font-semibold">
+                ⚠️ 이것은 GitHub 토큰입니다! Google AI Studio에서 발급받은 AIzaSy... 형태의 키를 입력해 주세요.
+              </p>
+            )}
           </div>
 
           <div className="flex items-center gap-1.5 text-xs text-slate-500">

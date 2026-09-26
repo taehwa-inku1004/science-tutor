@@ -92,14 +92,29 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = userApiKey || process.env.GEMINI_API_KEY;
+    const rawKey = userApiKey || process.env.GEMINI_API_KEY || "";
+    const apiKey = rawKey
+      .trim()
+      .replace(/^Bearer\s+/i, "")
+      .replace(/^["']|["']$/g, "");
 
     if (!apiKey) {
       return NextResponse.json(
         {
           error: "API_KEY_REQUIRED",
           message:
-            "Google Gemini API 키가 설정되지 않았습니다. 상단 [설정] 버튼을 눌러 API 키를 입력하거나 환경변수를 설정해 주세요."
+            "Google Gemini API 키가 설정되지 않았습니다. 상단 [API 키] 버튼을 눌러 API 키를 입력하거나 환경변수를 설정해 주세요."
+        },
+        { status: 400 }
+      );
+    }
+
+    if (apiKey.startsWith("ghp_") || apiKey.startsWith("github_pat_")) {
+      return NextResponse.json(
+        {
+          error: "INVALID_API_KEY",
+          message:
+            "입력하신 키는 GitHub 토큰입니다! Google AI Studio (aistudio.google.com/apikey)에서 발급받은 'AIza'로 시작하는 Gemini API 키를 입력해 주세요."
         },
         { status: 400 }
       );
@@ -346,11 +361,15 @@ function cleanJsonString(str: string): string {
   } catch (error: unknown) {
     const err = error as Error;
     console.error("Gemini Analysis Error:", err);
+    const msg = err.message || "";
+    let friendlyMessage = msg;
+    if (msg.includes("401") || msg.includes("UNAUTHENTICATED") || msg.includes("invalid authentication") || msg.includes("API key not valid")) {
+      friendlyMessage = "Gemini API 키 인증에 실패했습니다(401). Google AI Studio(aistudio.google.com/apikey)에서 발급받은 'AIzaSy...'로 시작하는 Gemini API 키를 상단 [API 키] 버튼에서 다시 입력해 주세요.";
+    }
     return NextResponse.json(
       {
         error: "ANALYSIS_FAILED",
-        message:
-          err.message || "이미지 분석 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."
+        message: friendlyMessage
       },
       { status: 500 }
     );
