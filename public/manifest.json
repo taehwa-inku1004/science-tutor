@@ -1,0 +1,17 @@
+{
+  "name": "중2 과학 오답 클리닉",
+  "short_name": "중2과학과외",
+  "description": "기말고사 대비 중학교 2학년 과학 AI 1:1 과외선생님",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
