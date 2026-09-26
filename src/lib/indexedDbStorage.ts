@@ -1,4 +1,5 @@
 import { SavedNote } from "@/types/tutor";
+import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 
 const DB_NAME = "science_tutor_db";
 const STORE_NAME = "saved_notes";
@@ -29,13 +30,19 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
   try {
     const db = await openDB();
     return new Promise((resolve, reject) => {
-      const tx = db.transaction(STORE_NAME, "readonly");
+      const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
       const request = store.getAll();
 
       request.onsuccess = () => {
-        const notes = (request.result as SavedNote[]) || [];
-        // Sort descending by savedAt or createdAt
+        let notes = (request.result as SavedNote[]) || [];
+        if (notes.length === 0 && INITIAL_SAVED_NOTES.length > 0) {
+          // Auto-seed initial saved notes so new devices or Vercel deployments get previous notes immediately!
+          for (const initNote of INITIAL_SAVED_NOTES) {
+            store.put(initNote);
+          }
+          notes = [...INITIAL_SAVED_NOTES];
+        }
         notes.sort((a, b) => {
           const dateA = new Date(a.savedAt || a.createdAt).getTime();
           const dateB = new Date(b.savedAt || b.createdAt).getTime();
@@ -47,7 +54,7 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
     });
   } catch (err) {
     console.warn("IndexedDB getAllNotes error, falling back:", err);
-    return [];
+    return INITIAL_SAVED_NOTES;
   }
 }
 

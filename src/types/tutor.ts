@@ -1,4 +1,4 @@
-export type ScienceDomain = '화학 (물질의 특성)' | '생물 (동물과 에너지)' | '물리 (열과 우리 생활)' | '지구과학 (수권과 해수)' | '기타/공통';
+export type ScienceDomain = '화학 (물질의 특성)' | '생물 (동물과 에너지)' | '생물 (식물과 에너지)' | '물리 (열과 우리 생활)' | '지구과학 (수권과 해수)' | '기타/공통';
 
 export interface QuizQuestion {
   id: string;

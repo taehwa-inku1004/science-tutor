@@ -15,13 +15,14 @@ import {
   saveNoteToIndexedDB,
   deleteNoteFromIndexedDB,
 } from "@/lib/indexedDbStorage";
+import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 
 export default function Home() {
   const [activeAnalysis, setActiveAnalysis] = useState<TutorAnalysis | null>(null);
   const [activeImageUrl, setActiveImageUrl] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState("");
-  const [savedNotes, setSavedNotes] = useState<SavedNote[]>([]);
+  const [savedNotes, setSavedNotes] = useState<SavedNote[]>(INITIAL_SAVED_NOTES);
   const [errorBanner, setErrorBanner] = useState<string | null>(null);
 
   // Modals
