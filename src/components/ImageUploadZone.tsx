@@ -2,12 +2,10 @@
 
 import React, { useState, useRef } from "react";
 import { Upload, Camera, Image as ImageIcon, Sparkles, AlertCircle, ArrowRight, BookOpen, Trash2 } from "lucide-react";
-import { SAMPLE_PROBLEMS } from "@/lib/mockData";
-import { TutorAnalysis, SavedNote } from "@/types/tutor";
+import { SavedNote } from "@/types/tutor";
 
 interface ImageUploadZoneProps {
   onAnalyze: (fileBase64: string, mimeType: string, studentQuestion?: string) => Promise<void>;
-  onSelectSample: (sample: TutorAnalysis) => void;
   isLoading: boolean;
   hasApiKey: boolean;
   onOpenApiKeyModal: () => void;
@@ -19,7 +17,6 @@ interface ImageUploadZoneProps {
 
 export function ImageUploadZone({
   onAnalyze,
-  onSelectSample,
   isLoading,
   hasApiKey,
   onOpenApiKeyModal,
@@ -317,44 +314,6 @@ export function ImageUploadZone({
           </div>
         </div>
       )}
-
-      {/* Quick Test with Sample Exam Problems */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h3 className="text-sm font-bold text-slate-800 flex items-center gap-1.5">
-            <Sparkles className="w-4 h-4 text-amber-500" />
-            중2 과학 기말고사 대표 기출문제로 바로 체험해보기
-          </h3>
-          <span className="text-xs text-slate-500 hidden sm:inline">클릭하면 즉시 과외 시작</span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
-          {SAMPLE_PROBLEMS.map((sample) => (
-            <div
-              key={sample.id}
-              onClick={() => onSelectSample(sample)}
-              className="group p-4 bg-white hover:bg-indigo-50/40 rounded-xl border border-slate-200 hover:border-indigo-300 transition-all cursor-pointer shadow-2xs hover:shadow-xs flex flex-col justify-between"
-            >
-              <div className="space-y-2">
-                <span className="inline-block text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 group-hover:bg-indigo-100 group-hover:text-indigo-800 transition-colors">
-                  {sample.subjectDomain}
-                </span>
-                <h4 className="text-sm font-bold text-slate-900 group-hover:text-indigo-900 line-clamp-1">
-                  {sample.title}
-                </h4>
-                <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                  {sample.keyConcept}
-                </p>
-              </div>
-
-              <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-indigo-600 group-hover:translate-x-0.5 transition-transform">
-                <span>과외 노트 보기</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

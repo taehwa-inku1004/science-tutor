@@ -163,11 +163,6 @@ export default function Home() {
     }
   };
 
-  const handleSelectSample = (sample: TutorAnalysis) => {
-    handleSetActiveAnalysis(sample, sample.imageUrl);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const handleToggleSaveNote = async () => {
     if (!activeAnalysis) return;
 
@@ -251,10 +246,9 @@ export default function Home() {
         )}
 
         {!activeAnalysis ? (
-          /* View 1: Upload, Saved Notes showcase, and Sample Selection */
+          /* View 1: Upload and Saved Notes showcase */
           <ImageUploadZone
             onAnalyze={handleAnalyze}
-            onSelectSample={handleSelectSample}
             isLoading={isLoading}
             hasApiKey={!!apiKey}
             onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
