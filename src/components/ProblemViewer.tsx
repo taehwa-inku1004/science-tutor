@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ZoomIn, ZoomOut, RotateCcw, Maximize2 } from "lucide-react";
+import { ZoomIn, ZoomOut, RotateCcw, RotateCw, Maximize2, X } from "lucide-react";
 
 interface ProblemViewerProps {
   imageUrl?: string;
@@ -10,11 +10,16 @@ interface ProblemViewerProps {
 
 export function ProblemViewer({ imageUrl, recognizedText }: ProblemViewerProps) {
   const [scale, setScale] = useState(1);
+  const [rotation, setRotation] = useState(0);
   const [showFullModal, setShowFullModal] = useState(false);
 
   const zoomIn = () => setScale((s) => Math.min(s + 0.25, 2.5));
   const zoomOut = () => setScale((s) => Math.max(s - 0.25, 0.75));
-  const resetZoom = () => setScale(1);
+  const resetZoom = () => {
+    setScale(1);
+    setRotation(0);
+  };
+  const rotateRight = () => setRotation((r) => (r + 90) % 360);
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
@@ -25,12 +30,21 @@ export function ProblemViewer({ imageUrl, recognizedText }: ProblemViewerProps) 
           원본 문제 및 지문
         </span>
 
-        {/* Zoom Controls */}
+        {/* Zoom & Rotate Controls */}
         {imageUrl && (
           <div className="flex items-center gap-1 no-print">
             <button
+              onClick={rotateRight}
+              className="p-1.5 rounded-lg hover:bg-indigo-50 hover:text-indigo-600 text-slate-600 transition-colors flex items-center gap-1 cursor-pointer"
+              title="오른쪽으로 90° 회전"
+            >
+              <RotateCw className="w-3.5 h-3.5" />
+              <span className="text-[10px] font-semibold text-indigo-600 hidden sm:inline">회전</span>
+            </button>
+            <div className="w-px h-3.5 bg-slate-300 mx-0.5" />
+            <button
               onClick={zoomOut}
-              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors"
+              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
               title="축소"
             >
               <ZoomOut className="w-3.5 h-3.5" />
@@ -40,21 +54,21 @@ export function ProblemViewer({ imageUrl, recognizedText }: ProblemViewerProps) 
             </span>
             <button
               onClick={zoomIn}
-              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors"
+              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
               title="확대"
             >
               <ZoomIn className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={resetZoom}
-              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors"
-              title="원래 크기"
+              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
+              title="원래 크기 및 방향 초기화"
             >
               <RotateCcw className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setShowFullModal(true)}
-              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors"
+              className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
               title="전체화면"
             >
               <Maximize2 className="w-3.5 h-3.5" />
@@ -65,13 +79,13 @@ export function ProblemViewer({ imageUrl, recognizedText }: ProblemViewerProps) 
 
       {/* Image Viewer Area */}
       {imageUrl && (
-        <div className="relative bg-slate-950 overflow-hidden flex items-center justify-center p-3 min-h-[220px] max-h-[380px] sm:max-h-[460px]">
+        <div className="relative bg-slate-950 overflow-hidden flex items-center justify-center p-3 min-h-[260px] max-h-[420px] sm:max-h-[500px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageUrl}
             alt="문제 사진"
-            style={{ transform: `scale(${scale})` }}
-            className="max-h-full max-w-full object-contain transition-transform duration-150 origin-center rounded-sm"
+            style={{ transform: `scale(${scale}) rotate(${rotation}deg)` }}
+            className="max-h-full max-w-full object-contain transition-transform duration-200 origin-center rounded-sm"
           />
         </div>
       )}
@@ -88,22 +102,30 @@ export function ProblemViewer({ imageUrl, recognizedText }: ProblemViewerProps) 
 
       {/* Fullscreen modal on tap */}
       {showFullModal && imageUrl && (
-        <div
-          onClick={() => setShowFullModal(false)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
-        >
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+            <button
+              onClick={rotateRight}
+              className="px-3.5 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-semibold backdrop-blur-md flex items-center gap-1.5 cursor-pointer"
+            >
+              <RotateCw className="w-4 h-4" />
+              90° 회전
+            </button>
+            <button
+              onClick={() => setShowFullModal(false)}
+              className="p-2 bg-white/20 hover:bg-white/30 text-white rounded-xl backdrop-blur-md cursor-pointer"
+              title="닫기"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageUrl}
             alt="문제 사진 확대"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            style={{ transform: `rotate(${rotation}deg)` }}
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl transition-transform duration-200"
           />
-          <button
-            onClick={() => setShowFullModal(false)}
-            className="absolute top-6 right-6 px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-sm font-semibold backdrop-blur-md"
-          >
-            닫기 (화면 터치)
-          </button>
         </div>
       )}
     </div>
