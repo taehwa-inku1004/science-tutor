@@ -55,7 +55,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790430237834",
     "createdAt": "2026-09-26T13:43:57.834Z",
-    "imageUrl": "/api/images/analysis-1790430237834",
+    "imageUrl": "/notes/analysis-1790430237834.jpg",
     "savedAt": "2026-09-26T13:44:32.251Z"
   },
   {
@@ -112,7 +112,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790430199420",
     "createdAt": "2026-09-26T13:43:19.420Z",
-    "imageUrl": "/api/images/analysis-1790430199420",
+    "imageUrl": "/notes/analysis-1790430199420.jpg",
     "savedAt": "2026-09-26T13:43:40.626Z"
   },
   {
@@ -168,7 +168,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790430178474",
     "createdAt": "2026-09-26T13:42:58.474Z",
-    "imageUrl": "/api/images/analysis-1790430178474",
+    "imageUrl": "/notes/analysis-1790430178474.jpg",
     "savedAt": "2026-09-26T13:43:04.709Z"
   },
   {
@@ -225,7 +225,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790430156072",
     "createdAt": "2026-09-26T13:42:36.072Z",
-    "imageUrl": "/api/images/analysis-1790430156072",
+    "imageUrl": "/notes/analysis-1790430156072.jpg",
     "savedAt": "2026-09-26T13:42:43.270Z"
   },
   {
@@ -282,7 +282,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790430131406",
     "createdAt": "2026-09-26T13:42:11.406Z",
-    "imageUrl": "/api/images/analysis-1790430131406",
+    "imageUrl": "/notes/analysis-1790430131406.jpg",
     "savedAt": "2026-09-26T13:42:21.185Z"
   },
   {
@@ -339,7 +339,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790429797249",
     "createdAt": "2026-09-26T13:36:37.249Z",
-    "imageUrl": "/api/images/analysis-1790429797249",
+    "imageUrl": "/notes/analysis-1790429797249.jpg",
     "savedAt": "2026-09-26T13:36:51.174Z"
   },
   {
@@ -396,7 +396,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790429487354",
     "createdAt": "2026-09-26T13:31:27.354Z",
-    "imageUrl": "/api/images/analysis-1790429487354",
+    "imageUrl": "/notes/analysis-1790429487354.jpg",
     "savedAt": "2026-09-26T13:31:35.989Z"
   },
   {
@@ -453,7 +453,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790429451995",
     "createdAt": "2026-09-26T13:30:51.995Z",
-    "imageUrl": "/api/images/analysis-1790429451995",
+    "imageUrl": "/notes/analysis-1790429451995.jpg",
     "savedAt": "2026-09-26T13:31:05.404Z"
   },
   {
@@ -510,7 +510,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790429375023",
     "createdAt": "2026-09-26T13:29:35.023Z",
-    "imageUrl": "/api/images/analysis-1790429375023",
+    "imageUrl": "/notes/analysis-1790429375023.jpg",
     "savedAt": "2026-09-26T13:29:59.929Z"
   },
   {
@@ -567,7 +567,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
     ],
     "id": "analysis-1790429330000",
     "createdAt": "2026-09-26T13:28:50.000Z",
-    "imageUrl": "/api/images/analysis-1790429330000",
+    "imageUrl": "/notes/analysis-1790429330000.jpg",
     "savedAt": "2026-09-26T13:29:11.049Z"
   },
   {

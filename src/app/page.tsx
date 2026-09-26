@@ -76,7 +76,18 @@ export default function Home() {
     getAllNotesFromIndexedDB()
       .then((idbNotes) => {
         if (idbNotes && idbNotes.length > 0) {
-          setSavedNotes(idbNotes);
+          // Auto-heal any stale /api/images/ URLs from earlier sessions
+          const healed = idbNotes.map((note) => {
+            if (note.imageUrl && note.imageUrl.startsWith("/api/images/")) {
+              const matched = INITIAL_SAVED_NOTES.find((init) => init.id === note.id);
+              if (matched && matched.imageUrl) {
+                saveNoteToIndexedDB({ ...note, imageUrl: matched.imageUrl }).catch(() => {});
+                return { ...note, imageUrl: matched.imageUrl };
+              }
+            }
+            return note;
+          });
+          setSavedNotes(healed);
         }
       })
       .catch((e) => console.warn("IDB initial load error:", e));
@@ -184,18 +195,11 @@ export default function Home() {
       saveNoteToIndexedDB(newNote).catch(() => {});
 
       try {
-        const res = await fetch("/api/notes", {
+        await fetch("/api/notes", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ note: newNote }),
         });
-        const data = await res.json();
-        if (data.success && data.savedNote?.imageUrl) {
-          handleSetActiveAnalysis(
-            { ...activeAnalysis, imageUrl: data.savedNote.imageUrl },
-            data.savedNote.imageUrl
-          );
-        }
       } catch {
         // ignore server error on Vercel
       }
