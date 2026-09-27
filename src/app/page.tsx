@@ -141,9 +141,20 @@ export default function Home() {
         }),
       });
 
-      const json = await res.json();
+      const responseText = await res.text();
+      let json: { error?: string; message?: string; data?: TutorAnalysis };
+      try {
+        json = JSON.parse(responseText);
+      } catch {
+        if (res.status === 413 || responseText.includes("Request Entity")) {
+          throw new Error(
+            "사진 용량이 너무 큽니다. 사진을 다시 선택하거나 촬영하시면 자동으로 최적화되어 전송됩니다."
+          );
+        }
+        throw new Error(`서버 응답 오류 (${res.status}): ${responseText.slice(0, 100)}`);
+      }
 
-      if (!res.ok) {
+      if (!res.ok || !json.data) {
         if (json.error === "API_KEY_REQUIRED") {
           setIsApiKeyModalOpen(true);
           throw new Error("Gemini API 키가 필요합니다. 설정창에서 입력해 주세요.");

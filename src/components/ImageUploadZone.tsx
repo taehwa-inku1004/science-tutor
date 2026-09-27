@@ -34,22 +34,80 @@ export function ImageUploadZone({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
+  const [isCompressing, setIsCompressing] = useState(false);
 
-  const processFile = (file: File) => {
+  // Client-side image compression to prevent Vercel 413 "Request Entity Too Large" errors
+  const compressImage = (
+    file: File,
+    maxDimension = 1600,
+    quality = 0.85
+  ): Promise<{ base64: string; mimeType: string }> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error("파일을 읽을 수 없습니다."));
+      reader.onload = (e) => {
+        const dataUrl = e.target?.result as string;
+        const img = new Image();
+        img.onerror = () => reject(new Error("이미지를 불러올 수 없습니다."));
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDimension || height > maxDimension) {
+            if (width > height) {
+              height = Math.round((height * maxDimension) / width);
+              width = maxDimension;
+            } else {
+              width = Math.round((width * maxDimension) / height);
+              height = maxDimension;
+            }
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            resolve({ base64: dataUrl, mimeType: file.type || "image/jpeg" });
+            return;
+          }
+
+          ctx.drawImage(img, 0, 0, width, height);
+          const compressedBase64 = canvas.toDataURL("image/jpeg", quality);
+          resolve({ base64: compressedBase64, mimeType: "image/jpeg" });
+        };
+        img.src = dataUrl;
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const processFile = async (file: File) => {
     if (!file.type.startsWith("image/")) {
       setErrorMsg("이미지 파일(JPG, PNG, WebP 등)만 업로드할 수 있습니다.");
       return;
     }
     setErrorMsg(null);
-    setMimeType(file.type);
+    setIsCompressing(true);
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const result = e.target?.result as string;
-      setPreviewUrl(result);
-      setImageBase64(result);
-    };
-    reader.readAsDataURL(file);
+    try {
+      const { base64, mimeType: compressedMime } = await compressImage(file, 1600, 0.85);
+      setPreviewUrl(base64);
+      setImageBase64(base64);
+      setMimeType(compressedMime);
+    } catch (err) {
+      console.warn("Client compression fallback:", err);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        setPreviewUrl(result);
+        setImageBase64(result);
+        setMimeType(file.type || "image/jpeg");
+      };
+      reader.readAsDataURL(file);
+    } finally {
+      setIsCompressing(false);
+    }
   };
 
   const handleDrag = (e: React.DragEvent) => {
