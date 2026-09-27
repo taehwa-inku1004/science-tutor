@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 import { SavedNote } from "@/types/tutor";
+import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const NOTES_FILE = path.join(DATA_DIR, "saved_notes.json");
@@ -56,9 +57,13 @@ async function readNotes(): Promise<SavedNote[]> {
   try {
     await ensureDirs();
     const raw = await fs.readFile(NOTES_FILE, "utf-8");
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      return parsed;
+    }
+    return INITIAL_SAVED_NOTES;
   } catch {
-    return [];
+    return INITIAL_SAVED_NOTES;
   }
 }
 

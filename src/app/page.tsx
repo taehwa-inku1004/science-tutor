@@ -95,18 +95,20 @@ export default function Home() {
       })
       .catch((e) => console.warn("IDB initial load error:", e));
 
-    // Also check server API for sync if running locally
+    // Also check server API for sync
     fetch("/api/notes")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.notes) && data.notes.length > 0) {
-          setSavedNotes((prev) => {
-            const map = new Map<string, SavedNote>();
-            data.notes.forEach((n: SavedNote) => map.set(n.id, n));
-            prev.forEach((n: SavedNote) => map.set(n.id, n));
-            const merged = Array.from(map.values());
-            merged.forEach((n) => saveNoteToIndexedDB(n).catch(() => {}));
-            return merged;
+          setSavedNotes(data.notes);
+          // Purge any stale ghost notes from IndexedDB that do not exist in canonical server notes
+          const serverIds = new Set(data.notes.map((n: SavedNote) => n.id));
+          getAllNotesFromIndexedDB().then((idbNotes) => {
+            idbNotes.forEach((n) => {
+              if (!serverIds.has(n.id)) {
+                deleteNoteFromIndexedDB(n.id).catch(() => {});
+              }
+            });
           });
         }
       })

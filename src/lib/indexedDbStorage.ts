@@ -26,6 +26,8 @@ function openDB(): Promise<IDBDatabase> {
   });
 }
 
+export const CANONICAL_NOTE_IDS = new Set(INITIAL_SAVED_NOTES.map((n) => n.id));
+
 export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
   try {
     const db = await openDB();
@@ -37,7 +39,19 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
       request.onsuccess = () => {
         let rawNotes = (request.result as SavedNote[]) || [];
 
-        // 1. Normalize any 2026-09-26 dates to today (2026-09-27) so notes show current registration date
+        // 1. Purge any stale notes that are not part of the canonical 12 notes
+        rawNotes.forEach((n) => {
+          if (!CANONICAL_NOTE_IDS.has(n.id) && !(n as any).isUserCreated) {
+            try {
+              store.delete(n.id);
+            } catch {}
+          }
+        });
+
+        // Keep only valid canonical notes (or user created notes)
+        rawNotes = rawNotes.filter((n) => CANONICAL_NOTE_IDS.has(n.id) || (n as any).isUserCreated);
+
+        // Normalize dates to current format
         rawNotes = rawNotes.map((n) => {
           let updated = { ...n };
           let changed = false;
@@ -59,29 +73,23 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
 
         let notes = rawNotes;
 
-        // 2. Merge from localStorage backup
+        // 2. Clean localStorage backup as well
         try {
           if (typeof window !== "undefined") {
             const lsRaw = localStorage.getItem("science_tutor_notes_backup");
             if (lsRaw) {
               const lsNotes: SavedNote[] = JSON.parse(lsRaw);
-              const noteMap = new Map(notes.map((n) => [n.id, n]));
-              lsNotes.forEach((lsN) => {
-                if (!noteMap.has(lsN.id)) {
-                  noteMap.set(lsN.id, lsN);
-                  try {
-                    store.put(lsN);
-                  } catch {}
-                }
-              });
-              notes = Array.from(noteMap.values());
+              const cleanedLsNotes = lsNotes.filter(
+                (n) => CANONICAL_NOTE_IDS.has(n.id) || (n as any).isUserCreated
+              );
+              localStorage.setItem("science_tutor_notes_backup", JSON.stringify(cleanedLsNotes));
             }
           }
         } catch (lsErr) {
-          console.warn("LocalStorage merge error:", lsErr);
+          console.warn("LocalStorage cleanup error:", lsErr);
         }
 
-        // 3. Auto-seed or upgrade initial 12 saved notes to 10-question 5-choice format
+        // 3. Auto-seed or upgrade all 12 canonical saved notes
         const noteMap = new Map(notes.map((n) => [n.id, n]));
         for (const initNote of INITIAL_SAVED_NOTES) {
           const existing = noteMap.get(initNote.id);
