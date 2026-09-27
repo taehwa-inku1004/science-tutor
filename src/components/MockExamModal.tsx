@@ -163,6 +163,9 @@ export function MockExamModal({ isOpen, onClose, exam }: MockExamModalProps) {
               <h2 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
                 {exam.title}
               </h2>
+              <p className="text-[11px] text-indigo-600 font-semibold hidden md:block">
+                {exam.subtitle}
+              </p>
             </div>
           </div>
 
