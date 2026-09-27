@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, BookOpen, Trash2, ArrowRight, Calendar, Sparkles } from "lucide-react";
+import { X, BookOpen, Trash2, ArrowRight, Calendar, Sparkles, Award } from "lucide-react";
 import { SavedNote, ScienceDomain } from "@/types/tutor";
 
 interface NotesArchiveModalProps {
@@ -10,6 +10,7 @@ interface NotesArchiveModalProps {
   savedNotes: SavedNote[];
   onSelectNote: (note: SavedNote) => void;
   onDeleteNote: (id: string) => void;
+  onOpenMockExam?: () => void;
 }
 
 export function NotesArchiveModal({
@@ -18,6 +19,7 @@ export function NotesArchiveModal({
   savedNotes,
   onSelectNote,
   onDeleteNote,
+  onOpenMockExam,
 }: NotesArchiveModalProps) {
   const [filterDomain, setFilterDomain] = useState<string>("전체");
 
@@ -62,6 +64,37 @@ export function NotesArchiveModal({
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        {/* Mock Exam Banner inside Archive */}
+        {onOpenMockExam && (
+          <div
+            onClick={() => {
+              onClose();
+              onOpenMockExam();
+            }}
+            className="p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white flex items-center justify-between gap-3 shadow-xs hover:from-amber-600 hover:to-orange-600 transition-all cursor-pointer shrink-0"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center font-bold text-white shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xs sm:text-sm font-bold text-white leading-tight">
+                  내 오답노트 기반 천재교과서 25제 최종 모의고사
+                </h4>
+                <p className="text-[11px] text-amber-100 font-sans mt-0.5">
+                  등록된 오답 개념과 교과서 필수 25문항으로 실전 시험을 치러보세요!
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="px-3 py-1.5 rounded-xl bg-white text-orange-700 text-xs font-bold shrink-0 shadow-2xs cursor-pointer"
+            >
+              시험 응시
+            </button>
+          </div>
+        )}
 
         {/* Filter categories */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">

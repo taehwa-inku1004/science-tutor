@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Upload, Camera, Image as ImageIcon, Sparkles, AlertCircle, ArrowRight, BookOpen, Trash2 } from "lucide-react";
+import { Upload, Camera, Image as ImageIcon, Sparkles, AlertCircle, ArrowRight, BookOpen, Trash2, Award } from "lucide-react";
 import { SavedNote } from "@/types/tutor";
 
 interface ImageUploadZoneProps {
@@ -13,6 +13,7 @@ interface ImageUploadZoneProps {
   onSelectNote?: (note: SavedNote) => void;
   onDeleteNote?: (id: string) => void;
   onOpenNotesArchive?: () => void;
+  onOpenMockExam?: () => void;
 }
 
 export function ImageUploadZone({
@@ -24,6 +25,7 @@ export function ImageUploadZone({
   onSelectNote,
   onDeleteNote,
   onOpenNotesArchive,
+  onOpenMockExam,
 }: ImageUploadZoneProps) {
   const [dragActive, setDragActive] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -157,6 +159,44 @@ export function ImageUploadZone({
           중2 눈높이 맞춤 일상 비유와 확인 퀴즈로 100% 이해시켜 드립니다.
         </p>
       </div>
+
+      {/* Final Mock Exam Promo Banner */}
+      {onOpenMockExam && (
+        <div
+          onClick={onOpenMockExam}
+          className="bg-gradient-to-r from-indigo-950 via-indigo-900 to-slate-900 rounded-3xl p-5 sm:p-6 text-white shadow-lg border border-indigo-700/50 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer hover:shadow-xl hover:scale-[1.008] transition-all group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 border border-amber-400/30 flex items-center justify-center shrink-0 shadow-inner group-hover:rotate-6 transition-transform">
+              <Award className="w-6 h-6 text-amber-300" />
+            </div>
+            <div className="space-y-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-400 text-slate-950">
+                  천재교육 교과서 100% 출제 기준
+                </span>
+                <span className="text-xs text-indigo-200 font-medium">
+                  오답노트 등록 핵심 개념 총집합
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-amber-200 transition-colors">
+                천재교과서 25제 최종 모의고사 풀기
+              </h3>
+              <p className="text-xs text-indigo-200/90 font-sans">
+                교과서 속 정형 도식과 실험 그래프 완벽 수록 • 45분 타이머 • 실전 OMR 자동 채점 & 해설
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs sm:text-sm font-black shadow-md transition-all shrink-0 flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>모의고사 시작</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      )}
 
       {/* Main Upload Area */}
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 transition-all">

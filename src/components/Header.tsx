@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Tablet, Key, BookOpen, PlusCircle } from "lucide-react";
+import { Sparkles, Tablet, Key, BookOpen, PlusCircle, Award } from "lucide-react";
 
 interface HeaderProps {
   hasApiKey: boolean;
@@ -10,6 +10,7 @@ interface HeaderProps {
   onOpenApiKeyModal: () => void;
   onOpenNotesArchive: () => void;
   onNewAnalysis: () => void;
+  onOpenMockExam: () => void;
 }
 
 export function Header({
@@ -19,6 +20,7 @@ export function Header({
   onOpenApiKeyModal,
   onOpenNotesArchive,
   onNewAnalysis,
+  onOpenMockExam,
 }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs px-4 sm:px-6 py-3.5 transition-all">
@@ -48,6 +50,17 @@ export function Header({
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 sm:gap-2.5">
+          {/* Final Mock Exam (Chunjae 25 questions) */}
+          <button
+            onClick={onOpenMockExam}
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 text-xs sm:text-sm font-bold rounded-lg bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-xs transition-all active:scale-95 cursor-pointer"
+            title="천재교과서 25제 최종 모의고사 풀기"
+          >
+            <Award className="w-4 h-4 text-amber-100" />
+            <span className="hidden sm:inline">최종 모의고사 (25제)</span>
+            <span className="sm:hidden">모의고사</span>
+          </button>
+
           {/* New Problem */}
           <button
             onClick={onNewAnalysis}

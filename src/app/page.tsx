@@ -8,6 +8,7 @@ import { TutorClinicView } from "@/components/TutorClinicView";
 import { IpadGuideModal } from "@/components/IpadGuideModal";
 import { ApiKeyModal } from "@/components/ApiKeyModal";
 import { NotesArchiveModal } from "@/components/NotesArchiveModal";
+import { MockExamModal } from "@/components/MockExamModal";
 import { TutorAnalysis, SavedNote } from "@/types/tutor";
 import { ArrowLeft, Sparkles, AlertCircle } from "lucide-react";
 import {
@@ -16,6 +17,7 @@ import {
   deleteNoteFromIndexedDB,
 } from "@/lib/indexedDbStorage";
 import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
+import { CHUNJAE_FINAL_MOCK_EXAM } from "@/lib/chunjaeMockExamData";
 
 export default function Home() {
   const [activeAnalysis, setActiveAnalysis] = useState<TutorAnalysis | null>(null);
@@ -29,6 +31,7 @@ export default function Home() {
   const [isIpadGuideOpen, setIsIpadGuideOpen] = useState(false);
   const [isApiKeyModalOpen, setIsApiKeyModalOpen] = useState(false);
   const [isNotesArchiveOpen, setIsNotesArchiveOpen] = useState(false);
+  const [isMockExamOpen, setIsMockExamOpen] = useState(false);
 
   const localIp = "192.168.75.192";
 
@@ -237,6 +240,7 @@ export default function Home() {
         onOpenApiKeyModal={() => setIsApiKeyModalOpen(true)}
         onOpenNotesArchive={() => setIsNotesArchiveOpen(true)}
         onNewAnalysis={() => handleSetActiveAnalysis(null)}
+        onOpenMockExam={() => setIsMockExamOpen(true)}
       />
 
       {/* Main Content */}
@@ -270,6 +274,7 @@ export default function Home() {
             }}
             onDeleteNote={handleDeleteNote}
             onOpenNotesArchive={() => setIsNotesArchiveOpen(true)}
+            onOpenMockExam={() => setIsMockExamOpen(true)}
           />
         ) : (
           /* View 2: iPad Optimized 2-Column Dashboard */
@@ -342,6 +347,13 @@ export default function Home() {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }}
         onDeleteNote={handleDeleteNote}
+        onOpenMockExam={() => setIsMockExamOpen(true)}
+      />
+
+      <MockExamModal
+        isOpen={isMockExamOpen}
+        onClose={() => setIsMockExamOpen(false)}
+        exam={CHUNJAE_FINAL_MOCK_EXAM}
       />
     </div>
   );
