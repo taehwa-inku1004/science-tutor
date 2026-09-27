@@ -56,7 +56,6 @@ const SYSTEM_INSTRUCTION = `당신은 대한민국 중학교 2학년 과학(2015
   ],
   "correctAnswer": "선지 분석을 통해 도출된 진짜 정답 (예: ①번 (빛이 점차 약해진다))",
   "correctAnswerReason": "왜 이 선지만이 유일한 정답인지 명쾌하게 증명한 1~2줄 핵심 근거",
-  "examIntent": "출제자가 이 문제로 학생의 어떤 지식/사고력을 묻고자 했는지 설명",
   "trapAndMisconceptions": "학생들이 왜 엉뚱한 오답(예: 4번 등)을 고르고 헷갈리기 쉬운지 분석",
   "teacherExplanation": {
     "corePrinciples": [

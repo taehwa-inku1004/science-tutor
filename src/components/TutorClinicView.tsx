@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import {
   Sparkles,
-  Target,
   AlertTriangle,
   BookMarked,
   HelpCircle,
@@ -271,33 +270,17 @@ export function TutorClinicView({
         </div>
       )}
 
-      {/* 2-Column or Stacked Educational Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {/* Card 1: Exam Intent */}
-        <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs hover:border-indigo-200 transition-colors">
-          <div className="flex items-center gap-2 mb-3 text-indigo-700">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center">
-              <Target className="w-4 h-4 text-indigo-600" />
-            </div>
-            <h3 className="text-sm font-bold tracking-tight">출제자의 시험 출제 의도</h3>
+      {/* Trap and Misconception */}
+      <div className="bg-amber-50/60 rounded-2xl p-5 border border-amber-200/80 shadow-xs">
+        <div className="flex items-center gap-2 mb-2.5 text-amber-800">
+          <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
+            <AlertTriangle className="w-4 h-4 text-amber-700" />
           </div>
-          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
-            {analysis.examIntent}
-          </p>
+          <h3 className="text-sm sm:text-base font-bold tracking-tight">학생들이 틀리기 쉬운 함정!</h3>
         </div>
-
-        {/* Card 2: Trap and Misconception */}
-        <div className="bg-amber-50/60 rounded-2xl p-5 border border-amber-200/80 shadow-xs">
-          <div className="flex items-center gap-2 mb-3 text-amber-800">
-            <div className="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
-              <AlertTriangle className="w-4 h-4 text-amber-700" />
-            </div>
-            <h3 className="text-sm font-bold tracking-tight">학생들이 틀리기 쉬운 함정!</h3>
-          </div>
-          <p className="text-xs sm:text-sm text-amber-950 leading-relaxed font-sans">
-            {analysis.trapAndMisconceptions}
-          </p>
-        </div>
+        <p className="text-xs sm:text-sm text-amber-950 leading-relaxed font-sans">
+          {analysis.trapAndMisconceptions}
+        </p>
       </div>
 
       {/* Step-by-Step Core Principles */}
