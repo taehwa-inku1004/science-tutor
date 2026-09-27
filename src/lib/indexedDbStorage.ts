@@ -1,4 +1,5 @@
 import { SavedNote } from "@/types/tutor";
+import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 
 const DB_NAME = "science_tutor_db";
 const STORE_NAME = "saved_notes";
@@ -25,20 +26,6 @@ function openDB(): Promise<IDBDatabase> {
   });
 }
 
-export function isSept26OrOlderNote(note: SavedNote): boolean {
-  if (!note) return true;
-  const d = note.savedAt || note.createdAt || "";
-  if (d.includes("2026-09-26")) return true;
-  if (note.id && note.id.startsWith("analysis-")) {
-    const ts = parseInt(note.id.replace("analysis-", ""), 10);
-    // 2026-09-27 00:00:00 KST is ~1790434800000. Notes prior to this are from Sept 26
-    if (!isNaN(ts) && ts < 1790434800000) {
-      return true;
-    }
-  }
-  return false;
-}
-
 export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
   try {
     const db = await openDB();
@@ -50,26 +37,36 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
       request.onsuccess = () => {
         let rawNotes = (request.result as SavedNote[]) || [];
 
-        // 1. Purge all 9월 26일 notes directly from IndexedDB
-        rawNotes.forEach((n) => {
-          if (isSept26OrOlderNote(n)) {
+        // 1. Normalize any 2026-09-26 dates to today (2026-09-27) so notes show current registration date
+        rawNotes = rawNotes.map((n) => {
+          let updated = { ...n };
+          let changed = false;
+          if (updated.createdAt && updated.createdAt.includes("2026-09-26")) {
+            updated.createdAt = updated.createdAt.replace("2026-09-26", "2026-09-27");
+            changed = true;
+          }
+          if (updated.savedAt && updated.savedAt.includes("2026-09-26")) {
+            updated.savedAt = updated.savedAt.replace("2026-09-26", "2026-09-27");
+            changed = true;
+          }
+          if (changed) {
             try {
-              store.delete(n.id);
+              store.put(updated);
             } catch {}
           }
+          return updated;
         });
 
-        let notes = rawNotes.filter((n) => !isSept26OrOlderNote(n));
+        let notes = rawNotes;
 
-        // 2. Check and clean localStorage backup (purge 9/26 notes, merge only 9/27+ notes)
+        // 2. Merge from localStorage backup
         try {
           if (typeof window !== "undefined") {
             const lsRaw = localStorage.getItem("science_tutor_notes_backup");
             if (lsRaw) {
               const lsNotes: SavedNote[] = JSON.parse(lsRaw);
-              const cleanedLsNotes = lsNotes.filter((n) => !isSept26OrOlderNote(n));
               const noteMap = new Map(notes.map((n) => [n.id, n]));
-              cleanedLsNotes.forEach((lsN) => {
+              lsNotes.forEach((lsN) => {
                 if (!noteMap.has(lsN.id)) {
                   noteMap.set(lsN.id, lsN);
                   try {
@@ -78,12 +75,30 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
                 }
               });
               notes = Array.from(noteMap.values());
-              localStorage.setItem("science_tutor_notes_backup", JSON.stringify(notes));
             }
           }
         } catch (lsErr) {
           console.warn("LocalStorage merge error:", lsErr);
         }
+
+        // 3. Auto-seed initial 12 saved notes so new/refreshed iPad gets all 12 notes immediately
+        const noteMap = new Map(notes.map((n) => [n.id, n]));
+        for (const initNote of INITIAL_SAVED_NOTES) {
+          if (!noteMap.has(initNote.id)) {
+            noteMap.set(initNote.id, initNote);
+            try {
+              store.put(initNote);
+            } catch {}
+          }
+        }
+        notes = Array.from(noteMap.values());
+
+        // Update localStorage backup
+        try {
+          if (typeof window !== "undefined") {
+            localStorage.setItem("science_tutor_notes_backup", JSON.stringify(notes));
+          }
+        } catch {}
 
         notes.sort((a, b) => {
           const dateA = new Date(a.savedAt || a.createdAt).getTime();
@@ -94,28 +109,24 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
       };
 
       request.onerror = () => {
-        // Fallback to localStorage (only 9/27+ notes)
+        // Fallback to localStorage and initial notes
         try {
           const lsRaw = localStorage.getItem("science_tutor_notes_backup");
           if (lsRaw) {
-            const parsed: SavedNote[] = JSON.parse(lsRaw);
-            resolve(parsed.filter((n) => !isSept26OrOlderNote(n)));
+            resolve(JSON.parse(lsRaw));
             return;
           }
         } catch {}
-        resolve([]);
+        resolve(INITIAL_SAVED_NOTES);
       };
     });
   } catch (err) {
     console.warn("IndexedDB getAllNotes error, falling back:", err);
     try {
       const lsRaw = localStorage.getItem("science_tutor_notes_backup");
-      if (lsRaw) {
-        const parsed: SavedNote[] = JSON.parse(lsRaw);
-        return parsed.filter((n) => !isSept26OrOlderNote(n));
-      }
+      if (lsRaw) return JSON.parse(lsRaw);
     } catch {}
-    return [];
+    return INITIAL_SAVED_NOTES;
   }
 }
 
