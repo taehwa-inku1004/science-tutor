@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import {
   Sparkles,
@@ -14,6 +14,7 @@ import {
   Bookmark,
   Check,
   Share2,
+  RotateCcw,
 } from "lucide-react";
 import { TutorAnalysis } from "@/types/tutor";
 import { LatexRenderer } from "./LatexRenderer";
@@ -33,6 +34,17 @@ export function TutorClinicView({
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [showFeedback, setShowFeedback] = useState<Record<string, boolean>>({});
   const [copied, setCopied] = useState(false);
+
+  // Automatically reset quiz choices and feedback when switching to another note or problem
+  useEffect(() => {
+    setSelectedAnswers({});
+    setShowFeedback({});
+  }, [analysis.id]);
+
+  const handleResetQuiz = () => {
+    setSelectedAnswers({});
+    setShowFeedback({});
+  };
 
   const handleSelectOption = (quizId: string, optionIndex: number, correctIndex: number) => {
     setSelectedAnswers((prev) => ({ ...prev, [quizId]: optionIndex }));
@@ -339,26 +351,40 @@ export function TutorClinicView({
             </div>
           </div>
 
-          {/* Live Progress & Score */}
-          {analysis.twinQuiz && analysis.twinQuiz.length > 0 && (
-            <div className="flex items-center gap-2 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold shrink-0 self-start sm:self-auto">
-              <span className="text-slate-600">
-                풀이 완료:{" "}
-                <strong className="text-indigo-600">
-                  {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] !== undefined).length}
-                </strong>
-                /{analysis.twinQuiz.length}
-              </span>
-              <span className="text-slate-300">|</span>
-              <span className="text-slate-600">
-                정답:{" "}
-                <strong className="text-emerald-600">
-                  {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] === q.correctAnswerIndex).length}
-                </strong>
-                개
-              </span>
-            </div>
-          )}
+          {/* Live Progress & Score & Reset button */}
+          <div className="flex items-center gap-2 shrink-0 self-start sm:self-auto flex-wrap">
+            {analysis.twinQuiz && analysis.twinQuiz.length > 0 && (
+              <div className="flex items-center gap-2 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold">
+                <span className="text-slate-600">
+                  풀이 완료:{" "}
+                  <strong className="text-indigo-600">
+                    {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] !== undefined).length}
+                  </strong>
+                  /{analysis.twinQuiz.length}
+                </span>
+                <span className="text-slate-300">|</span>
+                <span className="text-slate-600">
+                  정답:{" "}
+                  <strong className="text-emerald-600">
+                    {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] === q.correctAnswerIndex).length}
+                  </strong>
+                  개
+                </span>
+              </div>
+            )}
+
+            {Object.keys(selectedAnswers).length > 0 && (
+              <button
+                type="button"
+                onClick={handleResetQuiz}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer shadow-2xs active:scale-[0.98]"
+                title="퀴즈 풀이 상태 초기화"
+              >
+                <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+                <span>다시 풀기</span>
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="space-y-6">

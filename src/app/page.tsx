@@ -292,6 +292,7 @@ export default function Home() {
               {/* Right Column (7 cols): Tutor Clinic & Interactive Quiz */}
               <div className="lg:col-span-7 space-y-6">
                 <TutorClinicView
+                  key={activeAnalysis.id}
                   analysis={activeAnalysis}
                   isSaved={isCurrentSaved}
                   onSaveNote={handleToggleSaveNote}
