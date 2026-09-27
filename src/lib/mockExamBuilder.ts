@@ -13,7 +13,7 @@ export function buildDynamicMockExam(
     return baseExam;
   }
 
-  // 1. Filter notes relevant to the exam scope (Unit 5: 식물과 에너지, Unit 4: 동물과 에너지 소화/순환)
+  // 1. Filter notes relevant to the exam scope (Unit 5: 식물과 에너지, Unit 4: 동물과 에너지 - 소화/순환/호흡/배설)
   // Or if none match strictly, use any saved notes from 2학년 과학
   const relevantNotes = savedNotes.filter((note) => {
     const text = `${note.curriculumUnit} ${note.subjectDomain} ${note.keyConcept} ${note.title}`;
@@ -25,7 +25,13 @@ export function buildDynamicMockExam(
       text.includes("소화") ||
       text.includes("순환") ||
       text.includes("심장") ||
-      text.includes("혈액")
+      text.includes("혈액") ||
+      text.includes("배설") ||
+      text.includes("콩팥") ||
+      text.includes("오줌") ||
+      text.includes("네프론") ||
+      text.includes("폐포") ||
+      text.includes("가로막")
     );
   });
 

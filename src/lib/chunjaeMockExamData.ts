@@ -3,13 +3,13 @@ import { MockExam } from "@/types/mockExam";
 export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
   id: "chunjae-exam-2026-custom-scope",
   title: "중2 과학 기말고사 최종 모의고사 (25제)",
-  subtitle: "천재교과서(정대홍) 과학2 시험범위 [5. 식물과 에너지 / 4. 동물과 에너지(소화와 순환)] 100% 출제",
+  subtitle: "천재교과서(정대홍) 과학2 시험범위 [4. 동물과 에너지(소화·순환·호흡·배설) / 5. 식물과 에너지(광합성·호흡)] 100% 출제",
   textbook: "천재교과서 중2 과학 (2022 개정, 대표저자 정대홍)",
   totalQuestions: 25,
   timeLimitMinutes: 45,
   createdAt: "2026-09-27T00:00:00.000Z",
   questions: [
-    /* ---------------- PART 1: 동물과 에너지 (소화) ---------------- */
+    /* ---------------- PART 1: 동물과 에너지 > 1) 소화 ---------------- */
     {
       id: "q-1",
       number: 1,
@@ -18,27 +18,22 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       diagramCaption: "[천재교과서 탐구] 4대 영양소의 검출 반응",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <!-- Table Header -->
         <rect x="20" y="20" width="320" height="28" fill="#e0e7ff" rx="4"/>
         <text x="70" y="38" font-size="11" font-weight="bold" fill="#3730a3" text-anchor="middle">영양소</text>
         <text x="180" y="38" font-size="11" font-weight="bold" fill="#3730a3" text-anchor="middle">검출 시약</text>
         <text x="280" y="38" font-size="11" font-weight="bold" fill="#3730a3" text-anchor="middle">반응 색깔</text>
-        <!-- Rows -->
         <line x1="20" y1="75" x2="340" y2="75" stroke="#cbd5e1"/>
         <text x="70" y="66" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">녹말</text>
         <text x="180" y="66" font-size="10" fill="#475569" text-anchor="middle">아이오딘-아이오딘화 칼륨</text>
         <text x="280" y="66" font-size="10" font-weight="bold" fill="#2563eb" text-anchor="middle">A (청람색)</text>
-
         <line x1="20" y1="105" x2="340" y2="105" stroke="#cbd5e1"/>
         <text x="70" y="96" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">포도당/당분</text>
         <text x="180" y="96" font-size="10" font-weight="bold" fill="#ea580c" text-anchor="middle">B (베네딕트액 + 가열)</text>
         <text x="280" y="96" font-size="10" fill="#dc2626" text-anchor="middle">황적색</text>
-
         <line x1="20" y1="135" x2="340" y2="135" stroke="#cbd5e1"/>
         <text x="70" y="126" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">단백질</text>
         <text x="180" y="126" font-size="10" fill="#475569" text-anchor="middle">5% 수산화 나트륨+1% 황산 구리</text>
         <text x="280" y="126" font-size="10" font-weight="bold" fill="#7c3aed" text-anchor="middle">C (보라색)</text>
-
         <text x="70" y="156" font-size="10" font-weight="bold" fill="#1e293b" text-anchor="middle">지방</text>
         <text x="180" y="156" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">D (수단 Ⅲ 용액)</text>
         <text x="280" y="156" font-size="10" fill="#e11d48" text-anchor="middle">선홍색</text>
@@ -58,24 +53,19 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       id: "q-2",
       number: 2,
       unit: "4. 동물과 에너지 > 1) 소화",
-      question: "다음 그림은 사람의 소화 기관을 나타낸 모식도이다. 기호 A~E에 대한 설명으로 옳은 것은?",
+      question: "다음 그림은 사람의 소화 기관을 나타낸 것이다. 기호 A~E에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 사람의 소화계 구조",
       diagramImageUrl: "/mock-exam/q-2.jpg",
       diagramSvg: `<svg viewBox="0 0 360 210" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="210" fill="#f8fafc" rx="12" />
-        <!-- Liver A -->
         <path d="M 90 40 Q 150 35 160 85 Q 90 95 90 40 Z" fill="#b45309" opacity="0.8"/>
         <text x="110" y="65" font-size="11" font-weight="bold" fill="#ffffff">A (간)</text>
-        <!-- Gallbladder B -->
         <circle cx="145" cy="80" r="10" fill="#15803d"/>
         <text x="125" y="100" font-size="10" font-weight="bold" fill="#15803d">B (쓸개)</text>
-        <!-- Stomach C -->
         <path d="M 175 50 Q 240 50 220 100 Q 180 110 175 50 Z" fill="#f87171" stroke="#dc2626" stroke-width="1.5"/>
         <text x="200" y="80" font-size="11" font-weight="bold" fill="#ffffff">C (위)</text>
-        <!-- Pancreas D -->
         <rect x="155" y="105" width="55" height="16" rx="6" fill="#fde047" stroke="#ca8a04"/>
         <text x="182" y="117" font-size="9" font-weight="bold" fill="#854d0e" text-anchor="middle">D (이자)</text>
-        <!-- Small Intestine E -->
         <rect x="135" y="130" width="90" height="55" rx="12" fill="#fed7aa" stroke="#ea580c"/>
         <text x="180" y="160" font-size="11" font-weight="bold" fill="#c2410c" text-anchor="middle">E (소장)</text>
       </svg>`,
@@ -101,27 +91,19 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <g transform="translate(30, 15)">
           <rect x="0" y="15" width="28" height="85" rx="8" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">A</text>
-          <text x="14" y="135" font-size="9" fill="#475569" text-anchor="middle">녹말+침</text>
-          <text x="14" y="150" font-size="9" font-weight="bold" fill="#0284c7" text-anchor="middle">37℃</text>
+          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">A (37℃ 녹말+침)</text>
         </g>
         <g transform="translate(110, 15)">
           <rect x="0" y="15" width="28" height="85" rx="8" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">B</text>
-          <text x="14" y="135" font-size="9" fill="#475569" text-anchor="middle">녹말+침</text>
-          <text x="14" y="150" font-size="9" font-weight="bold" fill="#dc2626" text-anchor="middle">100℃ 가열</text>
+          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">B (100℃ 가열)</text>
         </g>
         <g transform="translate(190, 15)">
           <rect x="0" y="15" width="28" height="85" rx="8" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">C</text>
-          <text x="14" y="135" font-size="9" fill="#475569" text-anchor="middle">녹말+물</text>
-          <text x="14" y="150" font-size="9" font-weight="bold" fill="#0284c7" text-anchor="middle">37℃</text>
+          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">C (37℃ 녹말+물)</text>
         </g>
         <g transform="translate(270, 15)">
           <rect x="0" y="15" width="28" height="85" rx="8" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">D</text>
-          <text x="14" y="135" font-size="9" fill="#475569" text-anchor="middle">녹말+침</text>
-          <text x="14" y="150" font-size="9" font-weight="bold" fill="#2563eb" text-anchor="middle">0℃ (얼음)</text>
+          <text x="14" y="120" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">D (0℃ 얼음)</text>
         </g>
       </svg>`,
       options: [
@@ -132,126 +114,12 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "시험관 A와 B: 침이 들어가면 온도와 관계없이 녹말이 100% 분해되기 때문이다."
       ],
       correctAnswerIndex: 2,
-      explanation: "소화 효소(단백질)는 사람의 체온 범위(35~40℃)에서 입체 구조가 안정되어 활성이 가장 높습니다. 시험관 A(37℃)에서는 아밀레이스가 녹말을 엿당으로 모두 분해하여 녹말이 남아있지 않으므로 아이오딘 반응 시 청람색이 되지 않고 황갈색을 띱니다. B는 고온 변성으로 파괴되었고, C는 효소 부재, D는 저온 억제 상태입니다.",
+      explanation: "소화 효소(단백질)는 사람의 체온 범위(35~40℃)에서 활성이 가장 높습니다. 시험관 A(37℃)에서는 아밀레이스가 녹말을 엿당으로 모두 분해하여 녹말이 남아있지 않으므로 아이오딘 반응 시 청람색이 되지 않고 황갈색을 띱니다.",
       chunjaeConcept: "천재교과서(정대홍) [탐구: 침에 의한 소화와 온도]: 37℃에서 아밀레이스 활성 최고, 녹말 분해 완료!"
     },
     {
       id: "q-4",
       number: 4,
-      unit: "4. 동물과 에너지 > 1) 소화",
-      question: "다음 그림은 이자에서 분비되는 '이자액'의 작용을 나타낸 것이다. 탄수화물, 단백질, 지방 3대 영양소를 모두 분해하는 이자액 속 소화 효소 3가지가 바르게 짝지어진 것은?",
-      diagramCaption: "[천재교과서 도식] 이자액의 3대 영양소 소화 효소",
-      diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <rect x="25" y="60" width="80" height="50" rx="8" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-        <text x="65" y="88" font-size="12" font-weight="bold" fill="#854d0e" text-anchor="middle">이자액 분비</text>
-        <!-- Three arrows -->
-        <path d="M 105 85 L 155 45" stroke="#4f46e5" stroke-width="2.5" stroke-linecap="round"/>
-        <text x="240" y="48" font-size="11" font-weight="bold" fill="#312e81">탄수화물(녹말) 분해: ㉠</text>
-        <path d="M 105 85 L 155 85" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
-        <text x="240" y="88" font-size="11" font-weight="bold" fill="#991b1b">단백질 분해: ㉡</text>
-        <path d="M 105 85 L 155 125" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-        <text x="240" y="128" font-size="11" font-weight="bold" fill="#166534">지방 분해: ㉢</text>
-      </svg>`,
-      options: [
-        "㉠ 펩신, ㉡ 트립신, ㉢ 쓸개즙",
-        "㉠ 아밀레이스, ㉡ 트립신, ㉢ 라이페이스",
-        "㉠ 라이페이스, ㉡ 아밀레이스, ㉢ 펩신",
-        "㉠ 트립신, ㉡ 펩신, ㉢ 수크레이스",
-        "㉠ 아밀레이스, ㉡ 염산, ㉢ 라이페이스"
-      ],
-      correctAnswerIndex: 1,
-      explanation: "이자액은 3대 영양소를 모두 소화시키는 유일한 소화액입니다. 탄수화물(녹말)을 엿당으로 분해하는 ㉠ '아밀레이스', 단백질을 2차 분해하는 ㉡ '트립신', 지방을 지방산과 모노글리세리드로 최종 분해하는 ㉢ '라이페이스'가 포함되어 있습니다.",
-      chunjaeConcept: "천재교과서(정대홍) [이자액의 소화 효소]: 아밀레이스(탄수화물), 트립신(단백질), 라이페이스(지방)!"
-    },
-    {
-      id: "q-5",
-      number: 5,
-      unit: "4. 동물과 에너지 > 1) 소화",
-      question: "다음 그림은 큰 지방 덩어리가 쓸개즙과 만나 작아지는 현상을 나타낸 것이다. 쓸개즙의 특징에 대한 설명으로 옳은 것만을 <보기>에서 모두 고른 것은?",
-      diagramCaption: "[천재교과서 도식] 쓸개즙의 지방 유화 작용",
-      diagramImageUrl: "/mock-exam/q-5.jpg",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <circle cx="80" cy="80" r="40" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-        <text x="80" y="84" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">큰 지방 덩어리</text>
-        <path d="M 135 80 L 195 80" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
-        <text x="165" y="70" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">+ 쓸개즙</text>
-        <circle cx="235" cy="65" r="14" fill="#fef08a" stroke="#ca8a04"/>
-        <circle cx="270" cy="75" r="16" fill="#fef08a" stroke="#ca8a04"/>
-        <circle cx="245" cy="100" r="15" fill="#fef08a" stroke="#ca8a04"/>
-        <circle cx="280" cy="105" r="12" fill="#fef08a" stroke="#ca8a04"/>
-        <text x="260" y="140" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">작은 지방 알갱이 (유화)</text>
-      </svg>`,
-      options: [
-        "ㄱ",
-        "ㄴ",
-        "ㄱ, ㄷ",
-        "ㄴ, ㄷ",
-        "ㄱ, ㄴ, ㄷ"
-      ],
-      correctAnswerIndex: 2,
-      explanation: "쓸개즙은 간에서 합성되어 쓸개에 저장되었다가 십이지장으로 분비됩니다(ㄱ 참). 쓸개즙에는 소화 효소가 전혀 들어있지 않으며(ㄴ 거짓), 큰 지방 덩어리를 물리적으로 작은 알갱이로 쪼개어 효소(라이페이스)와의 접촉 면적을 넓혀줍니다(ㄷ 참). 따라서 옳은 것은 ㄱ, ㄷ 입니다.",
-      chunjaeConcept: "천재교과서(정대홍) [쓸개즙의 소화 작용]: 효소 없음! 간에서 생성되어 쓸개에 저장, 지방 유화 작용!"
-    },
-    {
-      id: "q-6",
-      number: 6,
-      unit: "4. 동물과 에너지 > 1) 소화",
-      question: "음식물 속 3대 영양소가 소화계를 거쳐 최종적으로 분해된 '최종 소화 산물'로 바르게 짝지어진 것은?",
-      diagramCaption: "[천재교과서 핵심 정리] 3대 영양소의 최종 분해 산물",
-      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="150" fill="#f8fafc" rx="12" />
-        <rect x="25" y="25" width="90" height="30" rx="6" fill="#e0e7ff"/>
-        <text x="70" y="44" font-size="10" font-weight="bold" fill="#3730a3" text-anchor="middle">탄수화물 (녹말)</text>
-        <text x="140" y="44" font-size="11" font-weight="bold" fill="#475569">➔ ㉠</text>
-
-        <rect x="25" y="65" width="90" height="30" rx="6" fill="#fee2e2"/>
-        <text x="70" y="84" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">단백질</text>
-        <text x="140" y="84" font-size="11" font-weight="bold" fill="#475569">➔ ㉡</text>
-
-        <rect x="25" y="105" width="90" height="30" rx="6" fill="#fef9c3"/>
-        <text x="70" y="124" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">지방</text>
-        <text x="140" y="124" font-size="11" font-weight="bold" fill="#475569">➔ ㉢</text>
-      </svg>`,
-      options: [
-        "㉠ 포도당, ㉡ 아미노산, ㉢ 지방산과 모노글리세리드",
-        "㉠ 엿당, ㉡ 펩톤, ㉢ 글리세롤",
-        "㉠ 설탕, ㉡ 단백질, ㉢ 지방산",
-        "㉠ 녹말, ㉡ 아미노산, ㉢ 바이타민",
-        "㉠ 포도당, ㉡ 암모니아, ㉢ 무기염류"
-      ],
-      correctAnswerIndex: 0,
-      explanation: "세포막을 통과하여 혈액으로 흡수되기 위한 최종 분해 산물은 탄수화물→포도당(㉠), 단백질→아미노산(㉡), 지방→지방산과 모노글리세리드(㉢) 입니다.",
-      chunjaeConcept: "천재교과서(정대홍) [영양소의 최종 소화 산물]: 탄수화물(포도당), 단백질(아미노산), 지방(지방산+모노글리세리드)!"
-    },
-    {
-      id: "q-7",
-      number: 7,
-      unit: "4. 동물과 에너지 > 1) 소화",
-      question: "소장 안쪽 벽에 수많은 주름과 '융털(Villus)'이 발달해 있는 가장 중요한 생물학적 이유는 무엇인가?",
-      diagramCaption: "[천재교과서 도식] 소장 안쪽 벽의 주름과 융털",
-      diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <!-- Intestinal fold with villi -->
-        <path d="M 30 110 Q 60 40 90 110 Q 120 40 150 110 Q 180 40 210 110 Q 240 40 270 110 Q 300 40 330 110" fill="none" stroke="#ea580c" stroke-width="4"/>
-        <text x="180" y="30" font-size="11" font-weight="bold" fill="#c2410c" text-anchor="middle">무수히 많은 주름과 융털</text>
-        <text x="180" y="130" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">영양소와의 접촉 면적 극대화</text>
-      </svg>`,
-      options: [
-        "음식물이 아래로 너무 빨리 내려가지 않도록 마찰력을 높이기 위해서",
-        "소화 효소를 저장할 수 있는 공간을 확보하기 위해서",
-        "표면적을 매우 넓혀 영양소를 효율적이고 신속하게 흡수하기 위해서",
-        "음식물 속에 들어있는 독성 물질을 걸러내는 거름종이 역할을 하기 위해서",
-        "소장의 온도를 일정하게 유지하기 위해서"
-      ],
-      correctAnswerIndex: 2,
-      explanation: "소장 내부의 주름과 융털은 영양소와 맞닿는 표면적을 테니스 코트 크기만큼 극대화하여, 소화된 영양소를 매우 빠르고 효율적으로 흡수할 수 있도록 해줍니다.",
-      chunjaeConcept: "천재교과서(정대홍) [소장 융털의 구조적 이점]: 표면적을 극대화하여 영양소 흡수 효율 극대화!"
-    },
-    {
-      id: "q-8",
-      number: 8,
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "소장의 융털 내부 구조에서 가운데에 위치한 A(암죽관)와 그 주변을 감싸고 있는 B(모세혈관)를 통해 흡수되는 영양소의 종류가 옳게 짝지어진 것은?",
       diagramCaption: "[천재교과서 도식] 소장 융털의 영양소 흡수 경로",
@@ -276,12 +144,12 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       chunjaeConcept: "천재교과서(정대홍) [융털 흡수 경로]: 암죽관(지용성 영양소), 모세혈관(수용성 영양소)!"
     },
 
-    /* ---------------- PART 2: 동물과 에너지 (순환) ---------------- */
+    /* ---------------- PART 2: 동물과 에너지 > 2) 순환 ---------------- */
     {
-      id: "q-9",
-      number: 9,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "혈액을 시험관에 넣고 원심 분리했을 때 위쪽의 액체 성분 A(혈장)와 아래쪽의 가라앉은 성분 B(혈구)에 대한 설명으로 옳은 것은?",
+      id: "q-5",
+      number: 5,
+      unit: "4. 동물과 에너지 > 2) 순환",
+      question: "혈액을 시험관에 넣고 원심 분리했을 때 위쪽의 담황색 액체 성분 A(혈장)와 아래쪽의 붉은 성분 B(혈구)에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 혈액의 구성 성분 원심분리",
       diagramImageUrl: "/mock-exam/q-9.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
@@ -300,172 +168,63 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "혈액 부피 중 혈구가 차지하는 비율이 혈장보다 훨씬 높다."
       ],
       correctAnswerIndex: 0,
-      explanation: "A(혈장)는 혈액의 약 55%를 차지하는 담황색 액체로, 대부분 물이며 영양소, 이산화탄소, 노폐물 등을 녹여서 온몸으로 운반합니다. 적혈구(핵 없음, 헤모글로빈-산소 운반), 백혈구(핵 있음, 식균 작용), 혈소판(혈액 응고)은 B(혈구)에 속합니다.",
-      chunjaeConcept: "천재교과서(정대홍) [혈액의 구성]: 혈장(액체, 영양소/노폐물 운반), 혈구(적혈구-산소, 백혈구-식균, 혈소판-응고)!"
+      explanation: "A(혈장)는 혈액의 약 55%를 차지하는 담황색 액체로 대부분 물이며 영양소, 노폐물, 이산화 탄소를 운반합니다. 적혈구(핵 없음, 산소 운반), 백혈구(식균 작용), 혈소판(혈액 응고)은 B(혈구)에 속합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [혈액의 구성]: 혈장(액체, 물질운반), 적혈구(산소), 백혈구(식균), 혈소판(응고)!"
     },
     {
-      id: "q-10",
-      number: 10,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "다음 그림은 사람의 심장 구조를 나타낸 것이다. 심방과 심실 사이, 심실과 동맥 사이에 위치하여 혈액이 거꾸로 흐르는 것(역류)을 막아주는 구조물의 이름은?",
+      id: "q-6",
+      number: 6,
+      unit: "4. 동물과 에너지 > 2) 순환",
+      question: "사람의 심장 구조에서 심방과 심실 사이, 심실과 동맥 사이에 위치하여 혈액의 역류를 막아주는 구조물과, 온몸으로 피를 뿜어내기 위해 근육벽이 가장 두꺼운 곳의 연결로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 심장의 내부 구조와 판막",
       diagramImageUrl: "/mock-exam/q-10.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <path d="M 130 50 C 130 20, 230 20, 230 50 C 230 110, 180 150, 180 155 C 180 150, 130 110, 130 50 Z" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-        <!-- Valves -->
-        <line x1="145" y1="80" x2="165" y2="90" stroke="#0284c7" stroke-width="3"/>
-        <line x1="195" y1="90" x2="215" y2="80" stroke="#0284c7" stroke-width="3"/>
-        <text x="180" y="85" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">★ 판막</text>
-        <text x="180" y="115" font-size="10" fill="#475569" text-anchor="middle">혈액의 역류 방지</text>
+        <text x="180" y="85" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">★ 판막 (역류 방지) / 좌심실 (두꺼운 근육벽)</text>
       </svg>`,
       options: [
-        "모세혈관",
-        "판막",
-        "심근벽",
-        "동맥벽",
-        "정맥관"
+        "모세혈관 - 우심방",
+        "판막 - 좌심실",
+        "판막 - 우심실",
+        "동맥벽 - 좌심방",
+        "정맥관 - 우심방"
       ],
       correctAnswerIndex: 1,
-      explanation: "심장의 심방과 심실 사이, 심실과 동맥 사이, 그리고 정맥 내부에는 혈액이 거꾸로 흐르지 않고 한쪽 방향으로만 흐르도록 해주는 '판막'이 존재합니다.",
-      chunjaeConcept: "천재교과서(정대홍) [심장과 판막]: 심방→심실→동맥 한 방향 흐름 유지, 역류 방지 장치는 판막!"
+      explanation: "혈액이 한쪽 방향으로만 흐르도록 돕고 역류를 막아주는 구조는 '판막'입니다. 또한 머리끝부터 발끝까지 온몸으로 혈액을 높은 압력으로 뿜어내는 '좌심실'이 심장 부위 중 근육벽이 가장 두껍습니다.",
+      chunjaeConcept: "천재교과서(정대홍) [심장 구조]: 판막(역류 방지), 좌심실(온몸 순환 출발점, 근육벽 최후)!"
     },
     {
-      id: "q-11",
-      number: 11,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "심장의 4개 방실(우심방, 우심실, 좌심방, 좌심실) 중 가장 두껍고 탄력적인 근육벽을 가지고 있어, 온몸의 먼 모세혈관까지 혈액을 강하게 뿜어내는 곳은?",
-      diagramCaption: "[천재교과서 도식] 심실 근육벽의 두께 비교",
-      diagramImageUrl: "/mock-exam/q-11.jpg",
-      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="150" fill="#f8fafc" rx="12" />
-        <rect x="40" y="30" width="120" height="90" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
-        <text x="100" y="65" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">우심실</text>
-        <text x="100" y="85" font-size="10" fill="#1e3a8a" text-anchor="middle">(폐로만 보냄: 근육 얇음)</text>
-        
-        <rect x="200" y="25" width="120" height="100" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="4"/>
-        <text x="260" y="65" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle">좌심실 (★)</text>
-        <text x="260" y="85" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">온몸으로 펌프질</text>
-        <text x="260" y="105" font-size="10" fill="#dc2626" text-anchor="middle">(근육벽 가장 두꺼움)</text>
-      </svg>`,
-      options: [
-        "우심방",
-        "우심실",
-        "좌심방",
-        "좌심실",
-        "폐동맥"
-      ],
-      correctAnswerIndex: 3,
-      explanation: "좌심실은 대동맥을 통해 머리끝부터 발끝까지 온몸 구석구석 혈액을 보내야 하므로 높은 압력을 견디고 생성하기 위해 심장 부위 중 근육벽이 가장 두껍고 탄력성이 뛰어납니다.",
-      chunjaeConcept: "천재교과서(정대홍) [심장의 구조]: 좌심실은 온몸 순환의 출발점으로 근육벽이 가장 두껍다!"
-    },
-    {
-      id: "q-12",
-      number: 12,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "다음 중 심장에서 출발하여 폐를 거쳐 산소를 받아 심장으로 돌아오는 [폐순환] 경로를 옳게 나타낸 것은?",
-      diagramCaption: "[천재교과서 도식] 폐순환의 경로",
+      id: "q-7",
+      number: 7,
+      unit: "4. 동물과 에너지 > 2) 순환",
+      question: "심장에서 출발하여 폐를 거쳐 산소를 받아 심장으로 돌아오는 '폐순환' 경로와, 산소가 풍부한 '동맥혈'이 흐르는 혈관의 바른 연결은?",
+      diagramCaption: "[천재교과서 도식] 폐순환과 온몸 순환 모식도",
       diagramImageUrl: "/mock-exam/q-12.jpg",
       diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <rect x="20" y="45" width="65" height="35" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
-        <text x="52" y="67" font-size="10" font-weight="bold" fill="#1e40af" text-anchor="middle">우심실</text>
-        <text x="95" y="67" font-size="10" fill="#64748b">➔</text>
-        <rect x="105" y="45" width="65" height="35" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
-        <text x="137" y="67" font-size="10" font-weight="bold" fill="#1e40af" text-anchor="middle">폐동맥</text>
-        <text x="180" y="67" font-size="10" fill="#64748b">➔</text>
-        <rect x="190" y="45" width="70" height="35" rx="6" fill="#e0f2fe" stroke="#0284c7"/>
-        <text x="225" y="67" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">폐 모세혈관</text>
-        <text x="270" y="67" font-size="10" fill="#64748b">➔</text>
-        <rect x="280" y="45" width="65" height="35" rx="6" fill="#fee2e2" stroke="#dc2626"/>
-        <text x="312" y="67" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">폐정맥/좌심방</text>
+        <text x="180" y="70" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">우심실 ➔ 폐동맥 ➔ 폐 ➔ 폐정맥 ➔ 좌심방</text>
       </svg>`,
       options: [
-        "좌심실 → 대동맥 → 온몸의 모세혈관 → 대정맥 → 우심방",
-        "우심실 → 폐동맥 → 폐의 모세혈관 → 폐정맥 → 좌심방",
-        "우심실 → 폐정맥 → 폐의 모세혈관 → 폐동맥 → 좌심방",
-        "우심방 → 폐동맥 → 폐의 모세혈관 → 폐정맥 → 좌심실",
-        "좌심실 → 폐동맥 → 폐의 모세혈관 → 대정맥 → 우심방"
-      ],
-      correctAnswerIndex: 1,
-      explanation: "폐순환 경로는 우심실에서 출발하여 폐동맥을 거쳐 폐의 모세혈관에서 이산화 탄소를 버리고 산소를 공급받은 후, 폐정맥을 통해 좌심방으로 돌아오는 경로입니다.",
-      chunjaeConcept: "천재교과서(정대홍) [폐순환 경로 공식]: 우심실 → 폐동맥 → 폐의 모세혈관 → 폐정맥 → 좌심방!"
-    },
-    {
-      id: "q-13",
-      number: 13,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "다음 혈관들 중 산소가 가장 풍부하게 들어있는 '동맥혈'이 흐르는 혈관만을 고른 것은?",
-      diagramCaption: "[천재교과서 핵심 개념] 혈액의 종류와 혈관",
-      diagramImageUrl: "/mock-exam/q-13.jpg",
-      diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <rect x="30" y="30" width="130" height="80" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-        <text x="95" y="55" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">[동맥혈 (산소 풍부)]</text>
-        <text x="95" y="75" font-size="10" fill="#b91c1c" text-anchor="middle">폐정맥, 대동맥</text>
-        <text x="95" y="95" font-size="10" fill="#b91c1c" text-anchor="middle">좌심방, 좌심실</text>
-
-        <rect x="200" y="30" width="130" height="80" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <text x="265" y="55" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">[정맥혈 (산소 부족)]</text>
-        <text x="265" y="75" font-size="10" fill="#1d4ed8" text-anchor="middle">대정맥, 폐동맥</text>
-        <text x="265" y="95" font-size="10" fill="#1d4ed8" text-anchor="middle">우심방, 우심실</text>
-      </svg>`,
-      options: [
-        "대동맥, 폐정맥",
-        "대동맥, 폐동맥",
-        "대정맥, 폐동맥",
-        "대정맥, 폐정맥",
-        "폐동맥만 해당"
+        "폐순환: 우심실 → 폐동맥 → 폐 → 폐정맥 → 좌심방 / 동맥혈: 폐정맥, 대동맥",
+        "폐순환: 좌심실 → 대동맥 → 온몸 → 대정맥 → 우심방 / 동맥혈: 폐동맥, 대정맥",
+        "폐순환: 우심실 → 폐정맥 → 폐 → 폐동맥 → 좌심방 / 동맥혈: 폐동맥만 해당",
+        "폐순환: 우심방 → 폐동맥 → 폐 → 폐정맥 → 좌심실 / 동맥혈: 대정맥만 해당",
+        "폐순환: 좌심실 → 폐동맥 → 폐 → 대정맥 → 우심방 / 동맥혈: 모든 정맥"
       ],
       correctAnswerIndex: 0,
-      explanation: "혈관 이름에 '동맥'이 붙는다고 무조건 동맥혈이 흐르는 것이 아닙니다. 폐동맥에는 온몸을 돌고 온 산소가 부족한 '정맥혈'이 흐르고, 폐에서 산소를 막 얻어 심장으로 들어오는 '폐정맥'과 온몸으로 나가는 '대동맥'에 '동맥혈'이 흐릅니다.",
-      chunjaeConcept: "천재교과서(정대홍) [주의 오답 함정]: 폐정맥에는 동맥혈이, 폐동맥에는 정맥혈이 흐른다!"
+      explanation: "폐순환은 우심실 → 폐동맥 → 폐의 모세혈관 → 폐정맥 → 좌심방 경로입니다. 폐에서 산소를 충전하고 돌아오는 '폐정맥'과 온몸으로 나가는 '대동맥'에는 산소가 풍부한 '동맥혈'이 흐릅니다.",
+      chunjaeConcept: "천재교과서(정대홍) [폐순환과 혈액 종류]: 우심실→폐동맥→폐→폐정맥→좌심방, 폐정맥과 대동맥은 동맥혈!"
     },
     {
-      id: "q-14",
-      number: 14,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "다음 그래프는 심장에서 출발한 혈액이 동맥, 모세혈관, 정맥을 거쳐 이동할 때 나타나는 변화이다. 온몸에 그물처럼 퍼져 있어 '총 단면적'이 가장 넓고, 혈류 속도가 가장 느려 물질 교환에 가장 유리한 혈관은?",
-      diagramCaption: "[천재교과서 그래프] 혈관에 따른 총단면적과 혈류 속도",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <line x1="50" y1="130" x2="310" y2="130" stroke="#334155" stroke-width="2"/>
-        <text x="80" y="145" font-size="10" fill="#334155" text-anchor="middle">동맥</text>
-        <text x="180" y="145" font-size="10" font-weight="bold" fill="#0284c7" text-anchor="middle">모세혈관(★)</text>
-        <text x="280" y="145" font-size="10" fill="#334155" text-anchor="middle">정맥</text>
-        <!-- Peak area curve -->
-        <path d="M 60 120 Q 180 20 290 115" stroke="#059669" stroke-width="3" fill="none"/>
-        <text x="180" y="45" font-size="10" font-weight="bold" fill="#047857" text-anchor="middle">총 단면적 최대</text>
-        <!-- Dip velocity curve -->
-        <path d="M 60 40 Q 180 140 290 85" stroke="#dc2626" stroke-width="3" fill="none"/>
-        <text x="180" y="115" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">혈류 속도 최저</text>
-      </svg>`,
-      options: [
-        "동맥",
-        "정맥",
-        "모세혈관",
-        "대동맥",
-        "대정맥"
-      ],
-      correctAnswerIndex: 2,
-      explanation: "모세혈관은 한 층의 세포로 이루어진 매우 얇은 혈관으로, 온몸에 그물처럼 빽빽하게 분포하여 총 단면적이 가장 넓습니다. 이로 인해 혈류 속도가 가장 느려져 조직 세포와의 산소, 영양소, 노폐물 교환이 원활하게 일어납니다.",
-      chunjaeConcept: "천재교과서(정대홍) [모세혈관의 특징]: 총 단면적 최대, 혈류 속도 최저, 한 층의 세포로 물질 교환 효율적!"
-    },
-    {
-      id: "q-15",
-      number: 15,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "정맥은 혈압이 매우 낮아 혈액이 심장으로 돌아오기 어렵습니다. 혈액이 거꾸로 흐르는 것을 막기 위해 정맥 내부에 특별히 존재하는 구조물과 혈액 순환을 돕는 주된 힘은?",
+      id: "q-8",
+      number: 8,
+      unit: "4. 동물과 에너지 > 2) 순환",
+      question: "정맥은 혈압이 매우 낮아 혈액이 심장으로 되돌아오기 어렵습니다. 혈액이 거꾸로 흐르는 것을 막아주는 정맥 내부의 구조물과 혈액 순환을 돕는 주된 힘은?",
       diagramCaption: "[천재교과서 도식] 정맥의 판막과 근육 수축",
       diagramImageUrl: "/mock-exam/q-15.jpg",
       diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <rect x="120" y="20" width="120" height="100" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <path d="M 150 70 L 180 55" stroke="#dc2626" stroke-width="3"/>
-        <path d="M 210 70 L 180 55" stroke="#dc2626" stroke-width="3"/>
-        <text x="180" y="45" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">판막 (위로만 열림)</text>
-        <path d="M 180 110 L 180 75" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        <text x="70" y="75" font-size="10" font-weight="bold" fill="#1e40af">주변 근육 수축 ➔</text>
+        <text x="180" y="70" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">정맥 내부의 판막 + 주변 골격근 수축</text>
       </svg>`,
       options: [
         "두꺼운 탄력층과 심장의 직접적인 수축 압력",
@@ -475,77 +234,305 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "중력에 의한 자연 낙하 작용"
       ],
       correctAnswerIndex: 1,
-      explanation: "정맥은 혈압이 거의 0에 가까울 정도로 낮기 때문에 혈액이 역류하지 않도록 혈관 내부에 '판막'이 발달해 있으며, 주변의 팔다리 근육이 수축하고 이완하면서 혈관을 쥐어짜 주어 심장 쪽으로 혈액을 밀어 올립니다.",
+      explanation: "정맥은 혈압이 거의 0에 가까우므로 혈액이 역류하지 않도록 혈관 내부에 '판막'이 발달해 있으며, 주변의 팔다리 근육이 수축·이완하며 혈관을 쥐어짜 주어 심장으로 혈액을 이동시킵니다.",
       chunjaeConcept: "천재교과서(정대홍) [정맥의 혈액 이동]: 정맥 내부의 판막과 주변 근육 운동으로 혈액 역류 방지 및 이동!"
+    },
+
+    /* ---------------- PART 3: 동물과 에너지 > 3) 호흡 ---------------- */
+    {
+      id: "q-9",
+      number: 9,
+      unit: "4. 동물과 에너지 > 3) 호흡",
+      question: "사람의 폐는 근육이 없어 스스로 수축하거나 이완하지 못하며, 수많은 작은 공기주머니인 '폐포(Alveolus)'로 이루어져 있습니다. 폐포 구조가 기체 교환에 주는 가장 결정적인 이점은 무엇인가?",
+      diagramCaption: "[천재교과서 도식] 폐포와 모세혈관망 구조",
+      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="160" fill="#f8fafc" rx="12" />
+        <circle cx="100" cy="80" r="45" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+        <text x="100" y="75" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">폐포 (약 3~4억 개)</text>
+        <text x="100" y="95" font-size="9" fill="#b91c1c" text-anchor="middle">수많은 작은 주머니</text>
+        <path d="M 160 80 L 210 80" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+        <rect x="220" y="45" width="120" height="70" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
+        <text x="280" y="72" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">표면적 극대화</text>
+        <text x="280" y="92" font-size="9" fill="#0c4a6e" text-anchor="middle">(기체 교환 효율 최고)</text>
+      </svg>`,
+      options: [
+        "폐 속으로 들어온 이물질을 녹이는 소화액을 많이 저장하기 위해서",
+        "폐가 공기와 닿는 표면적을 매우 넓혀 산소와 이산화 탄소의 기체 교환을 빠르고 효율적으로 하기 위해서",
+        "폐 내부의 온도를 일정하게 차갑게 유지하기 위해서",
+        "심장에서 나온 높은 혈압을 직접 흡수하여 완충하기 위해서",
+        "갈비뼈와 가로막이 부딪히지 않도록 쿠션 역할을 하기 위해서"
+      ],
+      correctAnswerIndex: 1,
+      explanation: "사람의 폐는 약 3억~4억 개의 미세한 폐포로 구성되어 있어 공기와 접촉하는 총 표면적이 테니스장 크기에 달할 정도로 매우 넓습니다. 표면적이 극대화되므로 산소와 이산화 탄소의 기체 교환이 매우 신속하게 일어납니다.",
+      chunjaeConcept: "천재교과서(정대홍) [폐포의 구조적 특징]: 수많은 폐포로 표면적을 극대화하여 효율적인 기체 교환 달성!"
+    },
+    {
+      id: "q-10",
+      number: 10,
+      unit: "4. 동물과 에너지 > 3) 호흡",
+      question: "다음 그림은 호흡 운동의 원리를 알아보기 위한 유리종 모형 실험이다. 고무막을 아래로 잡아당길 때(들숨 과정) 모형 내부에서 일어나는 변화로 옳은 것은?",
+      diagramCaption: "[천재교과서 탐구] 호흡 운동 모형 실험 (들숨과 날숨)",
+      diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="170" fill="#f8fafc" rx="12" />
+        <rect x="50" y="20" width="110" height="110" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <circle cx="105" cy="75" r="22" fill="#fca5a5" stroke="#dc2626"/>
+        <line x1="105" y1="20" x2="105" y2="55" stroke="#334155" stroke-width="3"/>
+        <path d="M 50 130 Q 105 155 160 130" stroke="#16a34a" stroke-width="4" fill="none"/>
+        <text x="105" y="165" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">고무막 당김 ➔ 들숨</text>
+        <g transform="translate(180, 30)">
+          <text x="0" y="20" font-size="11" font-weight="bold" fill="#1e40af">1. 가로막(고무막) 하강</text>
+          <text x="0" y="45" font-size="11" font-weight="bold" fill="#1e40af">2. 흉강(유리종) 부피 증가</text>
+          <text x="0" y="70" font-size="11" font-weight="bold" fill="#dc2626">3. 흉강 내부 압력 감소 (대기압보다 낮아짐)</text>
+          <text x="0" y="95" font-size="11" font-weight="bold" fill="#047857">4. 폐(고무풍선) 팽창, 공기 유입</text>
+        </g>
+      </svg>`,
+      options: [
+        "유리종 내부 부피 감소, 내부 압력 증가, 고무풍선 수축",
+        "유리종 내부 부피 증가, 내부 압력 감소, 고무풍선 팽창 (공기 유입)",
+        "유리종 내부 부피 증가, 내부 압력 증가, 공기 유출",
+        "가로막 상승, 갈비뼈 하강, 흉강 부피 감소",
+        "외부 대기압이 유리종 내부보다 낮아져 공기가 밖으로 빠져나감"
+      ],
+      correctAnswerIndex: 1,
+      explanation: "고무막을 아래로 당기면(가로막 하강) 유리종(흉강) 내부 부피가 증가하고, 그에 따라 내부 압력이 대기압보다 낮아집니다. 그 결과 외부 공기가 밀려들어와 고무풍선(폐)이 부풀어 오르는 '들숨'이 일어납니다.",
+      chunjaeConcept: "천재교과서(정대홍) [호흡 운동의 원리]: 고무막 당김 → 흉강 부피 증가 → 흉강 압력 감소 → 폐 팽창(들숨)!"
+    },
+    {
+      id: "q-11",
+      number: 11,
+      unit: "4. 동물과 에너지 > 3) 호흡",
+      question: "폐포와 모세혈관 사이, 그리고 모세혈관과 온몸의 조직 세포 사이에서 산소와 이산화 탄소가 교환되는 기본 원리와 이동 방향으로 옳은 것은?",
+      diagramCaption: "[천재교과서 도식] 기체 분압 차이에 따른 확산과 교환",
+      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="150" fill="#f8fafc" rx="12" />
+        <rect x="25" y="30" width="140" height="90" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="95" y="55" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">[외호흡 (폐포-모세혈관)]</text>
+        <text x="95" y="78" font-size="10" fill="#dc2626" text-anchor="middle">산소: 폐포 ➔ 모세혈관</text>
+        <text x="95" y="98" font-size="10" fill="#2563eb" text-anchor="middle">이산화탄소: 모세혈관 ➔ 폐포</text>
+
+        <rect x="195" y="30" width="140" height="90" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+        <text x="265" y="55" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">[내호흡 (모세혈관-세포)]</text>
+        <text x="265" y="78" font-size="10" fill="#dc2626" text-anchor="middle">산소: 모세혈관 ➔ 세포</text>
+        <text x="265" y="98" font-size="10" fill="#2563eb" text-anchor="middle">이산화탄소: 세포 ➔ 모세혈관</text>
+      </svg>`,
+      options: [
+        "기체 농도(분압) 차이에 따른 '확산' 현상으로, 에너지를 소모하지 않고 고농도에서 저농도로 이동한다.",
+        "ATP 에너지를 대량 소모하는 능동 수송으로, 저농도에서 고농도로 강제 이동한다.",
+        "모세혈관의 혈압 차이로 인해 모든 기체가 혈관 안으로만 빨려 들어간다.",
+        "폐포에서는 이산화 탄소만 이동하고 산소는 교환되지 않는다.",
+        "온몸의 조직 세포는 산소를 혈관으로 버리고 이산화 탄소를 흡수한다."
+      ],
+      correctAnswerIndex: 0,
+      explanation: "호흡계에서의 기체 교환은 기체의 분압(농도) 차이에 의한 '확산' 현상입니다. 에너지를 소모하지 않고 농도가 높은 곳에서 낮은 곳으로 자연스럽게 퍼져 나갑니다. 폐포에서는 산소가 모세혈관으로, 이산화탄소는 폐포로 이동합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [기체 교환의 원리]: 에너지 소모 없는 분압 차이에 따른 확산(고농도→저농도)!"
+    },
+    {
+      id: "q-12",
+      number: 12,
+      unit: "4. 동물과 에너지 > 3) 호흡",
+      question: "우리 몸의 모든 세포에서 영양소(포도당)와 산소를 반응시켜 생명 활동에 필요한 에너지를 얻는 과정을 무엇이라 하며, 이때 함께 생성되는 물질은 무엇인가?",
+      diagramCaption: "[천재교과서 반응식] 세포 호흡의 원리와 에너지 생성",
+      diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="140" fill="#f8fafc" rx="12" />
+        <rect x="25" y="45" width="120" height="45" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="85" y="72" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">영양소(포도당) + 산소</text>
+        <path d="M 155 67 L 195 67" stroke="#ea580c" stroke-width="3" stroke-linecap="round"/>
+        <rect x="205" y="45" width="130" height="45" rx="8" fill="#fef3c7" stroke="#d97706"/>
+        <text x="270" y="65" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">물 + 이산화 탄소</text>
+        <text x="270" y="82" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">+ 에너지 (생명활동)</text>
+      </svg>`,
+      options: [
+        "광합성 - 녹말과 산소",
+        "소화 작용 - 쓸개즙과 포도당",
+        "세포 호흡 - 물, 이산화 탄소, 에너지",
+        "배설 작용 - 암모니아와 단백질",
+        "순환 작용 - 헤모글로빈과 적혈구"
+      ],
+      correctAnswerIndex: 2,
+      explanation: "세포 호흡은 세포 내 미토콘드리아에서 영양소(포도당)를 산소로 분해하여 생명 활동에 필요한 에너지(체온 유지, 근육 운동, 생장 등)를 생산하는 과정입니다. 이때 부산물로 물과 이산화 탄소가 발생합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [세포 호흡 공식]: 포도당 + 산소 → 물 + 이산화 탄소 + 에너지!"
+    },
+
+    /* ---------------- PART 4: 동물과 에너지 > 4) 배설 ---------------- */
+    {
+      id: "q-13",
+      number: 13,
+      unit: "4. 동물과 에너지 > 4) 배설",
+      question: "세포 호흡 결과 탄수화물, 지방, 단백질이 분해될 때 공통 노폐물 외에 '단백질'에서만 특별히 생성되는 독성 물질과, 이를 해독하여 독성이 약한 물질로 전환하는 인체 기관은?",
+      diagramCaption: "[천재교과서 도식] 단백질의 질소 노폐물과 간에서의 요소 합성",
+      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="150" fill="#f8fafc" rx="12" />
+        <rect x="25" y="30" width="85" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
+        <text x="67" y="55" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">단백질 분해</text>
+        <path d="M 115 50 L 145 50" stroke="#dc2626" stroke-width="2"/>
+        <rect x="150" y="30" width="95" height="40" rx="8" fill="#fee2e2"/>
+        <text x="197" y="55" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">독성 암모니아</text>
+        <path d="M 250 50 L 275 50" stroke="#16a34a" stroke-width="2"/>
+        <rect x="280" y="30" width="60" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="310" y="55" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">요소(Urea)</text>
+        <text x="180" y="110" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">전환 기관: 간(Liver) ➔ 콩팥을 통해 오줌 배설</text>
+      </svg>`,
+      options: [
+        "암모니아 - 간에서 요소로 전환",
+        "요소 - 콩팥에서 암모니아로 전환",
+        "이산화 탄소 - 폐에서 산소로 전환",
+        "포도당 - 이자에서 인슐린으로 전환",
+        "지방산 - 쓸개에서 쓸개즙으로 전환"
+      ],
+      correctAnswerIndex: 0,
+      explanation: "단백질에는 질소(N) 성분이 있어 세포 호흡 시 독성이 매우 강한 '암모니아'가 생성됩니다. 우리 몸은 암모니아를 혈액을 통해 '간'으로 운반하여 독성이 훨씬 약한 '요소'로 합성한 후, 혈액을 타고 콩팥으로 이동시켜 오줌으로 배설합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [배설과 노폐물]: 단백질 분해 → 독성 암모니아 → '간'에서 독성 약한 요소로 합성!"
+    },
+    {
+      id: "q-14",
+      number: 14,
+      unit: "4. 동물과 에너지 > 4) 배설",
+      question: "사람의 배설계 구조에 대한 설명으로 옳지 않은 것은?",
+      diagramCaption: "[천재교과서 도식] 사람의 배설계 구조",
+      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="160" fill="#f8fafc" rx="12" />
+        <ellipse cx="120" cy="65" rx="25" ry="35" fill="#b91c1c" opacity="0.8"/>
+        <ellipse cx="240" cy="65" rx="25" ry="35" fill="#b91c1c" opacity="0.8"/>
+        <text x="180" y="45" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">좌우 콩팥 (신장)</text>
+        <path d="M 120 100 Q 150 120 165 130" stroke="#ca8a04" stroke-width="3" fill="none"/>
+        <path d="M 240 100 Q 210 120 195 130" stroke="#ca8a04" stroke-width="3" fill="none"/>
+        <ellipse cx="180" cy="135" rx="25" ry="16" fill="#fef08a" stroke="#ca8a04"/>
+        <text x="180" y="140" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">방광</text>
+      </svg>`,
+      options: [
+        "콩팥은 등 쪽에 좌우 1개씩 강낭콩 모양으로 위치한다.",
+        "콩팥으로 들어가는 콩팥 동맥의 혈액은 콩팥 정맥보다 요소 등 노폐물 농도가 높다.",
+        "콩팥에서 생성된 오줌은 오줌관(수뇨관)을 통해 방광으로 이동하여 모인다.",
+        "방광에 모인 오줌은 요도를 통해 몸 밖으로 배출된다.",
+        "콩팥 정맥에 흐르는 혈액에는 요소가 콩팥 동맥보다 훨씬 많이 들어 있다."
+      ],
+      correctAnswerIndex: 4,
+      explanation: "콩팥은 혈액 속의 노폐물을 걸러내는 정수기 역할을 합니다. 따라서 콩팥으로 들어가는 '콩팥 동맥'에는 요소 등 노폐물이 많고, 콩팥에서 여과되어 나오는 '콩팥 정맥'은 노폐물이 걸러져 우리 몸의 혈액 중 요소 농도가 가장 낮고 깨끗합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [콩팥과 혈액]: 콩팥 동맥(노폐물 많음) → 콩팥(여과) → 콩팥 정맥(노폐물 가장 적고 깨끗함)!"
+    },
+    {
+      id: "q-15",
+      number: 15,
+      unit: "4. 동물과 에너지 > 4) 배설",
+      question: "콩팥에서 오줌을 만드는 기능적 기본 단위를 '네프론(Nephron)'이라고 합니다. 네프론을 구성하는 3가지 구조물이 바르게 짝지어진 것은?",
+      diagramCaption: "[천재교과서 도식] 콩팥의 기본 단위 네프론",
+      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="160" fill="#f8fafc" rx="12" />
+        <circle cx="80" cy="80" r="22" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
+        <text x="80" y="84" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">사구체</text>
+        <path d="M 95 60 C 130 60, 130 100, 95 100" stroke="#2563eb" stroke-width="2.5" fill="none"/>
+        <text x="135" y="84" font-size="10" font-weight="bold" fill="#1e40af">보먼주머니</text>
+        <path d="M 130 100 Q 180 140 230 80 Q 280 40 330 110" stroke="#ca8a04" stroke-width="3" fill="none"/>
+        <text x="250" y="115" font-size="10" font-weight="bold" fill="#854d0e">세뇨관</text>
+      </svg>`,
+      options: [
+        "사구체, 보먼주머니, 세뇨관",
+        "콩팥 깔때기, 수뇨관, 방광",
+        "사구체, 콩팥 겉질, 요도",
+        "보먼주머니, 모세혈관, 방광",
+        "세뇨관, 콩팥 동맥, 수뇨관"
+      ],
+      correctAnswerIndex: 0,
+      explanation: "콩팥 1개에는 약 100만 개의 네프론이 존재합니다. 네프론은 모세혈관이 털 뭉치처럼 꼬인 '사구체', 사구체를 감싸는 '보먼주머니', 그리고 보먼주머니와 연결된 가늘고 긴 관인 '세뇨관'의 3가지로 구성됩니다.",
+      chunjaeConcept: "천재교과서(정대홍) [네프론의 정의]: 콩팥 1개당 약 100만 개, 네프론 = 사구체 + 보먼주머니 + 세뇨관!"
     },
     {
       id: "q-16",
       number: 16,
-      unit: "4. 동물과 에너지 > 1) 순환",
-      question: "모세혈관과 온몸의 조직 세포 사이에서 일어나는 물질 교환에 대한 설명으로 옳은 것은?",
-      diagramCaption: "[천재교과서 도식] 조직 세포와 모세혈관의 물질 교환",
-      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="150" fill="#f8fafc" rx="12" />
-        <rect x="40" y="45" width="120" height="60" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-        <text x="100" y="80" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">모세혈관</text>
-        
-        <path d="M 165 60 L 205 60" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
-        <text x="185" y="52" font-size="9" font-weight="bold" fill="#047857" text-anchor="middle">산소, 영양소 ➔</text>
-
-        <path d="M 205 90 L 165 90" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
-        <text x="185" y="105" font-size="9" font-weight="bold" fill="#1d4ed8" text-anchor="middle">⮜ CO2, 노폐물</text>
-
-        <rect x="210" y="45" width="110" height="60" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-        <text x="265" y="80" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">조직 세포</text>
+      unit: "4. 동물과 에너지 > 4) 배설",
+      question: "네프론에서 일어나는 오줌 생성의 3단계 과정(여과, 재흡수, 분비)에 대한 설명으로 옳은 것은?",
+      diagramCaption: "[천재교과서 도식] 오줌의 생성 3단계 과정",
+      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="160" fill="#f8fafc" rx="12" />
+        <g transform="translate(20, 25)">
+          <rect x="0" y="0" width="95" height="105" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
+          <text x="47" y="25" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">[1단계 여과]</text>
+          <text x="47" y="48" font-size="9" fill="#1e3a8a" text-anchor="middle">사구체 ➔ 보먼주머니</text>
+          <text x="47" y="68" font-size="9" font-weight="bold" fill="#dc2626" text-anchor="middle">단백질·혈구 여과X</text>
+          <text x="47" y="88" font-size="9" fill="#475569" text-anchor="middle">물,포도당,요소 여과</text>
+        </g>
+        <g transform="translate(130, 25)">
+          <rect x="0" y="0" width="105" height="105" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
+          <text x="52" y="25" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">[2단계 재흡수]</text>
+          <text x="52" y="48" font-size="9" fill="#166534" text-anchor="middle">세뇨관 ➔ 모세혈관</text>
+          <text x="52" y="68" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle">포도당·아미노산 100%</text>
+          <text x="52" y="88" font-size="9" fill="#475569" text-anchor="middle">물·무기염류 대부분</text>
+        </g>
+        <g transform="translate(250, 25)">
+          <rect x="0" y="0" width="90" height="105" rx="8" fill="#fefce8" stroke="#ca8a04"/>
+          <text x="45" y="25" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">[3단계 분비]</text>
+          <text x="45" y="48" font-size="9" fill="#713f12" text-anchor="middle">모세혈관 ➔ 세뇨관</text>
+          <text x="45" y="75" font-size="9" font-weight="bold" fill="#b45309" text-anchor="middle">미처 여과 안 된</text>
+          <text x="45" y="90" font-size="9" fill="#b45309" text-anchor="middle">요소 등 노폐물</text>
+        </g>
       </svg>`,
       options: [
-        "모세혈관은 조직 세포에 이산화 탄소와 노폐물을 공급한다.",
-        "조직 세포는 모세혈관으로부터 산소와 영양소를 공급받고, 세포 호흡 결과 생긴 이산화 탄소와 노폐물을 혈액으로 보낸다.",
-        "물질 교환 시 적혈구와 혈소판이 혈관 밖으로 직접 빠져나간다.",
-        "조직 세포에서 모세혈관으로 산소가 확산된다.",
-        "물질 교환은 오직 동맥과 정맥에서만 활발히 일어난다."
+        "사구체에서 보먼주머니로 단백질과 적혈구가 대량 여과된다.",
+        "건강한 사람의 세뇨관에서는 포도당과 아미노산이 모세혈관으로 100% 재흡수된다.",
+        "오줌 속에 포도당이 다량 검출되는 것은 지극히 정상적인 상태이다.",
+        "분비는 세뇨관의 영양소가 모세혈관으로 돌아가는 과정이다.",
+        "여과는 에너지를 소모하여 큰 물질을 억지로 밀어 넣는 작용이다."
       ],
       correctAnswerIndex: 1,
-      explanation: "모세혈관의 혈액은 조직 세포에 산소와 영양소를 전달하고, 조직 세포는 세포 호흡 결과 생성된 이산화 탄소와 노폐물을 모세혈관 속 혈액으로 내보냅니다. 혈구는 크기가 커서 혈관을 빠져나가지 못합니다.",
-      chunjaeConcept: "천재교과서(정대홍) [물질 교환]: 모세혈관→세포(산소, 영양소), 세포→모세혈관(이산화탄소, 노폐물)!"
+      explanation: "크기가 큰 단백질과 혈구는 사구체에서 여과되지 않습니다. 여과된 여과액 속의 포도당과 아미노산은 몸에 꼭 필요한 영양소이므로 세뇨관을 지나는 동안 모세혈관으로 100% 재흡수되어 정상인의 오줌에는 검출되지 않습니다.",
+      chunjaeConcept: "천재교과서(정대홍) [오줌 생성 3과정]: 여과(크기 차이, 단백질/혈구 제외) → 재흡수(포도당/아미노산 100%) → 분비!"
     },
-
-    /* ---------------- PART 3: 식물과 에너지 (광합성) ---------------- */
     {
       id: "q-17",
       number: 17,
+      unit: "4. 동물과 에너지 > 4) 배설",
+      question: "우리 몸에서 생명 활동에 필요한 에너지를 얻기 위해 소화계, 순환계, 호흡계, 배설계가 상호작용하는 원리에 대한 설명으로 옳지 않은 것은?",
+      diagramCaption: "[천재교과서 도식] 기관계의 통합적 상호작용",
+      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="160" fill="#f8fafc" rx="12" />
+        <circle cx="180" cy="80" r="35" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+        <text x="180" y="84" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">순환계 (운반)</text>
+        <rect x="25" y="60" width="80" height="40" rx="8" fill="#fef08a" stroke="#ca8a04"/>
+        <text x="65" y="84" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">소화계(영양소)</text>
+        <rect x="140" y="10" width="80" height="30" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
+        <text x="180" y="30" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">호흡계(산소/CO2)</text>
+        <rect x="255" y="60" width="80" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
+        <text x="295" y="84" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">배설계(요소 배출)</text>
+      </svg>`,
+      options: [
+        "소화계는 음식물 속 영양소를 세포가 흡수할 수 있는 크기로 소화하여 흡수한다.",
+        "호흡계는 산소를 흡수하고 세포 호흡 결과 발생한 이산화 탄소를 몸 밖으로 내보낸다.",
+        "순환계는 소화계에서 흡수한 영양소와 호흡계에서 얻은 산소를 온몸의 조직 세포로 운반한다.",
+        "배설계는 세포 호흡 결과 생긴 요소 등의 노폐물을 걸러 몸 밖으로 배출한다.",
+        "각 기관계는 서로 독립적으로만 작동하며 물질을 주고받는 상호작용은 전혀 하지 않는다."
+      ],
+      correctAnswerIndex: 4,
+      explanation: "소화계, 호흡계, 순환계, 배설계는 독립적인 것이 아니라, '순환계'를 중심으로 긴밀하게 연결되어 세포에 필요한 영양소와 산소를 공급하고 노폐물을 배출하는 통합적 작용을 수행합니다.",
+      chunjaeConcept: "천재교과서(정대홍) [기관계의 통합 작용]: 소화계(영양소) + 호흡계(산소) + 순환계(운반) + 배설계(노폐물 배출)!"
+    },
+
+    /* ---------------- PART 5: 식물과 에너지 > 1) 광합성 ---------------- */
+    {
+      id: "q-18",
+      number: 18,
       unit: "5. 식물과 에너지 > 1) 광합성",
-      question: "다음 그림은 식물 잎의 단면 구조를 나타낸 것이다. 광합성이 가장 활발하게 일어나는 부위(세포가 빽빽하게 배열되고 엽록체가 많은 곳)의 기호와 명칭으로 옳은 것은?",
+      question: "다음 그림은 식물 잎의 단면 구조를 나타낸 것이다. 기둥 모양 세포들이 빽빽하게 배열되어 있고 엽록체가 가장 많아 광합성이 가장 왕성하게 일어나는 곳(A)의 이름은?",
       diagramCaption: "[천재교과서 도식] 잎의 내부 단면 구조",
       diagramImageUrl: "/mock-exam/q-17.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <rect x="50" y="20" width="260" height="18" fill="#e2e8f0" stroke="#94a3b8"/>
-        <text x="180" y="33" font-size="9" fill="#334155" text-anchor="middle">표피 조직 (큐티클층)</text>
-        
         <rect x="50" y="42" width="260" height="40" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
         <text x="180" y="66" font-size="11" font-weight="bold" fill="#14532d" text-anchor="middle">A: 울타리 조직 (세포 빽빽, 엽록체 최다)</text>
-
-        <rect x="50" y="86" width="260" height="35" fill="#dcfce7" stroke="#22c55e"/>
-        <text x="180" y="107" font-size="10" fill="#166534" text-anchor="middle">B: 해면 조직 (세포 엉성, 공기 통로)</text>
-
-        <rect x="50" y="125" width="260" height="18" fill="#e2e8f0" stroke="#94a3b8"/>
-        <text x="180" y="138" font-size="9" fill="#334155" text-anchor="middle">하표피 (기공과 공변세포 위치)</text>
       </svg>`,
       options: [
         "표피 조직",
-        "A: 울타리 조직",
-        "B: 해면 조직",
+        "울타리 조직",
+        "해면 조직",
         "기공",
         "물관"
       ],
       correctAnswerIndex: 1,
-      explanation: "잎의 위쪽 표피 바로 아래에 위치한 '울타리 조직(A)'은 기둥 모양의 세포들이 규칙적이고 빽빽하게 배열되어 있으며 엽록체를 가장 많이 포함하고 있어 잎에서 광합성이 가장 왕성하게 일어나는 곳입니다.",
+      explanation: "잎의 상표피 바로 아래에 위치한 '울타리 조직'은 원통형 세포들이 빽빽하게 울타리처럼 배열되어 있으며, 엽록체를 가장 많이 함유하고 있어 광합성이 가장 활발하게 일어납니다.",
       chunjaeConcept: "천재교과서(정대홍) [잎의 구조와 광합성]: 울타리 조직(엽록체 최다, 광합성 가장 활발)!"
     },
     {
-      id: "q-18",
-      number: 18,
+      id: "q-19",
+      number: 19,
       unit: "5. 식물과 에너지 > 1) 광합성",
       question: "광합성에 필요한 원료와 광합성 결과 생성되는 산물을 나타낸 식이다. 기호 ㉠, ㉡, ㉢에 들어갈 물질로 옳은 것은?",
       diagramCaption: "[천재교과서 반응식] 광합성의 기본 화학 반응",
@@ -555,7 +542,6 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         <path d="M 125 55 L 195 55" stroke="#d97706" stroke-width="3" stroke-linecap="round"/>
         <text x="160" y="45" font-size="10" font-weight="bold" fill="#ea580c" text-anchor="middle">빛에너지 (엽록체)</text>
         <text x="260" y="60" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">㉡ + ㉢</text>
-        <text x="180" y="110" font-size="10" fill="#64748b" text-anchor="middle">뿌리에서 흡수 + 기공으로 흡수 ➔ 최초 유기양분 + 기체</text>
       </svg>`,
       options: [
         "㉠ 산소, ㉡ 이산화 탄소, ㉢ 포도당",
@@ -565,42 +551,14 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "㉠ 산소, ㉡ 녹말, ㉢ 이산화 탄소"
       ],
       correctAnswerIndex: 1,
-      explanation: "광합성은 뿌리에서 흡수한 '물'과 기공으로 흡수한 '이산화 탄소(㉠)'를 원료로, 빛에너지를 이용하여 엽록체에서 최초의 유기 양분인 '포도당(㉡)'과 '산소(㉢)'를 만드는 작용입니다.",
+      explanation: "광합성은 뿌리에서 흡수한 '물'과 기공으로 들어온 '이산화 탄소(㉠)'를 원료로, 빛에너지를 이용하여 엽록체에서 최초 유기 양분인 '포도당(㉡)'과 '산소(㉢)'를 만듭니다.",
       chunjaeConcept: "천재교과서(정대홍) [광합성 공식]: 물 + 이산화 탄소 + 빛에너지 → 포도당 + 산소!"
-    },
-    {
-      id: "q-19",
-      number: 19,
-      unit: "5. 식물과 에너지 > 1) 광합성",
-      question: "잎에서 광합성으로 처음 만들어진 '포도당'은 곧바로 물에 녹지 않는 어떤 형태로 엽록체에 임시 저장되는가? 또한 이를 확인하는 지시약과 반응 색깔은?",
-      diagramCaption: "[천재교과서 도식] 광합성 산물의 임시 저장과 검출",
-      diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <rect x="30" y="45" width="80" height="40" rx="8" fill="#dbeafe" stroke="#2563eb"/>
-        <text x="70" y="70" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">포도당 (수용성)</text>
-        <text x="125" y="70" font-size="11" fill="#64748b">➔</text>
-        <rect x="140" y="45" width="90" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
-        <text x="185" y="70" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">녹말 (임시 저장)</text>
-        <text x="245" y="70" font-size="11" fill="#64748b">➔</text>
-        <rect x="260" y="45" width="80" height="40" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
-        <text x="300" y="70" font-size="11" font-weight="bold" fill="#1e3a8a" text-anchor="middle">청람색 변화</text>
-      </svg>`,
-      options: [
-        "단백질 - 뷰렛 반응 (보라색)",
-        "녹말 - 아이오딘-아이오딘화 칼륨 용액 (청람색)",
-        "지방 - 수단 Ⅲ 용액 (선홍색)",
-        "설탕 - 베네딕트 용액 (황적색)",
-        "포도당 그대로 유지 - 수산화 나트륨 (청록색)"
-      ],
-      correctAnswerIndex: 1,
-      explanation: "광합성 결과 만들어진 최초의 당인 포도당은 낮 동안 물에 녹지 않는 거대 분자인 '녹말' 형태로 엽록체에 임시 저장됩니다. 이는 '아이오딘-아이오딘화 칼륨 용액'을 떨어뜨렸을 때 청람색으로 변하는 반응으로 확인합니다.",
-      chunjaeConcept: "천재교과서(정대홍) [광합성 산물 확인]: 포도당 합성 후 엽록체에 녹말로 임시 저장, 아이오딘 반응 시 청람색!"
     },
     {
       id: "q-20",
       number: 20,
       unit: "5. 식물과 에너지 > 1) 광합성",
-      question: "다음 그림과 같이 검정말을 넣은 시험관에 1% 탄산수소 나트륨 수용액을 넣고 전등과의 거리를 조절하며 발생하는 기포 수를 측정하였다. 이에 대한 설명으로 옳지 않은 것은?",
+      question: "검정말을 넣은 시험관에 1% 탄산수소 나트륨 수용액을 넣고 전등과의 거리를 조절하며 발생하는 기포 수를 측정하였다. 이에 대한 설명으로 옳지 않은 것은?",
       diagramCaption: "[천재교과서 탐구] 빛의 세기와 광합성 기포 발생",
       diagramImageUrl: "/mock-exam/q-20.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
@@ -610,8 +568,6 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         <line x1="95" y1="120" x2="250" y2="120" stroke="#64748b" stroke-width="2"/>
         <text x="170" y="135" font-size="10" fill="#475569" text-anchor="middle">거리 조절</text>
         <rect x="260" y="25" width="40" height="100" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
-        <path d="M 280 115 L 280 50" stroke="#16a34a" stroke-width="4"/>
-        <circle cx="280" cy="40" r="3" fill="#ffffff" stroke="#0284c7"/>
         <text x="280" y="15" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">기포 발생</text>
       </svg>`,
       options: [
@@ -622,7 +578,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "전등을 아주 가까이 대어 온도가 60℃ 이상으로 뜨거워져도 기포 수는 계속해서 기하급수적으로 증가한다."
       ],
       correctAnswerIndex: 4,
-      explanation: "광합성에 관여하는 효소는 단백질로 이루어져 있어 45℃ 이상의 고온에서는 열변성을 일으켜 파괴됩니다. 따라서 온도가 60℃ 이상으로 지나치게 올라가면 광합성이 급격히 멈추어 기포 발생이 거의 일어나지 않게 됩니다.",
+      explanation: "광합성에 관여하는 효소는 단백질로 이루어져 있어 45℃ 이상의 고온에서는 열변성을 일으켜 파괴됩니다. 온도가 60℃ 이상으로 올라가면 광합성이 급격히 멈추어 기포 발생이 거의 일어나지 않게 됩니다.",
       chunjaeConcept: "천재교과서(정대홍) [광합성과 환경 요인]: 고온(45℃ 이상)에서는 효소 변성으로 광합성량 급감!"
     },
     {
@@ -633,14 +589,12 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       diagramCaption: "[천재교과서 그래프] 환경 요인에 따른 광합성량 곡선 비교",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <!-- Curve (가) Saturation -->
         <g transform="translate(30, 20)">
           <line x1="20" y1="110" x2="130" y2="110" stroke="#334155" stroke-width="1.5"/>
           <line x1="20" y1="110" x2="20" y2="20" stroke="#334155" stroke-width="1.5"/>
           <path d="M 20 110 Q 50 40 120 40" stroke="#2563eb" stroke-width="3" fill="none"/>
           <text x="75" y="130" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">(가) 수평 유지</text>
         </g>
-        <!-- Curve (나) Bell shape -->
         <g transform="translate(190, 20)">
           <line x1="20" y1="110" x2="130" y2="110" stroke="#334155" stroke-width="1.5"/>
           <line x1="20" y1="110" x2="20" y2="20" stroke="#334155" stroke-width="1.5"/>
@@ -656,11 +610,11 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "(가) 온도, (나) 이산화 탄소 농도"
       ],
       correctAnswerIndex: 1,
-      explanation: "(가)는 빛의 세기 또는 이산화 탄소 농도로, 증가함에 따라 광합성량이 증가하다가 일정 수준(포화점) 이후에는 일정하게 유지됩니다. (나)는 온도로, 약 35~40℃에서 최고점을 찍고 그 이상에서는 효소 변성으로 급격히 떨어지는 '종 모양(산 모양)' 곡선입니다.",
+      explanation: "(가)는 빛의 세기 또는 이산화 탄소 농도로, 증가함에 따라 광합성량이 증가하다가 일정 수준(포화점) 이후에는 일정하게 유지됩니다. (나)는 온도로, 약 35~40℃에서 최고점을 찍고 그 이상에서는 급격히 떨어지는 '종 모양' 곡선입니다.",
       chunjaeConcept: "천재교과서(정대홍) [그래프 판별법]: 포화 후 수평은 빛/CO2농도, 산 모양(종 모양)은 온도!"
     },
 
-    /* ---------------- PART 4: 식물과 에너지 (식물의 호흡과 광합성산물) ---------------- */
+    /* ---------------- PART 6: 식물과 에너지 > 2) 식물의 호흡과 광합성산물 ---------------- */
     {
       id: "q-22",
       number: 22,
@@ -670,20 +624,10 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       diagramImageUrl: "/mock-exam/q-22.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <g transform="translate(60, 20)">
-          <!-- Closed stomata -->
-          <ellipse cx="60" cy="65" rx="20" ry="45" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-          <ellipse cx="80" cy="65" rx="20" ry="45" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-          <text x="70" y="130" font-size="10" font-weight="bold" fill="#14532d" text-anchor="middle">[기공 닫힘 (밤)]</text>
-        </g>
-        <g transform="translate(200, 20)">
-          <!-- Open stomata -->
-          <path d="M 45 25 C 20 65, 20 65, 45 105 C 55 85, 55 45, 45 25 Z" fill="#86efac" stroke="#15803d" stroke-width="3"/>
-          <path d="M 75 25 C 100 65, 100 65, 75 105 C 65 85, 65 45, 75 25 Z" fill="#86efac" stroke="#15803d" stroke-width="3"/>
-          <ellipse cx="60" cy="65" rx="8" ry="25" fill="#ffffff"/>
-          <text x="60" y="130" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">[기공 열림 (낮)]</text>
-          <text x="60" y="145" font-size="9" fill="#047857" text-anchor="middle">안쪽 세포벽이 두꺼움</text>
-        </g>
+        <ellipse cx="130" cy="75" rx="18" ry="40" fill="#bbf7d0" stroke="#16a34a"/>
+        <text x="130" y="130" font-size="10" font-weight="bold" fill="#14532d" text-anchor="middle">[기공 닫힘 (밤)]</text>
+        <ellipse cx="230" cy="75" rx="18" ry="40" fill="#86efac" stroke="#15803d"/>
+        <text x="230" y="130" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">[기공 열림 (낮)]</text>
       </svg>`,
       options: [
         "공변세포는 표피세포와 달리 엽록체가 전혀 없어 광합성을 하지 못한다.",
@@ -693,7 +637,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "기공을 통해 산소만 드나들며 이산화 탄소와 수증기는 통과하지 못한다."
       ],
       correctAnswerIndex: 1,
-      explanation: "공변세포는 엽록체가 있어 광합성을 합니다. 낮에 광합성으로 농도가 높아지면 주변에서 물이 들어와 팽압이 커집니다. 이때 기공을 마주 보는 '안쪽 세포벽'이 바깥쪽 세포벽보다 두껍고 탄력성이 적기 때문에, 바깥쪽이 더 많이 늘어나 활처럼 바깥쪽으로 휘어지며 가운데 기공이 열립니다.",
+      explanation: "공변세포는 엽록체가 있어 광합성을 합니다. 낮에 수분을 흡수하여 팽창할 때, 기공을 마주 보는 '안쪽 세포벽'이 바깥쪽보다 두껍기 때문에 바깥쪽이 더 많이 늘어나 활처럼 휘어지며 기공이 열립니다.",
       chunjaeConcept: "천재교과서(정대홍) [기공의 개폐 원리]: 공변세포 안쪽 벽이 두꺼워 물을 흡수하면 바깥으로 휘며 열림!"
     },
     {
@@ -705,21 +649,12 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       diagramImageUrl: "/mock-exam/q-23.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <g transform="translate(50, 20)">
-          <rect x="0" y="10" width="30" height="95" rx="6" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
-          <text x="15" y="125" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">A (노란색)</text>
-        </g>
-        <g transform="translate(160, 20)">
-          <rect x="0" y="10" width="30" height="95" rx="6" fill="#bae6fd" stroke="#0284c7" stroke-width="2.5"/>
-          <path d="M 15 85 L 15 30" stroke="#16a34a" stroke-width="3"/>
-          <text x="15" y="125" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">B (파란색★)</text>
-          <text x="15" y="140" font-size="9" fill="#15803d" text-anchor="middle">검정말+햇빛</text>
-        </g>
-        <g transform="translate(270, 20)">
-          <rect x="0" y="10" width="30" height="95" rx="6" fill="#64748b" stroke="#334155" stroke-width="2"/>
-          <text x="15" y="125" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">C (노란색)</text>
-          <text x="15" y="140" font-size="9" fill="#475569" text-anchor="middle">알루미늄박</text>
-        </g>
+        <rect x="50" y="30" width="30" height="90" rx="6" fill="#fef9c3"/>
+        <text x="65" y="135" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">A (황색)</text>
+        <rect x="160" y="30" width="30" height="90" rx="6" fill="#bae6fd"/>
+        <text x="175" y="135" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">B (청색★)</text>
+        <rect x="270" y="30" width="30" height="90" rx="6" fill="#64748b"/>
+        <text x="285" y="135" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">C (황색)</text>
       </svg>`,
       options: [
         "검정말이 호흡을 하여 이산화 탄소를 방출했기 때문이다.",
@@ -729,7 +664,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "물 속의 수소 이온 농도가 급격히 높아져 강산성이 되었기 때문이다."
       ],
       correctAnswerIndex: 2,
-      explanation: "BTB 용액은 이산화 탄소가 녹아 탄산이 많아지면 산성(노란색)이 되고, 이산화 탄소가 줄어들면 염기성(파란색)이 됩니다. 시험관 B는 검정말이 햇빛을 받아 광합성을 활발히 하여 물속의 이산화 탄소를 대량 소모하였으므로 파란색으로 변합니다.",
+      explanation: "BTB 용액은 이산화 탄소가 녹으면 산성(노란색), 이산화 탄소가 줄어들면 염기성(파란색)을 띱니다. 시험관 B는 검정말이 빛을 받아 광합성을 활발히 하여 용액 속 이산화 탄소를 대량 소모했으므로 파란색으로 변합니다.",
       chunjaeConcept: "천재교과서(정대홍) [BTB 용액 색깔 변화]: 광합성으로 CO2 소모 시 염기성(파란색)으로 변환!"
     },
     {
@@ -761,7 +696,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "식물은 동물과 달리 호흡할 때 이산화 탄소를 흡수하고 산소를 방출한다."
       ],
       correctAnswerIndex: 2,
-      explanation: "식물의 세포 호흡은 생명을 유지하기 위한 에너지 생산 과정이므로 낮과 밤 상관없이 24시간 내내 끊임없이 일어납니다. 낮에는 광합성량이 호흡량보다 훨씬 많아 겉보기에 이산화 탄소를 흡수하고 산소를 방출하는 것처럼 보일 뿐입니다. 밤에는 빛이 없어 광합성이 멈추고 호흡만 진행됩니다.",
+      explanation: "식물의 세포 호흡은 생명을 유지하기 위한 에너지 생산 과정이므로 낮과 밤 상관없이 24시간 내내 끊임없이 일어납니다. 낮에는 광합성량이 호흡량보다 훨씬 많아 겉보기에 이산화 탄소를 흡수하고 산소를 방출하는 것처럼 보일 뿐입니다.",
       chunjaeConcept: "천재교과서(정대홍) [식물의 호흡]: 호흡은 24시간 내내 항시 진행! 낮에는 광합성량이 커서 겉보기에 CO2 흡수!"
     },
     {
@@ -774,15 +709,12 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
         <rect x="25" y="30" width="85" height="40" rx="6" fill="#dbeafe"/>
         <text x="67" y="54" font-size="10" font-weight="bold" fill="#1e40af" text-anchor="middle">녹말 (낮에 잎에 저장)</text>
-        
         <path d="M 115 50 L 145 50" stroke="#d97706" stroke-width="2"/>
         <rect x="150" y="30" width="85" height="40" rx="6" fill="#fef9c3"/>
         <text x="192" y="54" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">설탕 (밤에 전환)</text>
-        
         <path d="M 240 50 L 270 50" stroke="#d97706" stroke-width="2"/>
         <rect x="275" y="30" width="65" height="40" rx="6" fill="#dcfce7"/>
         <text x="307" y="54" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">체관 이동</text>
-        
         <text x="180" y="110" font-size="10" fill="#475569" text-anchor="middle">뿌리, 줄기, 열매에 녹말(감자), 단백질(콩), 지방(깨) 등으로 저장</text>
       </svg>`,
       options: [
@@ -793,7 +725,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
         "모든 식물은 반드시 씨앗에만 녹말 형태로만 저장해야 한다."
       ],
       correctAnswerIndex: 1,
-      explanation: "낮 동안 엽록체에 녹말로 저장되었던 양분은 밤이 되면 물에 잘 녹는 작은 분자인 '설탕'으로 분해(전환)되어 줄기 바깥쪽의 '체관'을 타고 뿌리, 줄기, 열매 등으로 이동합니다. 이후 식물에 따라 감자는 녹말, 콩은 단백질, 참깨는 지방, 양파는 포도당 등 다양한 형태로 전환되어 저장됩니다.",
+      explanation: "낮 동안 엽록체에 녹말로 저장되었던 양분은 밤이 되면 물에 잘 녹는 작은 분자인 '설탕'으로 분해(전환)되어 줄기 바깥쪽의 '체관'을 타고 뿌리, 줄기, 열매 등으로 이동합니다.",
       chunjaeConcept: "천재교과서(정대홍) [광합성 산물의 이동과 저장]: 밤에 물에 녹는 설탕으로 전환되어 체관을 통해 이동!"
     }
   ]
