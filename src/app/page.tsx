@@ -68,7 +68,15 @@ export default function Home() {
       const cachedAnalysis = sessionStorage.getItem("science_tutor_active_analysis");
       const cachedImage = sessionStorage.getItem("science_tutor_active_image");
       if (cachedAnalysis) {
-        const parsed = JSON.parse(cachedAnalysis);
+        let parsed = JSON.parse(cachedAnalysis);
+        const matched = INITIAL_SAVED_NOTES.find((n) => n.id === parsed.id);
+        if (
+          matched &&
+          matched.twinQuiz &&
+          (!parsed.twinQuiz || parsed.twinQuiz.length < matched.twinQuiz.length)
+        ) {
+          parsed = matched;
+        }
         setActiveAnalysis(parsed);
         if (cachedImage) setActiveImageUrl(cachedImage);
       }

@@ -81,10 +81,16 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
           console.warn("LocalStorage merge error:", lsErr);
         }
 
-        // 3. Auto-seed initial 12 saved notes so new/refreshed iPad gets all 12 notes immediately
+        // 3. Auto-seed or upgrade initial 12 saved notes to 10-question 5-choice format
         const noteMap = new Map(notes.map((n) => [n.id, n]));
         for (const initNote of INITIAL_SAVED_NOTES) {
-          if (!noteMap.has(initNote.id)) {
+          const existing = noteMap.get(initNote.id);
+          if (
+            !existing ||
+            !existing.twinQuiz ||
+            existing.twinQuiz.length < (initNote.twinQuiz?.length || 10) ||
+            (existing.twinQuiz[0] && existing.twinQuiz[0].options.length < 5)
+          ) {
             noteMap.set(initNote.id, initNote);
             try {
               store.put(initNote);
