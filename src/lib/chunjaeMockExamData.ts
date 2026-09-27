@@ -16,6 +16,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "다음 표는 음식물 속에 들어있는 4대 영양소를 검출하기 위한 시약과 반응 결과 나타나는 색깔 변화를 정리한 것이다. 기호 A~D에 들어갈 시약과 색깔의 연결로 옳은 것은?",
       diagramCaption: "[천재교과서 탐구] 4대 영양소의 검출 반응",
+      diagramImageUrl: "/mock-exam/q-1.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <rect x="20" y="20" width="320" height="28" fill="#e0e7ff" rx="4"/>
@@ -245,16 +246,72 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 3) 호흡",
       question: "사람의 폐는 근육이 없어 스스로 수축하거나 이완하지 못하며, 수많은 작은 공기주머니인 '폐포(Alveolus)'로 이루어져 있습니다. 폐포 구조가 기체 교환에 주는 가장 결정적인 이점은 무엇인가?",
       diagramCaption: "[천재교과서 도식] 폐포와 모세혈관망 구조",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <circle cx="100" cy="80" r="45" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-        <text x="100" y="75" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">폐포 (약 3~4억 개)</text>
-        <text x="100" y="95" font-size="9" fill="#b91c1c" text-anchor="middle">수많은 작은 주머니</text>
-        <path d="M 160 80 L 210 80" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
-        <rect x="220" y="45" width="120" height="70" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5"/>
-        <text x="280" y="72" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">표면적 극대화</text>
-        <text x="280" y="92" font-size="9" fill="#0c4a6e" text-anchor="middle">(기체 교환 효율 최고)</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 260" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgQ9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <radialGradient id="alveolusGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffe4e6" />
+      <stop offset="70%" stop-color="#fecdd3" />
+      <stop offset="100%" stop-color="#fda4af" />
+    </radialGradient>
+    <radialGradient id="capillaryRed" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f87171" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </radialGradient>
+    <radialGradient id="capillaryBlue" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </radialGradient>
+    <filter id="shadowQ9" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <rect width="540" height="260" fill="url(#bgQ9)" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+  
+  <!-- Bronchiole (세기관지) -->
+  <path d="M 40 130 C 90 130, 110 90, 150 90" fill="none" stroke="#fed7aa" stroke-width="24" stroke-linecap="round" />
+  <path d="M 40 130 C 90 130, 110 90, 150 90" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" />
+  <text x="65" y="105" font-size="11" font-weight="bold" fill="#9a3412">세기관지</text>
+
+  <!-- Alveolar cluster (포도송이 모양 폐포 묶음) -->
+  <g filter="url(#shadowQ9)">
+    <circle cx="210" cy="80" r="32" fill="url(#alveolusGrad)" stroke="#f43f5e" stroke-width="1.5" />
+    <circle cx="260" cy="70" r="34" fill="url(#alveolusGrad)" stroke="#f43f5e" stroke-width="1.5" />
+    <circle cx="230" cy="130" r="35" fill="url(#alveolusGrad)" stroke="#f43f5e" stroke-width="1.5" />
+    <circle cx="280" cy="125" r="33" fill="url(#alveolusGrad)" stroke="#f43f5e" stroke-width="1.5" />
+    <circle cx="190" cy="145" r="28" fill="url(#alveolusGrad)" stroke="#f43f5e" stroke-width="1.5" />
+  </g>
+  <text x="245" y="108" font-size="12" font-weight="900" fill="#be123c" text-anchor="middle">폐포 (Alveoli)</text>
+  <text x="245" y="124" font-size="10" font-weight="bold" fill="#881337" text-anchor="middle">(약 3~4억 개, 표면적 극대화)</text>
+
+  <!-- Capillary blood vessels (모세혈관망 래핑) -->
+  <path d="M 330 40 C 370 70, 370 150, 330 180" fill="none" stroke="url(#capillaryBlue)" stroke-width="8" stroke-linecap="round" />
+  <path d="M 350 50 C 400 90, 400 170, 350 200" fill="none" stroke="url(#capillaryRed)" stroke-width="8" stroke-linecap="round" />
+
+  <!-- Capillary mesh over alveolus -->
+  <path d="M 280 92 C 310 92, 330 110, 350 110" fill="none" stroke="#ef4444" stroke-width="4" stroke-dasharray="3,2" />
+  <path d="M 270 140 C 300 140, 320 155, 340 155" fill="none" stroke="#3b82f6" stroke-width="4" stroke-dasharray="3,2" />
+
+  <!-- Gas exchange callout box -->
+  <rect x="360" y="25" width="165" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadowQ9)" />
+  <rect x="360" y="25" width="165" height="24" rx="10" fill="#e0f2fe" />
+  <text x="442" y="41" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">폐포와 모세혈관의 기체 교환</text>
+  
+  <text x="370" y="68" font-size="11" font-weight="bold" fill="#dc2626">O₂ (산소):</text>
+  <text x="430" y="68" font-size="10" fill="#334155">폐포 ➔ 모세혈관</text>
+  
+  <text x="370" y="92" font-size="11" font-weight="bold" fill="#2563eb">CO₂ (이산화 탄소):</text>
+  <text x="370" y="110" font-size="10" fill="#334155">모세혈관 ➔ 폐포 (날숨)</text>
+
+  <!-- Bottom summary bar -->
+  <rect x="25" y="210" width="490" height="36" rx="8" fill="#eef2ff" stroke="#c7d2fe" />
+  <text x="270" y="233" font-size="11" font-weight="bold" fill="#3730a3" text-anchor="middle">
+    💡 핵심 이점: 한 층의 얇은 세포막 + 수많은 폐포로 접촉 표면적을 극대화하여 기체 교환을 신속히 수행!
+  </text>
+</svg>`,
       options: [
         "폐 속으로 들어온 이물질을 녹이는 소화액을 많이 저장하기 위해서",
         "폐가 공기와 닿는 표면적을 매우 넓혀 산소와 이산화 탄소의 기체 교환을 빠르고 효율적으로 하기 위해서",
@@ -272,20 +329,94 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 3) 호흡",
       question: "다음 그림은 호흡 운동의 원리를 알아보기 위한 유리종 모형 실험이다. 고무막을 아래로 잡아당길 때(들숨 과정) 모형 내부에서 일어나는 변화로 옳은 것은?",
       diagramCaption: "[천재교과서 탐구] 호흡 운동 모형 실험 (들숨과 날숨)",
-      diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="170" fill="#f8fafc" rx="12" />
-        <rect x="50" y="20" width="110" height="110" rx="16" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-        <circle cx="105" cy="75" r="22" fill="#fca5a5" stroke="#dc2626"/>
-        <line x1="105" y1="20" x2="105" y2="55" stroke="#334155" stroke-width="3"/>
-        <path d="M 50 130 Q 105 155 160 130" stroke="#16a34a" stroke-width="4" fill="none"/>
-        <text x="105" y="165" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">고무막 당김 ➔ 들숨</text>
-        <g transform="translate(180, 30)">
-          <text x="0" y="20" font-size="11" font-weight="bold" fill="#1e40af">1. 가로막(고무막) 하강</text>
-          <text x="0" y="45" font-size="11" font-weight="bold" fill="#1e40af">2. 흉강(유리종) 부피 증가</text>
-          <text x="0" y="70" font-size="11" font-weight="bold" fill="#dc2626">3. 흉강 내부 압력 감소 (대기압보다 낮아짐)</text>
-          <text x="0" y="95" font-size="11" font-weight="bold" fill="#047857">4. 폐(고무풍선) 팽창, 공기 유입</text>
-        </g>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 270" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="30%" stop-color="#e0f2fe" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#bae6fd" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.7" />
+    </linearGradient>
+    <radialGradient id="balloonInflated" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </radialGradient>
+    <radialGradient id="balloonDeflated" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fecdd3" />
+      <stop offset="100%" stop-color="#be123c" />
+    </radialGradient>
+    <filter id="shadowQ10" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="270" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Left: [가] 날숨 (고무막 놓음 / 평상시) -->
+  <g transform="translate(35, 15)">
+    <rect x="0" y="0" width="220" height="195" rx="12" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadowQ10)" />
+    <rect x="0" y="0" width="220" height="26" rx="12" fill="#f1f5f9" />
+    <text x="110" y="18" font-size="11" font-weight="900" fill="#334155" text-anchor="middle">[가] 날숨 (고무막 놓음 / 가로막 상승)</text>
+
+    <!-- Glass Bell Jar (유리종) -->
+    <path d="M 60 50 C 60 35, 160 35, 160 50 L 160 150 L 60 150 Z" fill="url(#glassGrad)" stroke="#64748b" stroke-width="2" />
+    <!-- Stopper & Y-tube -->
+    <rect x="100" y="32" width="20" height="10" fill="#78350f" rx="2" />
+    <line x1="110" y1="20" x2="110" y2="70" stroke="#0284c7" stroke-width="3" />
+    <path d="M 110 70 L 92 90" stroke="#0284c7" stroke-width="3" />
+    <path d="M 110 70 L 128 90" stroke="#0284c7" stroke-width="3" />
+
+    <!-- Deflated Balloons (수축된 풍선) -->
+    <ellipse cx="88" cy="105" rx="10" ry="16" fill="url(#balloonDeflated)" />
+    <ellipse cx="132" cy="105" rx="10" ry="16" fill="url(#balloonDeflated)" />
+
+    <!-- Dome Rubber Sheet (위로 볼록한 고무막) -->
+    <path d="M 60 150 Q 110 132 160 150" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" />
+    <text x="110" y="145" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle">가로막 상승 ▲</text>
+
+    <!-- Air outward arrow -->
+    <path d="M 110 25 L 110 8" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="110" y="172" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">공기 유출 (날숨)</text>
+    <text x="110" y="187" font-size="9" fill="#64748b" text-anchor="middle">흉강 부피 감소, 내부 압력 증가</text>
+  </g>
+
+  <!-- Right: [나] 들숨 (고무막 아래로 당김) -->
+  <g transform="translate(285, 15)">
+    <rect x="0" y="0" width="220" height="195" rx="12" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadowQ10)" />
+    <rect x="0" y="0" width="220" height="26" rx="12" fill="#eff6ff" />
+    <text x="110" y="18" font-size="11" font-weight="900" fill="#1d4ed8" text-anchor="middle">[나] 들숨 (고무막 당김 / 가로막 하강)</text>
+
+    <!-- Glass Bell Jar (유리종) -->
+    <path d="M 60 50 C 60 35, 160 35, 160 50 L 160 150 L 60 150 Z" fill="url(#glassGrad)" stroke="#2563eb" stroke-width="2" />
+    <!-- Stopper & Y-tube -->
+    <rect x="100" y="32" width="20" height="10" fill="#78350f" rx="2" />
+    <line x1="110" y1="20" x2="110" y2="70" stroke="#0284c7" stroke-width="3" />
+    <path d="M 110 70 L 90 92" stroke="#0284c7" stroke-width="3" />
+    <path d="M 110 70 L 130 92" stroke="#0284c7" stroke-width="3" />
+
+    <!-- Inflated Balloons (부풀어 오른 풍선) -->
+    <ellipse cx="86" cy="110" rx="18" ry="24" fill="url(#balloonInflated)" filter="url(#shadowQ10)" />
+    <ellipse cx="134" cy="110" rx="18" ry="24" fill="url(#balloonInflated)" filter="url(#shadowQ10)" />
+
+    <!-- Pulled Rubber Sheet (아래로 당겨진 고무막) -->
+    <path d="M 60 150 Q 110 168 160 150" fill="none" stroke="#16a34a" stroke-width="5" stroke-linecap="round" />
+    <!-- Hand pulling icon/arrow -->
+    <path d="M 110 162 L 110 178" stroke="#15803d" stroke-width="3" stroke-linecap="round" />
+    <text x="110" y="174" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle">가로막 하강 ▼</text>
+
+    <!-- Air inward arrow -->
+    <path d="M 110 5 L 110 22" stroke="#2563eb" stroke-width="3" />
+    <text x="110" y="187" font-size="10" font-weight="bold" fill="#1d4ed8" text-anchor="middle">공기 유입 (들숨, 폐 팽창)</text>
+  </g>
+
+  <!-- Bottom Mapping Legend -->
+  <rect x="35" y="218" width="470" height="42" rx="8" fill="#f8fafc" stroke="#94a3b8" />
+  <text x="270" y="235" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">
+    [교과서 모형 대조표] 유리종 = 흉강(가슴)  |  Y자관 = 기관·기관지  |  고무풍선 = 폐  |  고무막 = 가로막
+  </text>
+  <text x="270" y="251" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">
+    원리: 고무막 당김 ➔ 내부 부피 증가 ➔ 내부 압력 감소 (대기압보다 낮아짐) ➔ 외부 공기 유입(들숨)
+  </text>
+</svg>`,
       options: [
         "유리종 내부 부피 감소, 내부 압력 증가, 고무풍선 수축",
         "유리종 내부 부피 증가, 내부 압력 감소, 고무풍선 팽창 (공기 유입)",
@@ -303,18 +434,81 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 3) 호흡",
       question: "폐포와 모세혈관 사이, 그리고 모세혈관과 온몸의 조직 세포 사이에서 산소와 이산화 탄소가 교환되는 기본 원리와 이동 방향으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 기체 분압 차이에 따른 확산과 교환",
-      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="150" fill="#f8fafc" rx="12" />
-        <rect x="25" y="30" width="140" height="90" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
-        <text x="95" y="55" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">[외호흡 (폐포-모세혈관)]</text>
-        <text x="95" y="78" font-size="10" fill="#dc2626" text-anchor="middle">산소: 폐포 ➔ 모세혈관</text>
-        <text x="95" y="98" font-size="10" fill="#2563eb" text-anchor="middle">이산화탄소: 모세혈관 ➔ 폐포</text>
+      diagramSvg: `<svg viewBox="0 0 540 260" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgQ11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadowQ11" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="260" fill="url(#bgQ11)" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
 
-        <rect x="195" y="30" width="140" height="90" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
-        <text x="265" y="55" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">[내호흡 (모세혈관-세포)]</text>
-        <text x="265" y="78" font-size="10" fill="#dc2626" text-anchor="middle">산소: 모세혈관 ➔ 세포</text>
-        <text x="265" y="98" font-size="10" fill="#2563eb" text-anchor="middle">이산화탄소: 세포 ➔ 모세혈관</text>
-      </svg>`,
+  <!-- Left: 외호흡 (폐포와 모세혈관) -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="230" height="175" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5" filter="url(#shadowQ11)" />
+    <rect x="0" y="0" width="230" height="28" rx="12" fill="#eff6ff" />
+    <text x="115" y="19" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">1. 외호흡 (폐포 ↔ 모세혈관)</text>
+    
+    <!-- Alveolus Section -->
+    <circle cx="70" cy="85" r="35" fill="#fef2f2" stroke="#f87171" stroke-width="2" />
+    <text x="70" y="78" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">폐포 (Alveolus)</text>
+    <text x="70" y="94" font-size="9" fill="#b91c1c" text-anchor="middle">O₂ 많음 / CO₂ 적음</text>
+
+    <!-- Capillary Blood -->
+    <path d="M 170 45 L 170 145" stroke="#3b82f6" stroke-width="24" stroke-linecap="round" />
+    <text x="170" y="90" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(90, 170, 90)">모세혈관</text>
+
+    <!-- Diffusion Arrows -->
+    <path d="M 105 72 L 155 72" stroke="#dc2626" stroke-width="3" stroke-linecap="round" />
+    <polygon points="158,72 150,68 150,76" fill="#dc2626" />
+    <text x="130" y="65" font-size="9" font-weight="bold" fill="#dc2626" text-anchor="middle">O₂ 확산 ➔</text>
+
+    <path d="M 155 105 L 105 105" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+    <polygon points="102,105 110,101 110,109" fill="#2563eb" />
+    <text x="130" y="120" font-size="9" font-weight="bold" fill="#2563eb" text-anchor="middle">◀ CO₂ 확산</text>
+
+    <rect x="15" y="135" width="200" height="28" rx="6" fill="#f1f5f9" />
+    <text x="115" y="153" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">정맥혈 ➔ 산소 얻어 ➔ 동맥혈 전환</text>
+  </g>
+
+  <!-- Right: 내호흡 (모세혈관과 조직 세포) -->
+  <g transform="translate(285, 20)">
+    <rect x="0" y="0" width="230" height="175" rx="12" fill="#ffffff" stroke="#fca5a5" stroke-width="1.5" filter="url(#shadowQ11)" />
+    <rect x="0" y="0" width="230" height="28" rx="12" fill="#fef2f2" />
+    <text x="115" y="19" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">2. 내호흡 (모세혈관 ↔ 조직 세포)</text>
+
+    <!-- Capillary Blood -->
+    <path d="M 60 45 L 60 145" stroke="#ef4444" stroke-width="24" stroke-linecap="round" />
+    <text x="60" y="90" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(90, 60, 90)">모세혈관</text>
+
+    <!-- Tissue Cell Section -->
+    <rect x="125" y="50" width="85" height="75" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+    <text x="167" y="78" font-size="11" font-weight="bold" fill="#92400e" text-anchor="middle">조직 세포</text>
+    <text x="167" y="94" font-size="9" fill="#b45309" text-anchor="middle">세포 호흡 진행</text>
+    <text x="167" y="108" font-size="8" fill="#b45309" text-anchor="middle">(O₂ 소모, CO₂ 발생)</text>
+
+    <!-- Diffusion Arrows -->
+    <path d="M 75 72 L 122 72" stroke="#dc2626" stroke-width="3" stroke-linecap="round" />
+    <polygon points="125,72 117,68 117,76" fill="#dc2626" />
+    <text x="100" y="65" font-size="9" font-weight="bold" fill="#dc2626" text-anchor="middle">O₂ 확산 ➔</text>
+
+    <path d="M 122 105 L 75 105" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+    <polygon points="72,105 80,101 80,109" fill="#2563eb" />
+    <text x="100" y="120" font-size="9" font-weight="bold" fill="#2563eb" text-anchor="middle">◀ CO₂ 확산</text>
+
+    <rect x="15" y="135" width="200" height="28" rx="6" fill="#f1f5f9" />
+    <text x="115" y="153" font-size="10" font-weight="bold" fill="#0f172a" text-anchor="middle">동맥혈 ➔ 산소 전달 ➔ 정맥혈 전환</text>
+  </g>
+
+  <!-- Bottom summary bar -->
+  <rect x="25" y="208" width="490" height="38" rx="8" fill="#f0fdf4" stroke="#86efac" />
+  <text x="270" y="232" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">
+    기체 교환의 공통 원리: ATP(에너지) 소모 없이 분압(농도) 차이에 따른 자연스러운 '확산(Diffusion)'
+  </text>
+</svg>`,
       options: [
         "기체 농도(분압) 차이에 따른 '확산' 현상으로, 에너지를 소모하지 않고 고농도에서 저농도로 이동한다.",
         "ATP 에너지를 대량 소모하는 능동 수송으로, 저농도에서 고농도로 강제 이동한다.",
@@ -332,15 +526,63 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 3) 호흡",
       question: "우리 몸의 모든 세포에서 영양소(포도당)와 산소를 반응시켜 생명 활동에 필요한 에너지를 얻는 과정을 무엇이라 하며, 이때 함께 생성되는 물질은 무엇인가?",
       diagramCaption: "[천재교과서 반응식] 세포 호흡의 원리와 에너지 생성",
-      diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="140" fill="#f8fafc" rx="12" />
-        <rect x="25" y="45" width="120" height="45" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
-        <text x="85" y="72" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">영양소(포도당) + 산소</text>
-        <path d="M 155 67 L 195 67" stroke="#ea580c" stroke-width="3" stroke-linecap="round"/>
-        <rect x="205" y="45" width="130" height="45" rx="8" fill="#fef3c7" stroke="#d97706"/>
-        <text x="270" y="65" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">물 + 이산화 탄소</text>
-        <text x="270" y="82" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">+ 에너지 (생명활동)</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 250" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mitoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa" />
+      <stop offset="100%" stop-color="#fb923c" />
+    </linearGradient>
+    <filter id="shadowQ12" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="250" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Reaction flow boxes -->
+  <!-- Left Inputs -->
+  <g transform="translate(30, 30)">
+    <rect x="0" y="0" width="130" height="60" rx="10" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2" filter="url(#shadowQ12)" />
+    <text x="65" y="26" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">포도당 (영양소)</text>
+    <text x="65" y="44" font-size="10" fill="#0284c7" text-anchor="middle">[소화계에서 흡수]</text>
+
+    <text x="65" y="78" font-size="16" font-weight="900" fill="#64748b" text-anchor="middle">+</text>
+
+    <rect x="0" y="90" width="130" height="60" rx="10" fill="#fee2e2" stroke="#f87171" stroke-width="2" filter="url(#shadowQ12)" />
+    <text x="65" y="116" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">산소 (O₂)</text>
+    <text x="65" y="134" font-size="10" fill="#dc2626" text-anchor="middle">[호흡계에서 흡수]</text>
+  </g>
+
+  <!-- Center: Mitochondria Icon & Process -->
+  <g transform="translate(190, 45)">
+    <ellipse cx="80" cy="65" rx="70" ry="50" fill="url(#mitoGrad)" stroke="#c2410c" stroke-width="2" filter="url(#shadowQ12)" />
+    <!-- Cristae inner folds -->
+    <path d="M 30 65 Q 50 45 70 65 T 110 65 T 130 65" fill="none" stroke="#7c2d12" stroke-width="3" stroke-linecap="round" />
+    <text x="80" y="55" font-size="13" font-weight="900" fill="#7c2d12" text-anchor="middle">세포 호흡</text>
+    <text x="80" y="75" font-size="10" font-weight="bold" fill="#9a3412" text-anchor="middle">미토콘드리아</text>
+    <path d="M 155 65 L 180 65" stroke="#ea580c" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Right Outputs -->
+  <g transform="translate(380, 20)">
+    <rect x="0" y="0" width="130" height="52" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" />
+    <text x="65" y="24" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">물 (H₂O)</text>
+    <text x="65" y="40" font-size="9" fill="#64748b" text-anchor="middle">[날숨·오줌 배출]</text>
+
+    <rect x="0" y="60" width="130" height="52" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5" />
+    <text x="65" y="84" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">이산화 탄소 (CO₂)</text>
+    <text x="65" y="100" font-size="9" fill="#64748b" text-anchor="middle">[호흡계 날숨 배출]</text>
+
+    <rect x="0" y="120" width="130" height="60" rx="10" fill="#fef08a" stroke="#eab308" stroke-width="2" filter="url(#shadowQ12)" />
+    <text x="65" y="144" font-size="12" font-weight="900" fill="#854d0e" text-anchor="middle">⚡ 생활 에너지</text>
+    <text x="65" y="162" font-size="9" font-weight="bold" fill="#ca8a04" text-anchor="middle">(체온 유지 + 근육 운동)</text>
+  </g>
+
+  <!-- Bottom Equation Summary -->
+  <rect x="30" y="200" width="480" height="36" rx="8" fill="#fefce8" stroke="#fde047" />
+  <text x="270" y="223" font-size="11" font-weight="900" fill="#a16207" text-anchor="middle">
+    [세포 호흡 공식] 포도당 + 산소 ➔ 이산화 탄소 + 물 + 생명 활동 에너지 (체온 36.5℃, 근육 활동, 생장)
+  </text>
+</svg>`,
       options: [
         "광합성 - 녹말과 산소",
         "소화 작용 - 쓸개즙과 포도당",
@@ -360,18 +602,62 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 4) 배설",
       question: "세포 호흡 결과 탄수화물, 지방, 단백질이 분해될 때 공통 노폐물 외에 '단백질'에서만 특별히 생성되는 독성 물질과, 이를 해독하여 독성이 약한 물질로 전환하는 인체 기관은?",
       diagramCaption: "[천재교과서 도식] 단백질의 질소 노폐물과 간에서의 요소 합성",
-      diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="150" fill="#f8fafc" rx="12" />
-        <rect x="25" y="30" width="85" height="40" rx="8" fill="#fee2e2" stroke="#dc2626"/>
-        <text x="67" y="55" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">단백질 분해</text>
-        <path d="M 115 50 L 145 50" stroke="#dc2626" stroke-width="2"/>
-        <rect x="150" y="30" width="95" height="40" rx="8" fill="#fee2e2"/>
-        <text x="197" y="55" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">독성 암모니아</text>
-        <path d="M 250 50 L 275 50" stroke="#16a34a" stroke-width="2"/>
-        <rect x="280" y="30" width="60" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
-        <text x="310" y="55" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">요소(Urea)</text>
-        <text x="180" y="110" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">전환 기관: 간(Liver) ➔ 콩팥을 통해 오줌 배설</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 260" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <rect width="540" height="260" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- 3 Nutrient Comparison Table -->
+  <rect x="30" y="20" width="480" height="100" rx="12" fill="#ffffff" stroke="#cbd5e1" />
+  <rect x="30" y="20" width="480" height="26" rx="12" fill="#f1f5f9" />
+  <text x="100" y="38" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">영양소 (구성 원소)</text>
+  <text x="270" y="38" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">세포 호흡 후 생성되는 노폐물</text>
+  <text x="440" y="38" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">배출 경로</text>
+
+  <line x1="30" y1="46" x2="510" y2="46" stroke="#e2e8f0" />
+  
+  <text x="100" y="66" font-size="10" fill="#475569" text-anchor="middle">탄수화물, 지방 (C, H, O)</text>
+  <text x="270" y="66" font-size="10" font-weight="bold" fill="#0284c7" text-anchor="middle">물(H₂O), 이산화 탄소(CO₂)</text>
+  <text x="440" y="66" font-size="10" fill="#64748b" text-anchor="middle">날숨(폐), 오줌(콩팥)</text>
+
+  <line x1="30" y1="78" x2="510" y2="78" stroke="#e2e8f0" />
+
+  <rect x="31" y="79" width="478" height="40" rx="0" fill="#fee2e2" opacity="0.4" />
+  <text x="100" y="102" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">단백질 (C, H, O, N)</text>
+  <text x="270" y="96" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">물, 이산화 탄소</text>
+  <text x="270" y="112" font-size="11" font-weight="900" fill="#b91c1c" text-anchor="middle">+ 암모니아 (NH₃, 강한 독성!)</text>
+  <text x="440" y="102" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">간에서 요소 전환 후 배설</text>
+
+  <!-- Detoxification Cycle Flow -->
+  <g transform="translate(40, 135)">
+    <!-- Ammonia -->
+    <rect x="0" y="10" width="115" height="45" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+    <text x="57" y="30" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">암모니아 (NH₃)</text>
+    <text x="57" y="45" font-size="9" fill="#dc2626" text-anchor="middle">세포 독성 매우 강함</text>
+
+    <!-- Arrow to Liver -->
+    <path d="M 120 32 L 155 32" stroke="#ea580c" stroke-width="3" stroke-linecap="round" />
+    <text x="138" y="24" font-size="8" fill="#c2410c" text-anchor="middle">혈관 이동</text>
+
+    <!-- Liver (간) -->
+    <rect x="160" y="5" width="130" height="55" rx="10" fill="#ffedd5" stroke="#f97316" stroke-width="2" />
+    <text x="225" y="27" font-size="12" font-weight="900" fill="#c2410c" text-anchor="middle">간 (Liver)</text>
+    <text x="225" y="45" font-size="10" font-weight="bold" fill="#ea580c" text-anchor="middle">해독 작용: 요소 합성</text>
+
+    <!-- Arrow to Kidney -->
+    <path d="M 295 32 L 330 32" stroke="#16a34a" stroke-width="3" stroke-linecap="round" />
+    <text x="312" y="24" font-size="8" fill="#15803d" text-anchor="middle">혈관 이동</text>
+
+    <!-- Kidney (콩팥) -->
+    <rect x="335" y="5" width="125" height="55" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2" />
+    <text x="397" y="27" font-size="12" font-weight="900" fill="#15803d" text-anchor="middle">콩팥 (Kidney)</text>
+    <text x="397" y="45" font-size="10" font-weight="bold" fill="#16a34a" text-anchor="middle">오줌으로 체외 배설</text>
+  </g>
+
+  <!-- Summary text -->
+  <rect x="30" y="210" width="480" height="36" rx="8" fill="#f0fdf4" stroke="#86efac" />
+  <text x="270" y="233" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">
+    출제 1순위: 단백질 분해 노폐물인 '독성 암모니아'는 '간'에서 독성이 약한 '요소'로 합성된 후 '콩팥'에서 배설된다!
+  </text>
+</svg>`,
       options: [
         "암모니아 - 간에서 요소로 전환",
         "요소 - 콩팥에서 암모니아로 전환",
@@ -389,16 +675,74 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 4) 배설",
       question: "사람의 배설계 구조에 대한 설명으로 옳지 않은 것은?",
       diagramCaption: "[천재교과서 도식] 사람의 배설계 구조",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <ellipse cx="120" cy="65" rx="25" ry="35" fill="#b91c1c" opacity="0.8"/>
-        <ellipse cx="240" cy="65" rx="25" ry="35" fill="#b91c1c" opacity="0.8"/>
-        <text x="180" y="45" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">좌우 콩팥 (신장)</text>
-        <path d="M 120 100 Q 150 120 165 130" stroke="#ca8a04" stroke-width="3" fill="none"/>
-        <path d="M 240 100 Q 210 120 195 130" stroke="#ca8a04" stroke-width="3" fill="none"/>
-        <ellipse cx="180" cy="135" rx="25" ry="16" fill="#fef08a" stroke="#ca8a04"/>
-        <text x="180" y="140" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">방광</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 270" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kidneyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991b1b" />
+      <stop offset="70%" stop-color="#7f1d1d" />
+      <stop offset="100%" stop-color="#450a0a" />
+    </linearGradient>
+    <linearGradient id="bladderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#facc15" />
+    </linearGradient>
+    <filter id="shadowQ14" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  <rect width="540" height="270" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Aorta & Vena Cava (대동맥과 대정맥) -->
+  <path d="M 255 15 L 255 200" stroke="#dc2626" stroke-width="12" stroke-linecap="round" />
+  <path d="M 285 15 L 285 200" stroke="#2563eb" stroke-width="12" stroke-linecap="round" />
+
+  <!-- Renal Artery & Vein branches (콩팥 동맥과 정맥) -->
+  <path d="M 255 75 L 180 85" stroke="#dc2626" stroke-width="6" stroke-linecap="round" />
+  <path d="M 285 85 L 360 85" stroke="#dc2626" stroke-width="6" stroke-linecap="round" />
+  <path d="M 285 95 L 180 95" stroke="#2563eb" stroke-width="6" stroke-linecap="round" />
+  <path d="M 285 95 L 360 95" stroke="#2563eb" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Left & Right Kidneys (좌우 콩팥) -->
+  <!-- Left Kidney (그림상 오른쪽) -->
+  <path d="M 360 55 C 400 55, 415 85, 410 115 C 405 140, 375 145, 360 120 C 350 100, 350 75, 360 55 Z" fill="url(#kidneyGrad)" stroke="#581c87" stroke-width="1" filter="url(#shadowQ14)" />
+  <!-- Right Kidney (그림상 왼쪽) -->
+  <path d="M 180 65 C 140 65, 125 95, 130 125 C 135 150, 165 155, 180 130 C 190 110, 190 85, 180 65 Z" fill="url(#kidneyGrad)" stroke="#581c87" stroke-width="1" filter="url(#shadowQ14)" />
+
+  <!-- Ureters (수뇨관 / 오줌관) -->
+  <path d="M 165 130 Q 210 180 255 200" fill="none" stroke="#ca8a04" stroke-width="4" stroke-linecap="round" />
+  <path d="M 375 120 Q 330 180 285 200" fill="none" stroke="#ca8a04" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Urinary Bladder (방광) -->
+  <ellipse cx="270" cy="210" rx="30" ry="22" fill="url(#bladderGrad)" stroke="#ca8a04" stroke-width="2" filter="url(#shadowQ14)" />
+  <text x="270" y="214" font-size="10" font-weight="900" fill="#854d0e" text-anchor="middle">방광</text>
+
+  <!-- Urethra (요도) -->
+  <line x1="270" y1="232" x2="270" y2="252" stroke="#854d0e" stroke-width="5" stroke-linecap="round" />
+
+  <!-- Callout Labels -->
+  <!-- Label A: 콩팥 -->
+  <rect x="25" y="80" width="85" height="28" rx="6" fill="#ffffff" stroke="#991b1b" filter="url(#shadowQ14)" />
+  <text x="67" y="98" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">A: 콩팥 (신장)</text>
+  <line x1="110" y1="94" x2="135" y2="94" stroke="#991b1b" stroke-width="1.5" />
+
+  <!-- Label B: 콩팥 동맥 -->
+  <rect x="15" y="25" width="105" height="28" rx="6" fill="#fee2e2" stroke="#dc2626" />
+  <text x="67" y="43" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">B: 콩팥 동맥 (노폐물↑)</text>
+
+  <!-- Label C: 콩팥 정맥 -->
+  <rect x="420" y="25" width="105" height="28" rx="6" fill="#eff6ff" stroke="#2563eb" />
+  <text x="472" y="43" font-size="10" font-weight="bold" fill="#1d4ed8" text-anchor="middle">C: 콩팥 정맥 (가장 깨끗)</text>
+
+  <!-- Label D: 오줌관 (수뇨관) -->
+  <rect x="420" y="140" width="95" height="28" rx="6" fill="#ffffff" stroke="#ca8a04" filter="url(#shadowQ14)" />
+  <text x="467" y="158" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">D: 오줌관(수뇨관)</text>
+  <line x1="420" y1="154" x2="355" y2="154" stroke="#ca8a04" stroke-width="1.5" />
+
+  <!-- Label E: 요도 -->
+  <rect x="315" y="230" width="60" height="24" rx="6" fill="#ffffff" stroke="#64748b" />
+  <text x="345" y="246" font-size="10" font-weight="bold" fill="#334155" text-anchor="middle">E: 요도</text>
+  <line x1="315" y1="242" x2="280" y2="242" stroke="#64748b" stroke-width="1.5" />
+</svg>`,
       options: [
         "콩팥은 등 쪽에 좌우 1개씩 강낭콩 모양으로 위치한다.",
         "콩팥으로 들어가는 콩팥 동맥의 혈액은 콩팥 정맥보다 요소 등 노폐물 농도가 높다.",
@@ -416,15 +760,62 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 4) 배설",
       question: "콩팥에서 오줌을 만드는 기능적 기본 단위를 '네프론(Nephron)'이라고 합니다. 네프론을 구성하는 3가지 구조물이 바르게 짝지어진 것은?",
       diagramCaption: "[천재교과서 도식] 콩팥의 기본 단위 네프론",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <circle cx="80" cy="80" r="22" fill="#fca5a5" stroke="#dc2626" stroke-width="2"/>
-        <text x="80" y="84" font-size="10" font-weight="bold" fill="#991b1b" text-anchor="middle">사구체</text>
-        <path d="M 95 60 C 130 60, 130 100, 95 100" stroke="#2563eb" stroke-width="2.5" fill="none"/>
-        <text x="135" y="84" font-size="10" font-weight="bold" fill="#1e40af">보먼주머니</text>
-        <path d="M 130 100 Q 180 140 230 80 Q 280 40 330 110" stroke="#ca8a04" stroke-width="3" fill="none"/>
-        <text x="250" y="115" font-size="10" font-weight="bold" fill="#854d0e">세뇨관</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 270" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadowQ15" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="270" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Glomerulus (사구체: 모세혈관 털뭉치) -->
+  <g transform="translate(60, 40)">
+    <!-- Afferent & Efferent arteriole -->
+    <path d="M 0 50 L 50 70" stroke="#dc2626" stroke-width="6" stroke-linecap="round" />
+    <path d="M 50 85 L 0 105" stroke="#dc2626" stroke-width="5" stroke-linecap="round" />
+    
+    <!-- Tangle of capillaries (사구체 털실 뭉치) -->
+    <circle cx="75" cy="80" r="28" fill="#fee2e2" stroke="#dc2626" stroke-width="2" />
+    <path d="M 60 70 Q 75 95 90 70 Q 75 60 65 85 Q 85 85 85 70" fill="none" stroke="#dc2626" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- Bowman's Capsule (보먼주머니: 컵 모양 이중벽) -->
+    <path d="M 60 45 C 115 45, 125 115, 60 115" fill="none" stroke="#0284c7" stroke-width="4" stroke-linecap="round" />
+    <path d="M 60 52 C 105 52, 115 108, 60 108" fill="none" stroke="#7dd3fc" stroke-width="2" />
+
+    <!-- Labels for Glomerulus & Bowman's Capsule -->
+    <rect x="25" y="0" width="100" height="26" rx="6" fill="#ffffff" stroke="#dc2626" filter="url(#shadowQ15)" />
+    <text x="75" y="17" font-size="11" font-weight="900" fill="#b91c1c" text-anchor="middle">A: 사구체 (모세혈관)</text>
+    <line x1="75" y1="26" x2="75" y2="52" stroke="#dc2626" stroke-width="1.5" />
+
+    <rect x="110" y="115" width="105" height="26" rx="6" fill="#ffffff" stroke="#0284c7" filter="url(#shadowQ15)" />
+    <text x="162" y="132" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">B: 보먼주머니</text>
+    <line x1="125" y1="115" x2="105" y2="95" stroke="#0284c7" stroke-width="1.5" />
+  </g>
+
+  <!-- Convoluted Tubule (구불구불한 세뇨관) -->
+  <path d="M 165 115 Q 210 145 250 100 Q 290 55 330 110 Q 360 160 400 120 L 440 120" fill="none" stroke="#eab308" stroke-width="10" stroke-linecap="round" />
+  <!-- Surrounding capillary mesh -->
+  <path d="M 175 115 Q 220 155 260 110 Q 300 65 340 120 Q 370 170 410 130" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="4,2" />
+
+  <!-- Label C: 세뇨관 -->
+  <rect x="235" y="180" width="90" height="26" rx="6" fill="#ffffff" stroke="#ca8a04" filter="url(#shadowQ15)" />
+  <text x="280" y="197" font-size="11" font-weight="900" fill="#854d0e" text-anchor="middle">C: 세뇨관</text>
+  <line x1="280" y1="180" x2="280" y2="120" stroke="#ca8a04" stroke-width="1.5" />
+
+  <!-- Collecting Duct (집합관) -->
+  <path d="M 440 30 L 440 210" stroke="#ca8a04" stroke-width="14" stroke-linecap="round" />
+  <text x="440" y="115" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle" transform="rotate(90, 440, 115)">집합관</text>
+  <text x="440" y="235" font-size="10" font-weight="bold" fill="#713f12" text-anchor="middle">➔ 콩팥 깔때기</text>
+
+  <!-- Formula Summary -->
+  <rect x="30" y="215" width="370" height="42" rx="8" fill="#e0f2fe" stroke="#38bdf8" />
+  <text x="215" y="232" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">
+    ★ 콩팥의 기본 단위 네프론(Nephron) = A(사구체) + B(보먼주머니) + C(세뇨관)
+  </text>
+  <text x="215" y="248" font-size="10" font-weight="bold" fill="#0284c7" text-anchor="middle">
+    콩팥 1개당 약 100만 개 (양쪽 콩팥에 총 200만 개 존재)
+  </text>
+</svg>`,
       options: [
         "사구체, 보먼주머니, 세뇨관",
         "콩팥 깔때기, 수뇨관, 방광",
@@ -442,30 +833,77 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 4) 배설",
       question: "네프론에서 일어나는 오줌 생성의 3단계 과정(여과, 재흡수, 분비)에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 오줌의 생성 3단계 과정",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <g transform="translate(20, 25)">
-          <rect x="0" y="0" width="95" height="105" rx="8" fill="#eff6ff" stroke="#3b82f6"/>
-          <text x="47" y="25" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">[1단계 여과]</text>
-          <text x="47" y="48" font-size="9" fill="#1e3a8a" text-anchor="middle">사구체 ➔ 보먼주머니</text>
-          <text x="47" y="68" font-size="9" font-weight="bold" fill="#dc2626" text-anchor="middle">단백질·혈구 여과X</text>
-          <text x="47" y="88" font-size="9" fill="#475569" text-anchor="middle">물,포도당,요소 여과</text>
-        </g>
-        <g transform="translate(130, 25)">
-          <rect x="0" y="0" width="105" height="105" rx="8" fill="#f0fdf4" stroke="#16a34a"/>
-          <text x="52" y="25" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">[2단계 재흡수]</text>
-          <text x="52" y="48" font-size="9" fill="#166534" text-anchor="middle">세뇨관 ➔ 모세혈관</text>
-          <text x="52" y="68" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle">포도당·아미노산 100%</text>
-          <text x="52" y="88" font-size="9" fill="#475569" text-anchor="middle">물·무기염류 대부분</text>
-        </g>
-        <g transform="translate(250, 25)">
-          <rect x="0" y="0" width="90" height="105" rx="8" fill="#fefce8" stroke="#ca8a04"/>
-          <text x="45" y="25" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">[3단계 분비]</text>
-          <text x="45" y="48" font-size="9" fill="#713f12" text-anchor="middle">모세혈관 ➔ 세뇨관</text>
-          <text x="45" y="75" font-size="9" font-weight="bold" fill="#b45309" text-anchor="middle">미처 여과 안 된</text>
-          <text x="45" y="90" font-size="9" fill="#b45309" text-anchor="middle">요소 등 노폐물</text>
-        </g>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 270" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadowQ16" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="270" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Step 1: 여과 (사구체 -> 보먼주머니) -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="155" height="185" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" filter="url(#shadowQ16)" />
+    <rect x="0" y="0" width="155" height="28" rx="12" fill="#eff6ff" />
+    <text x="77" y="19" font-size="12" font-weight="900" fill="#1d4ed8" text-anchor="middle">1단계: 여과 (Filtration)</text>
+
+    <text x="77" y="45" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">사구체 ➔ 보먼주머니</text>
+    <text x="77" y="60" font-size="9" fill="#64748b" text-anchor="middle">(높은 혈압차로 밀려남)</text>
+
+    <!-- Filter In/Out Box -->
+    <rect x="10" y="70" width="135" height="50" rx="6" fill="#f0fdf4" stroke="#86efac" />
+    <text x="18" y="86" font-size="10" font-weight="bold" fill="#15803d">여과 O (분자 작음):</text>
+    <text x="18" y="102" font-size="9" fill="#166534">물, 포도당, 아미노산, 요소</text>
+
+    <rect x="10" y="125" width="135" height="50" rx="6" fill="#fef2f2" stroke="#fca5a5" />
+    <text x="18" y="141" font-size="10" font-weight="bold" fill="#b91c1c">여과 X (거대 분자):</text>
+    <text x="18" y="157" font-size="9" font-weight="bold" fill="#dc2626">단백질, 혈구, 지방</text>
+  </g>
+
+  <!-- Step 2: 재흡수 (세뇨관 -> 모세혈관) -->
+  <g transform="translate(192, 20)">
+    <rect x="0" y="0" width="165" height="185" rx="12" fill="#ffffff" stroke="#86efac" stroke-width="2" filter="url(#shadowQ16)" />
+    <rect x="0" y="0" width="165" height="28" rx="12" fill="#f0fdf4" />
+    <text x="82" y="19" font-size="12" font-weight="900" fill="#15803d" text-anchor="middle">2단계: 재흡수 (Reabsorption)</text>
+
+    <text x="82" y="45" font-size="10" font-weight="bold" fill="#166534" text-anchor="middle">세뇨관 ➔ 모세혈관</text>
+    <text x="82" y="60" font-size="9" fill="#64748b" text-anchor="middle">(필수 영양소 회수)</text>
+
+    <!-- 100% Reabsorption Highlight -->
+    <rect x="10" y="70" width="145" height="50" rx="6" fill="#fefce8" stroke="#fde047" stroke-width="1.5" />
+    <text x="18" y="88" font-size="11" font-weight="900" fill="#a16207">★ 100% 전부 재흡수:</text>
+    <text x="18" y="106" font-size="10" font-weight="bold" fill="#b45309">포도당, 아미노산</text>
+
+    <rect x="10" y="125" width="145" height="50" rx="6" fill="#f1f5f9" stroke="#cbd5e1" />
+    <text x="18" y="143" font-size="10" font-weight="bold" fill="#334155">대부분(약 99%) 재흡수:</text>
+    <text x="18" y="159" font-size="9" fill="#475569">물, 무기염류</text>
+  </g>
+
+  <!-- Step 3: 분비 (모세혈관 -> 세뇨관) -->
+  <g transform="translate(370, 20)">
+    <rect x="0" y="0" width="145" height="185" rx="12" fill="#ffffff" stroke="#fde047" stroke-width="2" filter="url(#shadowQ16)" />
+    <rect x="0" y="0" width="145" height="28" rx="12" fill="#fefce8" />
+    <text x="72" y="19" font-size="12" font-weight="900" fill="#a16207" text-anchor="middle">3단계: 분비 (Secretion)</text>
+
+    <text x="72" y="45" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">모세혈관 ➔ 세뇨관</text>
+    <text x="72" y="60" font-size="9" fill="#64748b" text-anchor="middle">(미처 여과 안 된 노폐물)</text>
+
+    <rect x="10" y="70" width="125" height="105" rx="6" fill="#fef2f2" stroke="#fecdd3" />
+    <text x="18" y="92" font-size="10" font-weight="bold" fill="#b91c1c">분비 물질:</text>
+    <text x="18" y="112" font-size="10" font-weight="bold" fill="#991b1b">요소 등 여분의 노폐물</text>
+    <text x="18" y="135" font-size="9" fill="#7f1d1d">혈액에 남은 노폐물을</text>
+    <text x="18" y="150" font-size="9" fill="#7f1d1d">능동적으로 오줌 배출</text>
+  </g>
+
+  <!-- Bottom Final Output -->
+  <rect x="25" y="215" width="490" height="42" rx="8" fill="#e0f2fe" stroke="#38bdf8" />
+  <text x="270" y="233" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">
+    최종 오줌 = 여과액에서 [포도당·아미노산 100% 회수] + [물 99% 회수] + [요소 추가 분비] ➔ 콩팥 깔때기
+  </text>
+  <text x="270" y="249" font-size="10" font-weight="900" fill="#dc2626" text-anchor="middle">
+    정상인의 오줌에 포도당이나 단백질이 검출되면 신장 이상(당뇨/단백뇨) 증상임!
+  </text>
+</svg>`,
       options: [
         "사구체에서 보먼주머니로 단백질과 적혈구가 대량 여과된다.",
         "건강한 사람의 세뇨관에서는 포도당과 아미노산이 모세혈관으로 100% 재흡수된다.",
@@ -483,17 +921,59 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 4) 배설",
       question: "우리 몸에서 생명 활동에 필요한 에너지를 얻기 위해 소화계, 순환계, 호흡계, 배설계가 상호작용하는 원리에 대한 설명으로 옳지 않은 것은?",
       diagramCaption: "[천재교과서 도식] 기관계의 통합적 상호작용",
-      diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
-        <rect width="360" height="160" fill="#f8fafc" rx="12" />
-        <circle cx="180" cy="80" r="35" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-        <text x="180" y="84" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">순환계 (운반)</text>
-        <rect x="25" y="60" width="80" height="40" rx="8" fill="#fef08a" stroke="#ca8a04"/>
-        <text x="65" y="84" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">소화계(영양소)</text>
-        <rect x="140" y="10" width="80" height="30" rx="8" fill="#e0f2fe" stroke="#0284c7"/>
-        <text x="180" y="30" font-size="10" font-weight="bold" fill="#0369a1" text-anchor="middle">호흡계(산소/CO2)</text>
-        <rect x="255" y="60" width="80" height="40" rx="8" fill="#dcfce7" stroke="#16a34a"/>
-        <text x="295" y="84" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">배설계(요소 배출)</text>
-      </svg>`,
+      diagramSvg: `<svg viewBox="0 0 540 260" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shadowQ17" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="260" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Center: Circulatory System (순환계) -->
+  <g transform="translate(195, 65)" filter="url(#shadowQ17)">
+    <circle cx="75" cy="65" r="50" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5" />
+    <text x="75" y="58" font-size="13" font-weight="900" fill="#991b1b" text-anchor="middle">순환계 (심장·혈액)</text>
+    <text x="75" y="74" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">중심 매개체: 운반</text>
+    <text x="75" y="88" font-size="9" fill="#7f1d1d" text-anchor="middle">(영양소, 산소, 노폐물)</text>
+  </g>
+
+  <!-- Top: Respiratory System (호흡계) -->
+  <g transform="translate(195, 10)">
+    <rect x="0" y="0" width="150" height="42" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <text x="75" y="18" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">호흡계 (폐)</text>
+    <text x="75" y="32" font-size="9" fill="#0284c7" text-anchor="middle">O₂ 흡수 / CO₂ 배출</text>
+  </g>
+  <line x1="270" y1="52" x2="270" y2="65" stroke="#0284c7" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Left: Digestive System (소화계) -->
+  <g transform="translate(20, 85)">
+    <rect x="0" y="0" width="140" height="50" rx="8" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+    <text x="70" y="20" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">소화계 (위·소장)</text>
+    <text x="70" y="36" font-size="9" fill="#a16207" text-anchor="middle">음식물 소화 ➔ 영양소 흡수</text>
+  </g>
+  <line x1="160" y1="110" x2="195" y2="110" stroke="#ca8a04" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Right: Excretory System (배설계) -->
+  <g transform="translate(380, 85)">
+    <rect x="0" y="0" width="140" height="50" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+    <text x="70" y="20" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">배설계 (콩팥·방광)</text>
+    <text x="70" y="36" font-size="9" fill="#166534" text-anchor="middle">요소 등 노폐물 ➔ 오줌 배출</text>
+  </g>
+  <line x1="345" y1="110" x2="380" y2="110" stroke="#16a34a" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Bottom: Body Tissue Cells (온몸의 조직 세포) -->
+  <g transform="translate(170, 195)">
+    <rect x="0" y="0" width="200" height="48" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2" filter="url(#shadowQ17)" />
+    <text x="100" y="20" font-size="12" font-weight="900" fill="#92400e" text-anchor="middle">온몸의 조직 세포</text>
+    <text x="100" y="36" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">세포 호흡 수행 ➔ 생명 활동 에너지 생성</text>
+  </g>
+  <line x1="270" y1="165" x2="270" y2="195" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Callout note -->
+  <text x="270" y="254" font-size="10" font-weight="bold" fill="#475569" text-anchor="middle">
+    💡 소화·호흡·순환·배설계는 긴밀히 협력하여 세포에 필요한 물질을 공급하고 노폐물을 배출합니다.
+  </text>
+</svg>`,
       options: [
         "소화계는 음식물 속 영양소를 세포가 흡수할 수 있는 크기로 소화하여 흡수한다.",
         "호흡계는 산소를 흡수하고 세포 호흡 결과 발생한 이산화 탄소를 몸 밖으로 내보낸다.",
