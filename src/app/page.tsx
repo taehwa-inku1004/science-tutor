@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Header } from "@/components/Header";
 import { ImageUploadZone } from "@/components/ImageUploadZone";
 import { ProblemViewer } from "@/components/ProblemViewer";
@@ -18,6 +18,7 @@ import {
 } from "@/lib/indexedDbStorage";
 import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 import { CHUNJAE_FINAL_MOCK_EXAM } from "@/lib/chunjaeMockExamData";
+import { buildDynamicMockExam } from "@/lib/mockExamBuilder";
 
 export default function Home() {
   const [activeAnalysis, setActiveAnalysis] = useState<TutorAnalysis | null>(null);
@@ -167,6 +168,23 @@ export default function Home() {
 
       const result: TutorAnalysis = json.data;
       result.imageUrl = imageBase64;
+
+      // Automatically register new note into savedNotes and persistent storage
+      const newNote: SavedNote = {
+        ...result,
+        imageUrl: imageBase64,
+        savedAt: new Date().toISOString(),
+      };
+      setSavedNotes((prev) => [newNote, ...prev.filter((n) => n.id !== newNote.id)]);
+      saveNoteToIndexedDB(newNote).catch(() => {});
+      try {
+        fetch("/api/notes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ note: newNote }),
+        }).catch(() => {});
+      } catch {}
+
       handleSetActiveAnalysis(result, imageBase64);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err: unknown) {
@@ -229,6 +247,10 @@ export default function Home() {
   const isCurrentSaved = !!(
     activeAnalysis && savedNotes.some((n) => n.id === activeAnalysis.id)
   );
+
+  const currentMockExam = useMemo(() => {
+    return buildDynamicMockExam(CHUNJAE_FINAL_MOCK_EXAM, savedNotes);
+  }, [savedNotes]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
@@ -353,7 +375,7 @@ export default function Home() {
       <MockExamModal
         isOpen={isMockExamOpen}
         onClose={() => setIsMockExamOpen(false)}
-        exam={CHUNJAE_FINAL_MOCK_EXAM}
+        exam={currentMockExam}
       />
     </div>
   );

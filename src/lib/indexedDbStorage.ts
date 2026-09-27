@@ -29,20 +29,48 @@ function openDB(): Promise<IDBDatabase> {
 export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
   try {
     const db = await openDB();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
       const request = store.getAll();
 
       request.onsuccess = () => {
         let notes = (request.result as SavedNote[]) || [];
-        if (notes.length === 0 && INITIAL_SAVED_NOTES.length > 0) {
-          // Auto-seed initial saved notes so new devices or Vercel deployments get previous notes immediately!
-          for (const initNote of INITIAL_SAVED_NOTES) {
-            store.put(initNote);
+
+        // Check and merge from localStorage backup (iPad Safari fail-safe)
+        try {
+          if (typeof window !== "undefined") {
+            const lsRaw = localStorage.getItem("science_tutor_notes_backup");
+            if (lsRaw) {
+              const lsNotes: SavedNote[] = JSON.parse(lsRaw);
+              const noteMap = new Map(notes.map((n) => [n.id, n]));
+              lsNotes.forEach((lsN) => {
+                if (!noteMap.has(lsN.id)) {
+                  noteMap.set(lsN.id, lsN);
+                  try {
+                    store.put(lsN);
+                  } catch {}
+                }
+              });
+              notes = Array.from(noteMap.values());
+            }
           }
-          notes = [...INITIAL_SAVED_NOTES];
+        } catch (lsErr) {
+          console.warn("LocalStorage merge error:", lsErr);
         }
+
+        // Auto-seed initial saved notes so new devices get previous notes immediately
+        const noteMap = new Map(notes.map((n) => [n.id, n]));
+        for (const initNote of INITIAL_SAVED_NOTES) {
+          if (!noteMap.has(initNote.id)) {
+            noteMap.set(initNote.id, initNote);
+            try {
+              store.put(initNote);
+            } catch {}
+          }
+        }
+        notes = Array.from(noteMap.values());
+
         notes.sort((a, b) => {
           const dateA = new Date(a.savedAt || a.createdAt).getTime();
           const dateB = new Date(b.savedAt || b.createdAt).getTime();
@@ -50,24 +78,58 @@ export async function getAllNotesFromIndexedDB(): Promise<SavedNote[]> {
         });
         resolve(notes);
       };
-      request.onerror = () => reject(request.error);
+
+      request.onerror = () => {
+        // Fallback to localStorage and initial notes
+        try {
+          const lsRaw = localStorage.getItem("science_tutor_notes_backup");
+          if (lsRaw) {
+            resolve(JSON.parse(lsRaw));
+            return;
+          }
+        } catch {}
+        resolve(INITIAL_SAVED_NOTES);
+      };
     });
   } catch (err) {
     console.warn("IndexedDB getAllNotes error, falling back:", err);
+    try {
+      const lsRaw = localStorage.getItem("science_tutor_notes_backup");
+      if (lsRaw) return JSON.parse(lsRaw);
+    } catch {}
     return INITIAL_SAVED_NOTES;
   }
 }
 
 export async function saveNoteToIndexedDB(note: SavedNote): Promise<void> {
+  // Always update localStorage backup first as immediate sync
+  try {
+    if (typeof window !== "undefined") {
+      const lsRaw = localStorage.getItem("science_tutor_notes_backup");
+      const existing: SavedNote[] = lsRaw ? JSON.parse(lsRaw) : [];
+      const updated = [note, ...existing.filter((n) => n.id !== note.id)];
+      // Keep up to 30 notes in localStorage backup, limit huge base64 strings to protect quota
+      const safeBackup = updated.slice(0, 30).map((n) => {
+        if (n.imageUrl && n.imageUrl.length > 500000) {
+          return { ...n, imageUrl: undefined };
+        }
+        return n;
+      });
+      localStorage.setItem("science_tutor_notes_backup", JSON.stringify(safeBackup));
+    }
+  } catch (lsErr) {
+    console.warn("LocalStorage backup warning:", lsErr);
+  }
+
   try {
     const db = await openDB();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
       const request = store.put(note);
 
       request.onsuccess = () => resolve();
-      request.onerror = () => reject(request.error);
+      request.onerror = () => resolve();
     });
   } catch (err) {
     console.warn("IndexedDB saveNote error:", err);
@@ -76,14 +138,25 @@ export async function saveNoteToIndexedDB(note: SavedNote): Promise<void> {
 
 export async function deleteNoteFromIndexedDB(id: string): Promise<void> {
   try {
+    if (typeof window !== "undefined") {
+      const lsRaw = localStorage.getItem("science_tutor_notes_backup");
+      if (lsRaw) {
+        const existing: SavedNote[] = JSON.parse(lsRaw);
+        const updated = existing.filter((n) => n.id !== id);
+        localStorage.setItem("science_tutor_notes_backup", JSON.stringify(updated));
+      }
+    }
+  } catch {}
+
+  try {
     const db = await openDB();
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const tx = db.transaction(STORE_NAME, "readwrite");
       const store = tx.objectStore(STORE_NAME);
       const request = store.delete(id);
 
       request.onsuccess = () => resolve();
-      request.onerror = () => reject(request.error);
+      request.onerror = () => resolve();
     });
   } catch (err) {
     console.warn("IndexedDB deleteNote error:", err);
