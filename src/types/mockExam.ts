@@ -4,6 +4,7 @@ export interface MockExamQuestion {
   unit: string;
   question: string;
   diagramSvg?: string; // High-resolution SVG graphic code
+  diagramImageUrl?: string; // Realistic textbook illustration image URL
   diagramCaption?: string;
   options: string[]; // 5 choices: ①, ②, ③, ④, ⑤
   correctAnswerIndex: number; // 0 ~ 4

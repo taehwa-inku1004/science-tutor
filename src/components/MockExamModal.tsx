@@ -271,18 +271,28 @@ export function MockExamModal({ isOpen, onClose, exam }: MockExamModalProps) {
                   <LatexRenderer content={currentQ.question} />
                 </h3>
 
-                {/* Scientific Vector Diagram / Graph */}
-                {currentQ.diagramSvg && (
-                  <div className="p-3 bg-slate-50/80 rounded-2xl border border-slate-200/80 my-2">
+                {/* Scientific Illustration / Diagram / Graph */}
+                {(currentQ.diagramImageUrl || currentQ.diagramSvg) && (
+                  <div className="p-3 bg-white rounded-2xl border border-slate-200/80 my-2 shadow-2xs">
                     {currentQ.diagramCaption && (
                       <p className="text-xs font-bold text-indigo-700 mb-2 text-center">
                         {currentQ.diagramCaption}
                       </p>
                     )}
-                    <div
-                      className="flex justify-center"
-                      dangerouslySetInnerHTML={{ __html: currentQ.diagramSvg }}
-                    />
+                    {currentQ.diagramImageUrl ? (
+                      <div className="flex justify-center overflow-hidden rounded-xl bg-slate-50 border border-slate-100 max-h-[340px]">
+                        <img
+                          src={currentQ.diagramImageUrl}
+                          alt={currentQ.diagramCaption || "교과서 도식"}
+                          className="max-h-[340px] w-auto object-contain rounded-xl"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className="flex justify-center"
+                        dangerouslySetInnerHTML={{ __html: currentQ.diagramSvg || "" }}
+                      />
+                    )}
                   </div>
                 )}
 
@@ -568,17 +578,27 @@ export function MockExamModal({ isOpen, onClose, exam }: MockExamModalProps) {
                       <LatexRenderer content={q.question} />
                     </h4>
 
-                    {q.diagramSvg && (
-                      <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200/80 my-2">
+                    {(q.diagramImageUrl || q.diagramSvg) && (
+                      <div className="p-3 bg-white rounded-2xl border border-slate-200/80 my-2 shadow-2xs">
                         {q.diagramCaption && (
                           <p className="text-xs font-bold text-indigo-700 mb-1.5 text-center">
                             {q.diagramCaption}
                           </p>
                         )}
-                        <div
-                          className="flex justify-center"
-                          dangerouslySetInnerHTML={{ __html: q.diagramSvg }}
-                        />
+                        {q.diagramImageUrl ? (
+                          <div className="flex justify-center overflow-hidden rounded-xl bg-slate-50 border border-slate-100 max-h-[300px]">
+                            <img
+                              src={q.diagramImageUrl}
+                              alt={q.diagramCaption || "교과서 도식"}
+                              className="max-h-[300px] w-auto object-contain rounded-xl"
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className="flex justify-center"
+                            dangerouslySetInnerHTML={{ __html: q.diagramSvg || "" }}
+                          />
+                        )}
                       </div>
                     )}
 

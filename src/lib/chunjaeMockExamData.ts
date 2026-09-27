@@ -60,6 +60,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "다음 그림은 사람의 소화 기관을 나타낸 모식도이다. 기호 A~E에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 사람의 소화계 구조",
+      diagramImageUrl: "/mock-exam/q-2.jpg",
       diagramSvg: `<svg viewBox="0 0 360 210" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="210" fill="#f8fafc" rx="12" />
         <!-- Liver A -->
@@ -95,6 +96,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "다음은 침 속의 소화 효소(아밀레이스)에 의한 녹말의 소화 실험을 나타낸 것이다. 시험관 A~D 중 30분 후 아이오딘 반응 시 청람색이 나타나지 않고 황갈색을 유지하는 시험관과 그 까닭으로 옳은 것은?",
       diagramCaption: "[천재교과서 탐구] 침에 의한 녹말의 소화와 온도",
+      diagramImageUrl: "/mock-exam/q-3.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <g transform="translate(30, 15)">
@@ -168,6 +170,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "다음 그림은 큰 지방 덩어리가 쓸개즙과 만나 작아지는 현상을 나타낸 것이다. 쓸개즙의 특징에 대한 설명으로 옳은 것만을 <보기>에서 모두 고른 것은?",
       diagramCaption: "[천재교과서 도식] 쓸개즙의 지방 유화 작용",
+      diagramImageUrl: "/mock-exam/q-5.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
         <circle cx="80" cy="80" r="40" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
@@ -252,6 +255,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 소화",
       question: "소장의 융털 내부 구조에서 가운데에 위치한 A(암죽관)와 그 주변을 감싸고 있는 B(모세혈관)를 통해 흡수되는 영양소의 종류가 옳게 짝지어진 것은?",
       diagramCaption: "[천재교과서 도식] 소장 융털의 영양소 흡수 경로",
+      diagramImageUrl: "/mock-exam/q-8.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <path d="M 140 150 C 140 60, 220 60, 220 150 Z" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
@@ -279,6 +283,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "혈액을 시험관에 넣고 원심 분리했을 때 위쪽의 액체 성분 A(혈장)와 아래쪽의 가라앉은 성분 B(혈구)에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 혈액의 구성 성분 원심분리",
+      diagramImageUrl: "/mock-exam/q-9.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
         <rect x="70" y="20" width="40" height="110" rx="10" fill="#e2e8f0" stroke="#334155" stroke-width="2"/>
@@ -304,6 +309,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "다음 그림은 사람의 심장 구조를 나타낸 것이다. 심방과 심실 사이, 심실과 동맥 사이에 위치하여 혈액이 거꾸로 흐르는 것(역류)을 막아주는 구조물의 이름은?",
       diagramCaption: "[천재교과서 도식] 심장의 내부 구조와 판막",
+      diagramImageUrl: "/mock-exam/q-10.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <path d="M 130 50 C 130 20, 230 20, 230 50 C 230 110, 180 150, 180 155 C 180 150, 130 110, 130 50 Z" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
@@ -330,6 +336,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "심장의 4개 방실(우심방, 우심실, 좌심방, 좌심실) 중 가장 두껍고 탄력적인 근육벽을 가지고 있어, 온몸의 먼 모세혈관까지 혈액을 강하게 뿜어내는 곳은?",
       diagramCaption: "[천재교과서 도식] 심실 근육벽의 두께 비교",
+      diagramImageUrl: "/mock-exam/q-11.jpg",
       diagramSvg: `<svg viewBox="0 0 360 150" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="150" fill="#f8fafc" rx="12" />
         <rect x="40" y="30" width="120" height="90" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
@@ -358,6 +365,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "다음 중 심장에서 출발하여 폐를 거쳐 산소를 받아 심장으로 돌아오는 [폐순환] 경로를 옳게 나타낸 것은?",
       diagramCaption: "[천재교과서 도식] 폐순환의 경로",
+      diagramImageUrl: "/mock-exam/q-12.jpg",
       diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="140" fill="#f8fafc" rx="12" />
         <rect x="20" y="45" width="65" height="35" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
@@ -389,6 +397,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "다음 혈관들 중 산소가 가장 풍부하게 들어있는 '동맥혈'이 흐르는 혈관만을 고른 것은?",
       diagramCaption: "[천재교과서 핵심 개념] 혈액의 종류와 혈관",
+      diagramImageUrl: "/mock-exam/q-13.jpg",
       diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="140" fill="#f8fafc" rx="12" />
         <rect x="30" y="30" width="130" height="80" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
@@ -448,6 +457,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "4. 동물과 에너지 > 1) 순환",
       question: "정맥은 혈압이 매우 낮아 혈액이 심장으로 돌아오기 어렵습니다. 혈액이 거꾸로 흐르는 것을 막기 위해 정맥 내부에 특별히 존재하는 구조물과 혈액 순환을 돕는 주된 힘은?",
       diagramCaption: "[천재교과서 도식] 정맥의 판막과 근육 수축",
+      diagramImageUrl: "/mock-exam/q-15.jpg",
       diagramSvg: `<svg viewBox="0 0 360 140" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="140" fill="#f8fafc" rx="12" />
         <rect x="120" y="20" width="120" height="100" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
@@ -507,6 +517,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "5. 식물과 에너지 > 1) 광합성",
       question: "다음 그림은 식물 잎의 단면 구조를 나타낸 것이다. 광합성이 가장 활발하게 일어나는 부위(세포가 빽빽하게 배열되고 엽록체가 많은 곳)의 기호와 명칭으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 잎의 내부 단면 구조",
+      diagramImageUrl: "/mock-exam/q-17.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <rect x="50" y="20" width="260" height="18" fill="#e2e8f0" stroke="#94a3b8"/>
@@ -591,6 +602,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "5. 식물과 에너지 > 1) 광합성",
       question: "다음 그림과 같이 검정말을 넣은 시험관에 1% 탄산수소 나트륨 수용액을 넣고 전등과의 거리를 조절하며 발생하는 기포 수를 측정하였다. 이에 대한 설명으로 옳지 않은 것은?",
       diagramCaption: "[천재교과서 탐구] 빛의 세기와 광합성 기포 발생",
+      diagramImageUrl: "/mock-exam/q-20.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
         <circle cx="60" cy="80" r="25" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
@@ -655,6 +667,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "5. 식물과 에너지 > 2) 식물의 호흡과 광합성산물",
       question: "다음 그림은 식물 잎 뒷면의 기공을 둘러싸고 있는 '공변세포'의 구조와 기공이 열리는 원리를 나타낸 것이다. 기공이 열리는 과정에 대한 설명으로 옳은 것은?",
       diagramCaption: "[천재교과서 도식] 기공과 공변세포의 구조 및 개폐 원리",
+      diagramImageUrl: "/mock-exam/q-22.jpg",
       diagramSvg: `<svg viewBox="0 0 360 170" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="170" fill="#f8fafc" rx="12" />
         <g transform="translate(60, 20)">
@@ -689,6 +702,7 @@ export const CHUNJAE_FINAL_MOCK_EXAM: MockExam = {
       unit: "5. 식물과 에너지 > 2) 식물의 호흡과 광합성산물",
       question: "숨을 불어넣어 노란색으로 만든 BTB 용액이 든 세 시험관을 장치하고 햇빛을 비추었다. 시험관 B(검정말+빛)에서 용액이 '파란색'으로 변한 과학적 까닭은?",
       diagramCaption: "[천재교과서 탐구] BTB 용액 색깔 변화 실험",
+      diagramImageUrl: "/mock-exam/q-23.jpg",
       diagramSvg: `<svg viewBox="0 0 360 160" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="160" fill="#f8fafc" rx="12" />
         <g transform="translate(50, 20)">
