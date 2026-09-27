@@ -37,8 +37,160 @@ export function buildDynamicMockExam(
 
   const notesToUse = relevantNotes.length > 0 ? relevantNotes : savedNotes;
 
-function getCleanTextbookDiagram(note: SavedNote): { imageUrl?: string; caption?: string } {
+// Dedicated Textbook SVGs
+const SVG_RING_BARKING = `<svg viewBox="0 0 540 280" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="barkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#78350f" />
+      <stop offset="40%" stop-color="#9a3412" />
+      <stop offset="70%" stop-color="#b45309" />
+      <stop offset="100%" stop-color="#78350f" />
+    </linearGradient>
+    <linearGradient id="xylemGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef3c7" />
+      <stop offset="50%" stop-color="#ffedd5" />
+      <stop offset="100%" stop-color="#fde68a" />
+    </linearGradient>
+    <filter id="shadowBark" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.2" />
+    </filter>
+  </defs>
+  <rect width="540" height="280" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Tree trunk stem -->
+  <g transform="translate(180, 20)" filter="url(#shadowBark)">
+    <!-- Upper trunk above swelling -->
+    <path d="M 40 10 L 40 70 L 100 70 L 100 10 Z" fill="url(#barkGrad)" stroke="#451a03" stroke-width="1.5" />
+    <!-- Swollen area (A: 부풀어 오른 윗부분) -->
+    <path d="M 40 70 C 20 85, 20 105, 43 115 L 97 115 C 120 105, 120 85, 100 70 Z" fill="url(#barkGrad)" stroke="#451a03" stroke-width="1.5" />
+    
+    <!-- Cut area (환상 박피 부위: 껍질/체관 제거, 안쪽 물관 노출) -->
+    <rect x="44" y="115" width="52" height="40" fill="url(#xylemGrad)" stroke="#d97706" stroke-width="1.5" />
+    <!-- Striations for xylem wood -->
+    <line x1="57" y1="115" x2="57" y2="155" stroke="#f59e0b" stroke-width="1" />
+    <line x1="70" y1="115" x2="70" y2="155" stroke="#f59e0b" stroke-width="1" />
+    <line x1="83" y1="115" x2="83" y2="155" stroke="#f59e0b" stroke-width="1" />
+
+    <!-- Lower trunk (B: 아래쪽 줄기, 굵기 변화 없음) -->
+    <path d="M 40 155 L 40 230 L 100 230 L 100 155 Z" fill="url(#barkGrad)" stroke="#451a03" stroke-width="1.5" />
+  </g>
+
+  <!-- Labels & Callouts -->
+  <!-- Callout A -->
+  <rect x="25" y="65" width="130" height="42" rx="8" fill="#ffffff" stroke="#b91c1c" stroke-width="1.5" filter="url(#shadowBark)" />
+  <text x="90" y="84" font-size="12" font-weight="900" fill="#b91c1c" text-anchor="middle">A (줄기 위쪽)</text>
+  <text x="90" y="99" font-size="9" font-weight="bold" fill="#7f1d1d" text-anchor="middle">부풀어 오름 (양분 축적)</text>
+  <line x1="155" y1="88" x2="202" y2="88" stroke="#b91c1c" stroke-width="2" />
+  <circle cx="202" cy="88" r="3" fill="#b91c1c" />
+
+  <!-- Cut zone label -->
+  <rect x="345" y="115" width="165" height="42" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.5" filter="url(#shadowBark)" />
+  <text x="427" y="133" font-size="11" font-weight="900" fill="#92400e" text-anchor="middle">환상 박피 부위</text>
+  <text x="427" y="148" font-size="9" fill="#78350f" text-anchor="middle">바깥쪽 체관 제거 / 안쪽 물관 유지</text>
+  <line x1="345" y1="135" x2="278" y2="135" stroke="#d97706" stroke-width="2" />
+  <circle cx="278" cy="135" r="3" fill="#d97706" />
+
+  <!-- Callout B -->
+  <rect x="25" y="170" width="130" height="42" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.5" filter="url(#shadowBark)" />
+  <text x="90" y="189" font-size="12" font-weight="900" fill="#1d4ed8" text-anchor="middle">B (줄기 아래쪽)</text>
+  <text x="90" y="204" font-size="9" fill="#1e3a8a" text-anchor="middle">굵기 변화 없음</text>
+  <line x1="155" y1="192" x2="220" y2="192" stroke="#1d4ed8" stroke-width="2" />
+  <circle cx="220" cy="192" r="3" fill="#1d4ed8" />
+
+  <!-- Bottom explanation banner -->
+  <rect x="25" y="240" width="490" height="30" rx="6" fill="#fefce8" stroke="#fde047" />
+  <text x="270" y="260" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">
+    원리: 잎에서 만든 유기 양분(설탕)이 체관을 타고 내려오다 박피 부위(A)에 쌓여 부풀어 오름
+  </text>
+</svg>`;
+const SVG_TEMP_GRAPH = `<svg viewBox="0 0 540 280" class="w-full max-w-lg mx-auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="curveFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="lightFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0" />
+    </linearGradient>
+    <filter id="shadowGraph" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.12" />
+    </filter>
+  </defs>
+  <rect width="540" height="280" fill="#f8fafc" rx="16" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Graph 1: (가) 빛의 세기 / CO2 농도 -->
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="220" height="195" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadowGraph)" />
+    <text x="110" y="24" font-size="11" font-weight="900" fill="#1e40af" text-anchor="middle">(가) 빛의 세기 or CO₂ 농도</text>
+
+    <!-- Axes -->
+    <line x1="35" y1="155" x2="195" y2="155" stroke="#334155" stroke-width="2" />
+    <line x1="35" y1="155" x2="35" y2="45" stroke="#334155" stroke-width="2" />
+    <!-- Arrow heads -->
+    <polygon points="198,155 190,151 190,159" fill="#334155" />
+    <polygon points="35,42 31,50 39,50" fill="#334155" />
+    
+    <text x="115" y="172" font-size="9" fill="#475569" text-anchor="middle">빛의 세기(CO₂ 농도) ➔</text>
+    <text x="25" y="42" font-size="9" fill="#475569" text-anchor="middle">광합성량</text>
+
+    <!-- Curve: Saturation curve -->
+    <path d="M 35 155 Q 75 140 100 85 T 185 80 L 185 155 Z" fill="url(#lightFill)" />
+    <path d="M 35 155 Q 75 140 100 85 T 185 80" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+    
+    <circle cx="115" cy="81" r="3.5" fill="#2563eb" />
+    <text x="115" y="73" font-size="9" font-weight="bold" fill="#1d4ed8" text-anchor="middle">광포화점</text>
+    <text x="115" y="115" font-size="9" fill="#64748b" text-anchor="middle">일정 세기 이상 ➔ 일정</text>
+  </g>
+
+  <!-- Graph 2: (나) 온도 (Temperature) - Asymmetric Bell Curve -->
+  <g transform="translate(280, 25)">
+    <rect x="0" y="0" width="230" height="195" rx="10" fill="#ffffff" stroke="#cbd5e1" filter="url(#shadowGraph)" />
+    <text x="115" y="24" font-size="11" font-weight="900" fill="#b91c1c" text-anchor="middle">(나) 온도 (Temperature) ★</text>
+
+    <!-- Axes -->
+    <line x1="35" y1="155" x2="205" y2="155" stroke="#334155" stroke-width="2" />
+    <line x1="35" y1="155" x2="35" y2="45" stroke="#334155" stroke-width="2" />
+    <polygon points="208,155 200,151 200,159" fill="#334155" />
+    <polygon points="35,42 31,50 39,50" fill="#334155" />
+
+    <text x="120" y="172" font-size="9" fill="#475569" text-anchor="middle">온도(℃) ➔</text>
+    <text x="25" y="42" font-size="9" fill="#475569" text-anchor="middle">광합성량</text>
+
+    <!-- Temperature Ticks -->
+    <text x="35" y="166" font-size="8" fill="#64748b" text-anchor="middle">0</text>
+    <text x="75" y="166" font-size="8" fill="#64748b" text-anchor="middle">20</text>
+    <text x="115" y="166" font-size="8" font-weight="bold" fill="#dc2626" text-anchor="middle">35~40</text>
+    <text x="155" y="166" font-size="8" fill="#64748b" text-anchor="middle">50</text>
+
+    <!-- Bell curve: slow rise, sharp peak at 36-38C, steep drop -->
+    <path d="M 35 155 Q 75 145 105 105 Q 115 60 120 60 Q 128 65 138 120 L 145 155 Z" fill="url(#curveFill)" />
+    <path d="M 35 155 Q 75 145 105 105 Q 115 60 120 60 Q 128 65 138 120 L 145 155" fill="none" stroke="#dc2626" stroke-width="3" stroke-linecap="round" />
+
+    <!-- Peak Marker -->
+    <circle cx="120" cy="60" r="4" fill="#dc2626" />
+    <line x1="120" y1="60" x2="120" y2="155" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" />
+    <text x="120" y="50" font-size="9" font-weight="900" fill="#b91c1c" text-anchor="middle">최적 온도 (약 35~40℃)</text>
+    <text x="175" y="110" font-size="8" font-weight="bold" fill="#991b1b" text-anchor="middle">40℃ 이상</text>
+    <text x="175" y="122" font-size="8" font-weight="bold" fill="#991b1b" text-anchor="middle">효소 변성으로 급감!</text>
+  </g>
+
+  <!-- Bottom Summary -->
+  <rect x="30" y="235" width="480" height="32" rx="6" fill="#fef2f2" stroke="#fca5a5" />
+  <text x="270" y="255" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">
+    핵심: 온도는 35~40℃에서 정점을 찍고 그 이상에서는 효소의 단백질 변성으로 급격히 감소하는 종 모양!
+  </text>
+</svg>`;
+
+function getCleanTextbookDiagram(note: SavedNote): { imageUrl?: string; svg?: string; caption?: string } {
   const text = `${note.curriculumUnit} ${note.title} ${note.keyConcept}`;
+  
+  if (text.includes("환상 박피") || text.includes("박피")) {
+    return { svg: SVG_RING_BARKING, caption: "[천재교과서 탐구] 줄기의 환상 박피 실험과 유기 양분의 이동" };
+  }
+  if (text.includes("온도") && (text.includes("광합성") || text.includes("그래프"))) {
+    return { svg: SVG_TEMP_GRAPH, caption: "[천재교과서 도식] 환경 요인(온도·빛·CO₂)과 광합성량 그래프" };
+  }
   if (text.includes("소화계") || text.includes("소화 기관")) {
     return { imageUrl: "/mock-exam/q-2.jpg", caption: "[교과서 표준 도식] 사람의 소화계 구조" };
   }
@@ -75,7 +227,7 @@ function getCleanTextbookDiagram(note: SavedNote): { imageUrl?: string; caption?
   if (text.includes("영양소") || text.includes("검출")) {
     return { imageUrl: "/mock-exam/q-1.jpg", caption: "[교과서 표준 실험] 영양소 검출 반응" };
   }
-  return { imageUrl: undefined, caption: undefined };
+  return { imageUrl: undefined, svg: undefined, caption: undefined };
 }
 
   // 2. Convert each saved note into a freshly-authored MockExamQuestion (no handwritten pen marks)
@@ -89,9 +241,14 @@ function getCleanTextbookDiagram(note: SavedNote): { imageUrl?: string; caption?
       const q = note.twinQuiz[0];
       let options = [...q.options];
 
-      // Ensure 5 choices
+      // Ensure 5 choices with meaningful scientific distractors
+      const distractors = [
+        "해당 조건에서는 관련 반응이나 물질 이동이 전혀 일어나지 않는다.",
+        "농도나 압력 차이와 무관하게 항상 일정한 속도로 진행된다.",
+        "생명 활동에 필요한 에너지를 전혀 소모하거나 방출하지 않는다."
+      ];
       while (options.length < 5) {
-        options.push(`기타 선지 ${options.length + 1}`);
+        options.push(distractors[(options.length) % distractors.length]);
       }
       if (options.length > 5) {
         options = options.slice(0, 5);
@@ -103,6 +260,7 @@ function getCleanTextbookDiagram(note: SavedNote): { imageUrl?: string; caption?
         unit: note.curriculumUnit || "오답노트 클리닉",
         question: `[오답 클리닉 신규 문항] ${q.question}`,
         diagramImageUrl: cleanDiagram.imageUrl,
+        diagramSvg: cleanDiagram.svg,
         diagramCaption: cleanDiagram.caption,
         options,
         correctAnswerIndex: Math.min(q.correctAnswerIndex, 4),

@@ -36,7 +36,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "대동맥",
           "폐동맥",
           "좌심실",
-          "기타 선지 5"
+          "대정맥과 우심방"
         ],
         "correctAnswerIndex": 2,
         "explanation": "폐동맥은 심장 우심실에서 폐로 혈액을 보내는 통로로, 온몸에서 돌아온 산소가 부족한 정맥혈이 흐릅니다."
@@ -49,7 +49,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "동맥혈",
           "림프액",
           "조직액",
-          "기타 선지 5"
+          "혈소판"
         ],
         "correctAnswerIndex": 1,
         "explanation": "좌심실은 산소가 풍부한 동맥혈을 온몸으로 펌프질해 보내는 곳입니다."
@@ -199,7 +199,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "쓸개-간",
           "이자-간",
           "위-간",
-          "기타 선지 5"
+          "이자-쓸개"
         ],
         "correctAnswerIndex": 0,
         "explanation": "쓸개즙은 간에서 생성되어 쓸개에 저장되었다가 십이지장으로 분비됩니다."
@@ -212,7 +212,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "펩신",
           "트립신",
           "라이페이스",
-          "기타 선지 5"
+          "탄수화물 분해 효소"
         ],
         "correctAnswerIndex": 1,
         "explanation": "펩신은 위에서 단백질을 소화하는 효소이며, 이자액에는 탄수화물, 단백질, 지방을 모두 소화하는 효소가 포함되어 있습니다."
@@ -361,7 +361,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "녹말+침(100℃)",
           "녹말+침(35℃)",
           "녹말+증류수(35℃)",
-          "기타 선지 5"
+          "물만 들어 있는 시험관"
         ],
         "correctAnswerIndex": 2,
         "explanation": "효소가 살아있고(끓이지 않음), 온도 조건이 적절한(35℃) 시험관이 유일하게 정답입니다."
@@ -374,7 +374,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "단백질이 주성분이라 열에 약하다",
           "모든 영양소는 같은 효소로 분해된다",
           "낮은 온도에서도 항상 빠르게 반응한다",
-          "기타 선지 5"
+          "효소는 체온보다 높을수록 무한히 활성이 증가한다."
         ],
         "correctAnswerIndex": 1,
         "explanation": "효소는 단백질 성분이므로 고온에서 변성되어 입체 구조가 변하면 기능을 잃습니다."
@@ -524,7 +524,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "아무 변화가 없다",
           "말라 죽는다(생명 활동에 필요한 양분 공급 차단)",
           "물관이 드러나 초록색으로 변한다",
-          "기타 선지 5"
+          "뿌리에서 올라온 물이 고여 부풀어 오른다."
         ],
         "correctAnswerIndex": 2,
         "explanation": "양분이 뿌리 쪽(아래)으로 이동하지 못하므로, 아래쪽 조직은 영양 결핍으로 인해 생명 활동이 저하되거나 말라 죽을 수 있습니다."
@@ -537,7 +537,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "물관",
           "형성층",
           "표피",
-          "기타 선지 5"
+          "피층(Bark)"
         ],
         "correctAnswerIndex": 1,
         "explanation": "물관은 줄기 내부의 목질부에 위치하여 뿌리에서 흡수한 물과 무기 양분을 위쪽으로 운반합니다."
@@ -687,7 +687,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "0에서 시작하여 상승하다 40도 부근에서 정점을 찍고 급감한다",
           "계속 증가한다",
           "처음부터 감소한다",
-          "기타 선지 5"
+          "포화점까지 급격히 상승한 후 계속 일정하게 유지된다."
         ],
         "correctAnswerIndex": 1,
         "explanation": "온도는 효소 반응이므로 0℃에서 시작해 최적 온도인 35~40℃까지 증가한 뒤 급격히 감소합니다."
@@ -700,7 +700,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "빛이 없어도 광합성을 한다",
           "온도가 너무 높다",
           "광합성이 멈춘다",
-          "기타 선지 5"
+          "빛이 없어도 광합성이 일어나는 상태"
         ],
         "correctAnswerIndex": 0,
         "explanation": "광포화점은 빛의 세기를 증가시켜도 더 이상 광합성량이 증가하지 않고 일정하게 유지되는 지점을 말합니다."
@@ -850,7 +850,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "포도당",
           "암모니아",
           "이산화 탄소",
-          "기타 선지 5"
+          "포도당"
         ],
         "correctAnswerIndex": 2,
         "explanation": "단백질 분해로 생긴 암모니아는 독성이 강해 간에서 요소로 전환된 후 오줌으로 나갑니다."
@@ -863,7 +863,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "ㄴ",
           "ㄱ, ㄴ",
           "ㄱ, ㄴ, ㄷ",
-          "기타 선지 5"
+          "포도당을 합성하는 반응이다."
         ],
         "correctAnswerIndex": 2,
         "explanation": "세포 호흡은 산소를 흡수하고 이산화 탄소를 배출하는 과정이므로 ㄷ은 틀렸습니다."
@@ -1013,7 +1013,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "에너지, 이산화 탄소, 물",
           "산소, 물, 에너지",
           "포도당, 이산화 탄소",
-          "기타 선지 5"
+          "암모니아와 산소"
         ],
         "correctAnswerIndex": 1,
         "explanation": "세포 호흡의 결과로 생명 활동에 필요한 에너지와 함께 부산물인 이산화 탄소, 물이 생성됩니다."
@@ -1026,7 +1026,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "흡수된 영양소는 호흡계를 통해 전신으로 운반된다.",
           "순환계는 각 기관계를 연결하여 물질 운반을 담당한다.",
           "배설계는 이산화 탄소를 몸 밖으로 내보내는 주된 기관계이다.",
-          "기타 선지 5"
+          "기관계는 서로 아무런 영향을 주지 않고 단독으로만 작용한다."
         ],
         "correctAnswerIndex": 2,
         "explanation": "순환계는 소화계, 호흡계, 배설계를 연결하여 물질이 이동할 수 있게 하는 중심축 역할을 합니다."
@@ -1176,7 +1176,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "호흡은 산소를 흡수하고 이산화 탄소를 내뱉는 과정이다.",
           "식물은 밤에만 호흡을 통해 에너지를 얻는다.",
           "광합성은 엽록체가 있는 세포에서 일어난다.",
-          "기타 선지 5"
+          "호흡은 엽록체에서만 일어난다."
         ],
         "correctAnswerIndex": 2,
         "explanation": "식물은 밤뿐만 아니라 낮에도 항상 호흡을 합니다."
@@ -1189,7 +1189,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "꽃을 피우는 활동",
           "뿌리에서 물과 무기 양분을 흡수할 때",
           "빛 에너지를 포도당에 저장할 때",
-          "기타 선지 5"
+          "새로운 세포를 만드는 생장 작용"
         ],
         "correctAnswerIndex": 3,
         "explanation": "빛 에너지를 포도당에 저장하는 과정은 호흡이 아니라 '광합성' 과정입니다."
@@ -1339,7 +1339,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "엽록소를 제거하여 색깔 변화를 뚜렷이 관찰하기 위해",
           "아이오딘 용액의 반응 속도를 높이기 위해",
           "검정말 속에 남은 이산화 탄소를 제거하기 위해",
-          "기타 선지 5"
+          "검정말 줄기를 부드럽게 만들기 위해"
         ],
         "correctAnswerIndex": 1,
         "explanation": "에탄올은 엽록소를 녹여내는 성질이 있어, 잎을 하얗게 탈색시켜 아이오딘 반응의 색깔 변화를 관찰하기 좋게 만듭니다."
@@ -1352,7 +1352,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "액포",
           "엽록체",
           "세포벽",
-          "기타 선지 5"
+          "리보솜"
         ],
         "correctAnswerIndex": 2,
         "explanation": "광합성이 일어나는 장소인 엽록체에서 녹말이 만들어지므로, 엽록체 부분이 청람색으로 변합니다."
@@ -1502,7 +1502,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "백혈구 - 산소 운반",
           "혈소판 - 영양소 운반",
           "혈장 - 식균 작용",
-          "기타 선지 5"
+          "혈장 - 산소 운반"
         ],
         "correctAnswerIndex": 0,
         "explanation": "적혈구는 헤모글로빈을 통해 산소를 운반하며, 백혈구는 식균 작용, 혈소판은 혈액 응고, 혈장은 영양소 및 이산화 탄소 운반을 담당합니다."
@@ -1515,7 +1515,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "물, 이산화 탄소, 에너지",
           "단백질, 질소",
           "산소, 에너지",
-          "기타 선지 5"
+          "산소와 포도당"
         ],
         "correctAnswerIndex": 1,
         "explanation": "세포 호흡은 영양소와 산소를 반응시켜 생명 활동에 필요한 에너지와 물, 이산화 탄소를 생성하는 과정입니다."
@@ -1665,7 +1665,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "에너지를 얻기 위해 산소를 이용해 영양소를 분해하는 과정이다.",
           "세포 호흡 결과 산소와 에너지가 생성된다.",
           "운동 중에는 세포 호흡이 억제된다.",
-          "기타 선지 5"
+          "에너지를 흡수하는 과정이다."
         ],
         "correctAnswerIndex": 1,
         "explanation": "세포 호흡은 온몸의 세포에서 영양소를 산소로 분해하여 생명 활동에 필요한 에너지를 얻는 과정입니다."
@@ -1678,7 +1678,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "호흡 운동이 빨라진다.",
           "세포에 산소 공급량이 늘어난다.",
           "날숨 속의 산소 농도가 평소보다 높아진다.",
-          "기타 선지 5"
+          "근육 세포의 산소 소비량이 증가한다."
         ],
         "correctAnswerIndex": 3,
         "explanation": "운동 중에는 산소를 많이 소비하므로, 날숨 속의 산소 농도는 평소보다 낮아지고 이산화 탄소 농도가 높아집니다."
@@ -1828,7 +1828,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "B, D, (나), (라)",
           "A, B, (가), (나)",
           "C, D, (다), (라)",
-          "기타 선지 5"
+          "우심실, 폐동맥"
         ],
         "correctAnswerIndex": 1,
         "explanation": "폐에서 산소를 받아 돌아오는 폐정맥(나), 좌심방(B), 좌심실(D), 대동맥(라) 라인이 산소가 풍부한 동맥혈 구간입니다."
@@ -1841,7 +1841,7 @@ export const INITIAL_SAVED_NOTES: SavedNote[] = [
           "노폐물을 콩팥으로 운반",
           "폐에서 이산화탄소를 내보내고 산소를 얻음",
           "심장 근육에 에너지를 공급",
-          "기타 선지 5"
+          "소화된 영양소를 온몸 세포로 운반"
         ],
         "correctAnswerIndex": 2,
         "explanation": "폐순환의 핵심 목적은 가스 교환을 통해 혈액에 산소를 채우고 이산화탄소를 배출하는 것입니다."
