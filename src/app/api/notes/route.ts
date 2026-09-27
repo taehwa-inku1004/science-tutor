@@ -56,7 +56,11 @@ async function readNotes(): Promise<SavedNote[]> {
   try {
     await ensureDirs();
     const raw = await fs.readFile(NOTES_FILE, "utf-8");
-    return JSON.parse(raw);
+    const notes: SavedNote[] = JSON.parse(raw);
+    return notes.filter((n) => {
+      const d = n.savedAt || n.createdAt || "";
+      return !d.includes("2026-09-26");
+    });
   } catch {
     return [];
   }

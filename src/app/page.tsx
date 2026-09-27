@@ -15,8 +15,8 @@ import {
   getAllNotesFromIndexedDB,
   saveNoteToIndexedDB,
   deleteNoteFromIndexedDB,
+  isSept26OrOlderNote,
 } from "@/lib/indexedDbStorage";
-import { INITIAL_SAVED_NOTES } from "@/lib/initialNotes";
 import { CHUNJAE_FINAL_MOCK_EXAM } from "@/lib/chunjaeMockExamData";
 import { buildDynamicMockExam } from "@/lib/mockExamBuilder";
 
@@ -25,7 +25,7 @@ export default function Home() {
   const [activeImageUrl, setActiveImageUrl] = useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState("");
-  const [savedNotes, setSavedNotes] = useState<SavedNote[]>(INITIAL_SAVED_NOTES);
+  const [savedNotes, setSavedNotes] = useState<SavedNote[]>([]);
   const [errorBanner, setErrorBanner] = useState<string | null>(null);
 
   // Modals
@@ -63,14 +63,19 @@ export default function Home() {
       // ignore
     }
 
-    // 1. Restore active problem session across browser refresh
+    // 1. Restore active problem session across browser refresh (ignore old 9/26 sessions)
     try {
       const cachedAnalysis = sessionStorage.getItem("science_tutor_active_analysis");
       const cachedImage = sessionStorage.getItem("science_tutor_active_image");
       if (cachedAnalysis) {
         const parsed = JSON.parse(cachedAnalysis);
-        setActiveAnalysis(parsed);
-        if (cachedImage) setActiveImageUrl(cachedImage);
+        if (!isSept26OrOlderNote(parsed)) {
+          setActiveAnalysis(parsed);
+          if (cachedImage) setActiveImageUrl(cachedImage);
+        } else {
+          sessionStorage.removeItem("science_tutor_active_analysis");
+          sessionStorage.removeItem("science_tutor_active_image");
+        }
       }
     } catch {
       // ignore
@@ -79,19 +84,9 @@ export default function Home() {
     // 2. Load persistent notes from IndexedDB first (lightning fast on iPad/Vercel)
     getAllNotesFromIndexedDB()
       .then((idbNotes) => {
-        if (idbNotes && idbNotes.length > 0) {
-          // Auto-heal any stale /api/images/ URLs from earlier sessions
-          const healed = idbNotes.map((note) => {
-            if (note.imageUrl && note.imageUrl.startsWith("/api/images/")) {
-              const matched = INITIAL_SAVED_NOTES.find((init) => init.id === note.id);
-              if (matched && matched.imageUrl) {
-                saveNoteToIndexedDB({ ...note, imageUrl: matched.imageUrl }).catch(() => {});
-                return { ...note, imageUrl: matched.imageUrl };
-              }
-            }
-            return note;
-          });
-          setSavedNotes(healed);
+        if (idbNotes) {
+          const valid = idbNotes.filter((n) => !isSept26OrOlderNote(n));
+          setSavedNotes(valid);
         }
       })
       .catch((e) => console.warn("IDB initial load error:", e));
@@ -100,15 +95,18 @@ export default function Home() {
     fetch("/api/notes")
       .then((res) => res.json())
       .then((data) => {
-        if (data.success && Array.isArray(data.notes) && data.notes.length > 0) {
-          setSavedNotes((prev) => {
-            const map = new Map<string, SavedNote>();
-            data.notes.forEach((n: SavedNote) => map.set(n.id, n));
-            prev.forEach((n: SavedNote) => map.set(n.id, n));
-            const merged = Array.from(map.values());
-            merged.forEach((n) => saveNoteToIndexedDB(n).catch(() => {}));
-            return merged;
-          });
+        if (data.success && Array.isArray(data.notes)) {
+          const freshNotes = data.notes.filter((n: SavedNote) => !isSept26OrOlderNote(n));
+          if (freshNotes.length > 0) {
+            setSavedNotes((prev) => {
+              const map = new Map<string, SavedNote>();
+              freshNotes.forEach((n: SavedNote) => map.set(n.id, n));
+              prev.filter((n) => !isSept26OrOlderNote(n)).forEach((n: SavedNote) => map.set(n.id, n));
+              const merged = Array.from(map.values());
+              merged.forEach((n) => saveNoteToIndexedDB(n).catch(() => {}));
+              return merged;
+            });
+          }
         }
       })
       .catch(() => {
