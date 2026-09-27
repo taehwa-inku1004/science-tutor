@@ -6,9 +6,7 @@ import {
   Sparkles,
   Target,
   AlertTriangle,
-  Lightbulb,
   BookMarked,
-  Zap,
   HelpCircle,
   CheckCircle2,
   XCircle,
@@ -63,7 +61,7 @@ export function TutorClinicView({
       try {
         await navigator.share({
           title: `[중2 과학] ${analysis.title}`,
-          text: `[핵심 개념] ${analysis.keyConcept}\n${analysis.teacherExplanation.memoryTip}`,
+          text: `[핵심 개념] ${analysis.keyConcept}\n${analysis.correctAnswerReason || ""}`,
           url: window.location.href,
         });
       } catch {
@@ -290,45 +288,30 @@ export function TutorClinicView({
         </div>
       </div>
 
-      {/* Card 3: Teacher Analogy (The "Aha!" Moment) */}
-      <div className="bg-gradient-to-r from-sky-50 via-indigo-50/40 to-white rounded-2xl p-5 sm:p-6 border border-sky-200/80 shadow-xs relative overflow-hidden">
-        <div className="flex items-center gap-2.5 mb-3 text-sky-900">
-          <div className="w-9 h-9 rounded-xl bg-sky-500 text-white flex items-center justify-center shadow-xs">
-            <Lightbulb className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="text-base font-extrabold text-slate-900">
-              과외선생님의 무릎 탁 치는 비유 강의
-            </h3>
-            <span className="text-xs text-sky-700 font-medium">
-              외우지 말고 일상 속 원리로 직관적이게 이해해볼까요?
-            </span>
-          </div>
-        </div>
-        <div className="mt-3 p-4 bg-white/90 rounded-xl border border-sky-100 text-sm sm:text-base text-slate-800 leading-relaxed italic shadow-2xs">
-          &quot;{analysis.teacherExplanation.analogy}&quot;
-        </div>
-      </div>
-
-      {/* Card 4: Step-by-Step Core Principles & Math */}
+      {/* Step-by-Step Core Principles */}
       <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-4">
         <div className="flex items-center gap-2.5 text-indigo-900 border-b border-slate-100 pb-3">
           <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
             <BookMarked className="w-4 h-4" />
           </div>
-          <h3 className="text-base font-bold">단계별 핵심 원리 & 수식 공식 마스터</h3>
+          <div>
+            <h3 className="text-base font-bold">단계별 핵심 원리 & 수식 공식 마스터</h3>
+            <span className="text-xs text-slate-500 font-medium">
+              문제 풀이의 뼈대가 되는 핵심 개념과 정답 도출 단계
+            </span>
+          </div>
         </div>
 
         <div className="space-y-3">
           {analysis.teacherExplanation.corePrinciples.map((principle, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50/70 border border-slate-200/70"
+              className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50/70 border border-slate-200/70 hover:bg-indigo-50/20 transition-colors"
             >
               <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
                 {idx + 1}
               </div>
-              <div className="flex-1 text-xs sm:text-sm text-slate-800 leading-relaxed">
+              <div className="flex-1 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans">
                 <LatexRenderer content={principle} />
               </div>
             </div>
@@ -336,31 +319,46 @@ export function TutorClinicView({
         </div>
       </div>
 
-      {/* Card 5: Memory Cheat Tip */}
-      <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl p-5 shadow-sm">
-        <div className="flex items-center gap-2 mb-2 font-bold text-sm text-emerald-100">
-          <Zap className="w-4 h-4 text-amber-300" />
-          시험 직전 10초 암기 꿀팁
-        </div>
-        <p className="text-sm sm:text-base font-bold text-white tracking-wide">
-          {analysis.teacherExplanation.memoryTip}
-        </p>
-      </div>
-
-      {/* Card 6: Interactive Twin Quiz (Check Understanding) */}
-      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-5 print-page-break">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-          <div className="flex items-center gap-2.5 text-slate-900">
-            <div className="w-8 h-8 rounded-lg bg-pink-100 text-pink-600 flex items-center justify-center">
-              <HelpCircle className="w-4 h-4" />
+      {/* Interactive 5-Choice Twin Quiz */}
+      <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-xs space-y-6 print-page-break">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-4 gap-3">
+          <div className="flex items-center gap-3 text-slate-900">
+            <div className="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center shadow-2xs">
+              <HelpCircle className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold">개념 100% 흡수! 쌍둥이 확인 퀴즈</h3>
-              <p className="text-xs text-slate-500">
-                선택지를 터치해서 방금 배운 개념을 바로 확인해 보세요.
+              <div className="flex items-center gap-2">
+                <h3 className="text-base sm:text-lg font-bold">실전 5지선다 쌍둥이 확인 퀴즈</h3>
+                <span className="px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-700 border border-pink-200 text-xs font-bold">
+                  총 {analysis.twinQuiz?.length || 0}문제
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5">
+                실제 학교 시험과 동일한 5지선다형 객관식 문제입니다. 정답 번호를 터치하여 바로 채점해 보세요.
               </p>
             </div>
           </div>
+
+          {/* Live Progress & Score */}
+          {analysis.twinQuiz && analysis.twinQuiz.length > 0 && (
+            <div className="flex items-center gap-2 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200 text-xs font-semibold shrink-0 self-start sm:self-auto">
+              <span className="text-slate-600">
+                풀이 완료:{" "}
+                <strong className="text-indigo-600">
+                  {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] !== undefined).length}
+                </strong>
+                /{analysis.twinQuiz.length}
+              </span>
+              <span className="text-slate-300">|</span>
+              <span className="text-slate-600">
+                정답:{" "}
+                <strong className="text-emerald-600">
+                  {analysis.twinQuiz.filter((q) => selectedAnswers[q.id] === q.correctAnswerIndex).length}
+                </strong>
+                개
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">
@@ -372,10 +370,10 @@ export function TutorClinicView({
             return (
               <div
                 key={quiz.id}
-                className="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3.5"
+                className="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3.5 transition-colors"
               >
                 <div className="flex items-start gap-2.5">
-                  <span className="px-2 py-0.5 text-xs font-black rounded-md bg-indigo-600 text-white shrink-0 mt-0.5">
+                  <span className="px-2.5 py-1 text-xs font-black rounded-lg bg-indigo-600 text-white shrink-0 mt-0.5 shadow-2xs">
                     Q{qIdx + 1}
                   </span>
                   <div className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
@@ -383,8 +381,8 @@ export function TutorClinicView({
                   </div>
                 </div>
 
-                {/* Options */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                {/* 5-Choice Vertical Options */}
+                <div className="flex flex-col gap-2 pt-1">
                   {quiz.options.map((opt, optIdx) => {
                     const isSelected = selected === optIdx;
                     const isRightOption = optIdx === quiz.correctAnswerIndex;
@@ -411,9 +409,17 @@ export function TutorClinicView({
                         onClick={() =>
                           handleSelectOption(quiz.id, optIdx, quiz.correctAnswerIndex)
                         }
-                        className={`flex items-center gap-3 p-3 rounded-xl border text-left text-xs sm:text-sm transition-all cursor-pointer select-none active:scale-[0.99] ${btnStyle}`}
+                        className={`flex items-center gap-3 p-3 sm:py-3.5 rounded-xl border text-left text-xs sm:text-sm transition-all cursor-pointer select-none active:scale-[0.99] ${btnStyle}`}
                       >
-                        <span className="w-6 h-6 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center text-xs font-bold shrink-0">
+                        <span
+                          className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${
+                            isAnswered && isRightOption
+                              ? "bg-emerald-200 text-emerald-900"
+                              : isAnswered && isSelected
+                              ? "bg-rose-200 text-rose-900"
+                              : "bg-slate-100 text-slate-700"
+                          }`}
+                        >
                           {["①", "②", "③", "④", "⑤"][optIdx] || optIdx + 1}
                         </span>
                         <span className="flex-1">
@@ -427,7 +433,7 @@ export function TutorClinicView({
                 {/* Feedback Box */}
                 {isAnswered && (
                   <div
-                    className={`p-3.5 rounded-xl text-xs sm:text-sm flex items-start gap-2.5 transition-all ${
+                    className={`p-4 rounded-xl text-xs sm:text-sm flex items-start gap-3 transition-all ${
                       isCorrect
                         ? "bg-emerald-50 text-emerald-900 border border-emerald-200"
                         : "bg-rose-50 text-rose-900 border border-rose-200"
@@ -438,13 +444,14 @@ export function TutorClinicView({
                     ) : (
                       <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                     )}
-                    <div className="space-y-1">
-                      <p className="font-bold">
+                    <div className="space-y-1.5 flex-1">
+                      <p className="font-bold text-sm">
                         {isCorrect
-                          ? "정답입니다! 완벽하게 개념을 흡수하셨네요! 🎉"
-                          : "아쉽게 틀렸어요! 아래 해설을 다시 한 번 확인해 볼까요?"}
+                          ? "정답입니다! 🎉"
+                          : `아쉽게 틀렸어요! (정답: ${["①", "②", "③", "④", "⑤"][quiz.correctAnswerIndex] || quiz.correctAnswerIndex + 1}번)`}
                       </p>
-                      <div className="text-slate-700 leading-relaxed font-sans">
+                      <div className="text-slate-700 leading-relaxed font-sans pt-1 border-t border-slate-200/60">
+                        <strong className="text-xs text-slate-500 block mb-0.5">해설:</strong>
                         <LatexRenderer content={quiz.explanation} />
                       </div>
                     </div>

@@ -21,9 +21,9 @@ export interface TutorAnalysis {
   examIntent: string; // 시험 출제자의 의도
   trapAndMisconceptions: string; // 왜 틀리기 쉬운가? 함정 포인트
   teacherExplanation: {
-    analogy: string; // 일상 속 쉬운 비유
+    analogy?: string; // (선택) 일상 속 쉬운 비유
     corePrinciples: string[]; // 단계별 핵심 원리 설명 (수식 포함)
-    memoryTip: string; // 시험 직전 꼭 외울 암기 꿀팁
+    memoryTip?: string; // (선택) 시험 직전 꼭 외울 암기 꿀팁
   };
   twinQuiz: QuizQuestion[];
   createdAt: string;
